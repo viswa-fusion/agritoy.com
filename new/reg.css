@@ -1,0 +1,343 @@
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+}
+#bg{
+  background-image: url('image/groot.jpg');
+  background-size: cover;
+  background-repeat:no-repeat;
+  height:100vh;
+}
+.container{
+  height:600px;
+  width:500px;
+  margin:20px auto;
+  border-radius: 20px;
+  box-shadow: 0px 0px 2px 2px black;
+  float: left;
+  margin-left: 20px;
+  background-color: rgba(0, 0, 0, 0.514);
+  animation: transitionIn 3s;
+}
+.container1{
+  height:600px;
+  width:500px;
+  margin:20px auto;
+  border-radius: 20px;
+  box-shadow: 0px 0px 2px 2px black;
+  float: left;
+  margin-left: 20px;
+  background-color: rgba(0, 0, 0, 0.514);
+}
+@keyframes transitionIn{
+  from{
+      opacity: 0;
+      transform: rotateX(-10deg);
+  }
+  to{
+      opacity: 1;
+      transform: rotateX(0);
+  }
+}
+.container.arrow-right{
+  margin-right: 40px;
+}
+.container1.arrow-right{
+  margin-right: 40px;
+}
+.reg{
+  text-align:center;
+  font-size:50px;
+  color:white;
+  text-shadow: 2px 2px 4px black;
+}
+.GTT{
+  margin-left:50px;
+  display:flex;
+  flex-direction: column;
+  font-size: 30px;
+  margin-top: 40px;
+  color:white;
+  text-shadow: -1px 1px 5px black ;
+}
+
+input{
+  display:flex;
+  margin:0px 30px 0px 0px;
+  font-size:20px ;
+  border:none;
+  border-bottom: 2px solid white;
+  background:none;
+  outline:none;
+  color:white;
+  text-shadow: -1px 1px 5px black ;
+  transition: .2s ease-in-out 0s;
+}
+input:hover{
+  cursor: text;
+  transform: scale(1.05);
+}
+.sumbut{
+  width:50%;
+  font-size: 20px;
+  padding:7px;
+  background:black ;
+  border-radius: 10px;
+  text-decoration:none;
+  color:white;
+  margin-left:25%;
+  margin-top: 30px;
+  transition: .2s ease-in-out 0s;
+  
+}
+.sumbut:hover{
+  cursor:pointer;
+  transform:scale(1.05);
+}
+.sumbut1{
+  width:50%;
+  font-size: 20px;
+  padding:7px;
+  background:black ;
+  border-radius: 10px;
+  text-decoration:none;
+  color:white;
+  margin-left:25%;
+  margin-top: 30px;
+  transition: .2s ease-in-out 0s;
+  
+}
+.sumbut1:hover{
+  cursor:pointer;
+  transform:scale(1.05);
+}
+.next1{
+  position:absolute;
+  text-decoration:none;
+  margin-left:20px;
+  margin-top: 25px;
+  color:rgba(255, 255, 255, 0.829);
+  height: fit-content;
+  width: fit-content;
+  padding: 3px;
+  background-color: rgba(0, 0, 0, 0.671);
+  border-radius: 5px;
+  transition: .2s ease-in-out 0s;
+
+}
+.next1:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+}
+.error_box{
+  background-color: rgba(255, 0, 0, 0.377);
+  border: 1px solid rgba(255, 0, 0, 0.479);
+  color: red;
+  height:fit-content;
+  margin-right: 30px;
+  padding:1px ;
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 3px;
+}
+
+  .box {
+      width:270px;
+      height:80px;
+      background-color: rgba(0, 0, 0, 0.829);
+      color: rgb(255, 255, 255);
+      padding: 3px;
+      position:absolute;
+      display:block;
+      border-radius: 15px;
+      visibility:hidden;
+      
+    }
+    
+    @keyframes transitionIn{
+      from{
+          left: 240px;
+          opacity: 0;
+          transform: rotateX(-10deg);
+      }
+      to{
+          left: 294px;
+          opacity: 1;
+          transform: rotateX(0);
+      }
+  }
+    
+    
+    .box.arrow-left {
+      margin-left: 225px;
+      margin-top: -30px;
+    }
+
+    .box.arrow-left:after {
+      content: " ";
+      position: absolute;
+      left: -15px;
+      top: 15px;
+      border-top: 15px solid transparent;
+      border-right: 15px solid rgba(233, 217, 217, 0.856);
+      border-left: none;
+      border-bottom: 15px solid transparent;
+     
+    }
+   .ttext{
+      font-size:15px;
+   }
+   .tinput{
+      width: 80%;
+      margin-left: 30px;
+      visibility: hidden;
+   }
+   .tinput::placeholder{
+      font-size: 15px;
+   }
+   .tbut{
+      text-decoration: none;
+      height: 35px;
+      width: 110px;
+      font-size: larger;
+      border-radius: 15px;
+      padding: 3px;
+      transition: 1s ;
+      margin-top: -20px;
+      transition: 2s ease-in-out 0s;
+   }
+   .tbut:hover{
+      transform: scale(1.2);
+   }
+   #sum1{
+      text-decoration: none;
+      height: 25px;
+      width: 100px;
+      border-radius: 15px;
+      padding: 3px;
+      visibility: hidden;
+      position:absolute;
+      margin-top: -20px;
+      margin-left: -50px;
+      justify-items: center;
+      transition: 2s ease-in-out 0s;
+   }
+   #sum1:hover{
+    transform: scale(1.2);
+ }
+   .form2{
+      margin-left: 55%;
+      margin-top: -54%;
+   }
+   #ticking{
+      height: 40px;
+      width: 40px;
+      position: absolute;
+      margin: 25px 0px 0px 410px;
+   }
+
+   
+   
+  /*  @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*/
+.don{
+position: relative;
+height: 25px;
+width: 25px;
+display: inline-block;
+border: 2px solid rgba(255,255,255,0.2);
+border-radius: 50%;
+border-left-color: #5cb85c;
+animation: rotate 1.2s linear infinite;
+}
+@keyframes rotate {
+50%{
+  border-left-color: #9b59b6;
+}
+75%{
+  border-left-color: #e67e22;
+}
+100%{
+  transform: rotate(360deg);
+}
+}
+.don .check-icon{
+display: none;
+}
+.don .check-icon:after{
+position: absolute;
+content: "";
+top: 50%;
+left: 0px;
+transform: scaleX(-1) rotate(135deg);
+height: 16px;
+width: 8px;
+border-top: 3px solid #5cb85c;
+border-right: 3px solid #5cb85c;
+transform-origin: left top;
+animation: check-icon 2s ease;
+}
+@keyframes check-icon {
+0%{
+  height: 0;
+  width: 0;
+  opacity: 1;
+}
+20%{
+  height: 0;
+  width: 8px;
+  opacity: 1;
+}
+40%{
+  height: 16px;
+  width: 8px;
+  opacity: 1;
+}
+100%{
+  height: 16px;
+  width: 8px;
+  opacity: 1;
+}
+}
+.copy{
+display: none; 
+}
+.don1 .check-icon{
+display: block;
+}
+.don1{
+animation: none;
+border-color: #5cb85c;
+transition: border 1s ease-out;
+}
+.leftBox{
+width: 125px;
+height: 60px;
+position: absolute;
+margin: 18px 0px 0px 125.5px;
+}
+
+.rightBox{
+  width: 125px;
+height: 60px;
+position: absolute;
+margin: 18px 0px 0px 251px;
+}
+
+.leftBox:hover ~ .sumbut{
+ margin-left: 75%;
+ width: 25%;
+}
+.rightBox:hover ~ .sumbut{
+  margin-left: -0%;
+ width: 25%;
+}
+.error_mess{
+  height: fit-content;
+  width: fit-content;
+  border: 1px solid rgba(250, 39, 39, 0.863);
+  background-color: rgba(250, 51, 16, 0.39);
+}

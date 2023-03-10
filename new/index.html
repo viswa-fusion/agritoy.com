@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" type="text/css" href="indexcss1.css">
+</head>
+
+<body id="bg">
+    
+    <div><h1 class="webname">Agri Toy</h1>
+    <div class="container">
+        <h1 class="log"><center><img  class="log1" src="image/user.png"></center></h1>
+        <form class="formMain" id="form1" method="POST" action="indexhomephp.php" name="form" onsubmit="return mainCheck()" required>
+        <div id="id01">
+            <lable>E-Mail</lable>
+            <input type="text" placeholder="enter registerd email" name="email" id="inname" onkeyup="moveCursor(this,'inpass')">
+        </div>    
+        <div id="id02">
+            <lable>Password</lable>
+            <input type="password" placeholder="enter password" name="pass" id="inpass">
+        </div>
+            <button type="submit">login</button>
+            <br><p class="next"><a href="registerhtml.php" id="next">Sign up</a><a href="reset_passhtml.php" id="next1">Forget Password?</a></p>
+        </form>
+    </div>
+</div>
+    <script src="indexscript.js">
+    </script>
+    
+</body>
+</html>

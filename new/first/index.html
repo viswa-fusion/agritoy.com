@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>box</title>
+	
+</head>
+<body>
+	
+<div class="container">
+	<form onSubmit="event.preventDefault()">
+	
+	<div class="input1">
+		<lable>Name &#127827</lable><br>
+		<input type="text" id="id01" placeholder="type" onkeyup="moveCursor(this,'id02')">
+	</div>
+	<div class="input2">
+		<lable>Quantity</lable><br>
+	<input type="number" id="id02" placeholder="type" >
+	</div>
+<div class="tablebox">
+<table id="display">
+	<tr><td></td></tr>
+</table>
+</div>
+</form>
+</div>
+<script>
+	function moveCursor(fromTextBox, toTextBox)
+	{
+		let input=document.querySelector('input');
+input.addEventListener('keyup',(e) => {
+	if(e.keyCode === 13){
+		document.getElementById(toTextBox).focus();
+	}
+    })
+}
+</script>
+</body>
+</html>
