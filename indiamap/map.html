@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .agritoyMap{
+            width: 100%;
+        }
+        .nav__logo img{
+            background-color: antiquewhite;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+            background: rgb(0, 0, 0);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgb(255, 255, 255);
+            border-radius: 10px;
+            opacity: 5px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+    </script>
+    <script type=text/javascript>
+      $(function(){
+        $("#map").load("test.html");
+      });
+    </script>
+</head>
+
+<body style="background-color: black;">
+    <a class="nav__logo">
+        <img width="200px" onclick="backHome()" src="http://localhost/new/image/download1.png"/> 
+    </a>
+    <div class="agritoyMap" id="map"></div>
+</body>
+</html>
+ 
