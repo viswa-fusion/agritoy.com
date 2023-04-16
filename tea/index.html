@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tea page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+:root{
+
+--body-font: 'Poppins', sans-serif;
+--big-font: 4rem;
+--h1-font: 3.6rem;
+--h2-font: 2.4rem;
+--h3-font: 2rem;
+--h4-font: 1.8rem;
+--normal-font: 1.6rem;
+--small-font: 1.4rem;
+--smaller-font: 1.3rem;
+
+--font-regular: 400;
+--font-medium: 500;
+--font-semi-bold: 600;
+
+--primary-color: #C87E4F;
+--primary-color-hover: #C2703D;
+--text-color: #333;
+--text-color-light: #888682;
+--border-color: #484848;
+--white-color: #FFF;
+--section-bg: #2C3034;
+--s-cont-text:rgb(224, 224, 224);
+
+--z-overlay: 10;
+--z-fixed: 100;
+
+--tran-0-2: 0.2s;
+--tran-0-3: 0.3s;
+--tran-0-5: 0.5s;
+}
+@media screen and (max-width: 990px) {
+:root {
+  --big-font: 3.5rem;
+  --h1-font: 2.4rem;
+  --h2-font: 2rem;
+  --h3-font: 1.8rem;
+  --h4-font: 1.6rem;
+  --normal-font: 1.5rem;
+  --small-font: 1.3rem;
+  --smaller-font: 1.2rem;
+}
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  overflow-x: hidden;
+  background-color: var(--white-color);
+}
+
+::selection{
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+::-webkit-scrollbar{
+  width: 8px;
+}
+::-webkit-scrollbar-track{
+  background-color: #f9f1ec;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 1rem;
+  background-color: var(--primary-color);
+}
+::-webkit-scrollbar-thumb:hover{
+  border-radius: 1rem;
+  background-color: var(--primary-color-hover)
+}
+
+body,
+button,
+input{
+  font-family: var(--body-font);
+  font-size: var(--normal-font);
+  font-weight: var(--font-regular);
+  color: var(--text-color);
+}
+
+input{
+  outline: none;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section{
+  padding: 7rem 2rem;
+}
+.container{
+  max-width: 1030px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+.flex{
+  display: flex;
+  align-items: center;
+  column-gap: 0.6rem;
+}
+.logo-content img {
+  width: 20rem;
+  border-radius: 20px;
+  margin-left: -17rem;
+}
+.button{
+  border: none;
+  outline: none;
+  color: var(--white-color);
+  padding: 1.4rem 4rem;
+  border-radius: 3rem;
+  background-color: var(--primary-color);
+  transition: var(--tran-0-3);
+  cursor: pointer;
+}
+.button:hover{
+  background-color: var(--primary-color-hover);
+}
+h2.content-title {
+    font-size: 1.5rem;
+}
+.section-subtitle,
+.content-subtitle{
+  color: var(--primary-color);
+  font-size: var(--normal-font);
+  letter-spacing: 1px;
+  font-weight: var(--font-medium);
+  text-align: center;
+}
+.section-title,
+.content-title{
+  text-align: center;
+  font-size: var(--h2-font);
+  font-weight: var(--font-medium);
+  margin: 1rem 0;
+}
+.section-description,
+.content-description{
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.section-description{
+  padding: 0 16rem;
+}
+/* Header */
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 7rem;
+  width: 100%;
+  z-index: var(--z-fixed);
+  transition: var(--tran-0-5);
+}
+.header-active{
+  height: 6rem;
+  background-color: var(--white-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav{
+  position: relative;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-icon,
+.logo-text,
+.nav-link,
+.phone-icon,
+.phone-number{
+  color: var(--white-color);
+}
+
+.header-active .logo-icon,
+.header-active .logo-text,
+.header-active .nav-link,
+.header-active .phone-icon,
+.header-active .phone-number{
+  color: var(--text-color);
+}
+
+.logo-icon,
+.phone-icon{
+  font-size: 2rem;
+}
+.menu-list{
+  column-gap: 2rem;
+}
+.nav-link{
+  position: relative;
+  text-transform: capitalize;
+}
+.nav-link::before{
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background-color: var(--white-color);
+  opacity: 0;
+}
+.active-navlink::before{
+  opacity: 1;
+}
+.header-active .active-navlink::before{
+  background-color: var(--text-color);
+}
+.media-icons{
+  column-gap: 1rem;
+}
+.media-icons a{
+  color: var(--text-color-light);
+}
+.navClose-btn,
+.navOpen-btn,
+.media-icons{
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-content{
+    display: none;
+  }
+  .navClose-btn,
+  .navOpen-btn,
+  .media-icons{
+  display: block;
+}
+  .nav .menu-content{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    max-width: 300px;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-fixed);
+    padding: 10rem 0 5rem;
+    background-color: var(--white-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--tran-0-5);
+  }
+  .nav .menu-content.open{
+    right: 0;
+  }
+  .menu-list{
+    flex-direction: column;
+    row-gap: 2.5rem;
+    font-size: var(--h4-font);
+  }
+  .nav-link{
+    color: var(--text-color);
+  }
+  .nav-link::before{
+    background-color: var(--text-color);
+  }
+  .navClose-btn{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+  .navOpen-btn{
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--white-color);
+  }
+  .header-active .navOpen-btn{
+    color: var(--text-color);
+  }
+}
+
+.home{
+  height: 100vh;
+  width: 100%;
+}
+.swiper-slide{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+.home .swiper-slide::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: var(--z-overlay);
+}
+.home-img{
+  height: 100%;
+  width: 100%;
+}
+
+.swiper-navBtn{
+  height: 5rem;
+  width: 5rem;
+  color: var(--white-color);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: var(--tran-0-2);
+  opacity: 0;
+  visibility: visible;
+}
+.home:hover .swiper-navBtn,
+.review:hover .swiper-navBtn{
+  opacity: 1;
+}
+.swiper-navBtn:hover{
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.swiper-navBtn::after,
+.swiper-navBtn::before{
+  font-size: 2rem;
+}
+
+.swiper-button-next{
+  right: 16rem;
+}
+.swiper-button-prev{
+  left: 16rem;
+}
+
+.swiper-pagination-bullet{
+  background-color: var(--white-color);
+  opacity: 1;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-bottom: 2rem;
+  visibility: hidden;
+}
+.swiper-pagination-bullet-active{
+  border: 3px solid var(--white-color);
+  background-color: var(--primary-color);
+}
+.home-details{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: var(--z-fixed);
+  transform: translate(-50%, -50%);
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  row-gap: 4rem;
+}
+
+.homeSubtitle{
+  text-align: center;
+  font-size: var(--normal-font);
+  color: var(--white-color);
+}
+.homeTitle{
+  text-align: center;
+  font-size: var(--big-font);
+  color: var(--white-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.about .content-subtitle,
+.about .content-title,
+.about .content-description{
+  text-align: left;
+}
+.about-content{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  column-gap: 7rem;
+  align-items: center;
+  padding: 0 5rem;
+}
+.about-imageContent{
+  position: relative;
+  max-width: 400px;
+  height: 450px;
+  border: 6px solid var(--section-bg);
+}
+.aboutImg-textBox{
+  position: absolute;
+  bottom: 2rem;
+  right: -5rem;
+  padding: 2rem;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  border: 6px solid var(--section-bg);
+  background-color: var(--white-color);
+}
+.aboutImg-textBox .content-description{
+  text-align: center;
+  margin-bottom: 0;
+}
+.heart-icon{
+  position: absolute;
+  left: -1.9rem;
+  top: 50%;
+  height: 3rem;
+  width: 3rem;
+  color: var(--white-color);
+  background-color: var(--section-bg);
+  transform: translateY(-50%);
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.about-details{
+  display: grid;
+  row-gap: 4rem;
+}
+.about-lists{
+  column-gap: 1rem;
+  align-items: baseline;
+}
+.about-list{
+  font-weight: var(--font-medium);
+  font-size: 1.8rem;
+}
+.about-list:nth-child(1){
+  color: var(--primary-color);
+}
+.about-list.dot{
+  font-size: 2.5rem;
+}
+.about-buttons{
+  column-gap: 2rem;
+}
+.about-link .link-text,
+.about-arrowIcon{
+  color: var(--text-color);
+  text-transform: uppercase;
+}
+.about-arrowIcon{
+  transition: var(--tran-0-3);
+}
+.about-link:hover .about-arrowIcon{
+  margin-left: 4px;
+}
+
+.menu{
+  background-color: var(--section-bg);
+}
+.section-title,
+.section-description{
+  color: var(--white-color);
+}
+
+.menu-img{
+  height: 80px;
+  width: 80px;
+  margin-right: 1.5rem;
+}
+.menu-items{
+  display: grid;
+  row-gap: 1.5rem;
+}
+
+.menu-item{
+  position: relative;
+  padding: 2rem 2.5rem;
+  background-color: var(--white-color);
+}
+.menuItem-details{
+  margin-right: 1.5rem;
+}
+.menuItem-topic{
+  font-weight: var(--font-semi-bold);
+}
+.menuItem-des{
+  font-size: var(--small-font);
+}
+.menuItem-price{
+  flex-direction: column;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(0, 0, 0, 0.3);
+}
+.discount-price{
+  font-size: 1.8rem;
+}
+.real-price{
+  text-decoration: line-through;
+}
+.time-topic{
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: var(--font-regular);
+  padding: 1.5rem 0;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+}
+.time-list{
+  padding: 1.5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  justify-content: space-between;
+  background-color: var(--white-color);
+}
+.time-list:nth-child(7){
+  border-bottom: none;
+}
+
+.brand-images{
+  display: grid;
+  align-items: center;
+  column-gap: 2rem;
+  justify-content: space-between;
+  justify-items: center;
+  margin-top: 3rem;
+  grid-template-columns: repeat(5,1fr);
+}
+.brand-img{
+  width: 150px;
+  object-fit: contain;
+  opacity: 0.4;
+  transition: var(--tran-0-5);
+}
+.brand-img:hover{
+  opacity: 1;
+}
+.review{
+  background-color: #f2f2f2;
+}
+.review .section-title,
+.review .section-description{
+  color: var(--text-color);
+}
+.testi-content{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  row-gap: 2rem;
+  flex-direction: column;
+}
+.review-img{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+}
+.review-quote{
+  padding: 0 15rem;
+  text-align: center;
+}
+.quote-icon{
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+.testi-personDetails{
+  flex-direction: column;
+}
+.testi-personDetails .name{
+  font-size: 1.8rem;
+  font-weight: var(--font-medium);
+}
+
+.review .swiper-navBtn{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.review .swiper-button-next{
+  right: 2rem;
+  transform: translateY(2rem);
+}
+.review .swiper-button-prev{
+  left: 2rem;
+  transform: translateY(2rem);
+}
+.review .swiper-navBtn:hover{
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.newsletter .logo-icon,
+.newsletter .logo-text,
+.newsletter .section-description{
+  color: var(--text-color);
+}
+.newletter-container{
+  display: grid;
+  justify-items: center;
+  row-gap: 4rem;
+}
+.newsletter .logo-icon{
+  font-size: 3rem;
+  color: var(--text-color-light);
+}
+.newsletter .logo-text{
+  color: var(--text-color-light);
+  font-size: 2rem;
+  font-weight: var(--font-medium);
+}
+.newsletter-inputBox{
+  position: relative;
+  height: 5rem;
+  max-width: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+.newletter-input{
+  height: 100%;
+  width: 100%;
+  border-radius: 3rem;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  padding: 0 16rem 0 2rem;
+}
+.newsletter-button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 3rem 3rem 0;
+}
+.newsletter .media-icons{
+  display: flex;
+}
+.scrollUp-btn{
+  position: fixed;
+  bottom: -30%;
+  right: 3rem;
+  height: 3rem;
+  width: 3rem;
+  font-size: 2rem;
+  border-radius: 4px;
+  color: var(--primary-color-hover);
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  background-color: var(--white-color);
+  z-index: var(--z-overlay);
+  justify-content: center;
+  transition: var(--tran-0-3);
+}
+.scrollUpBtn-active{
+  bottom: 3rem;
+}
+.scrollUp-icon{
+  opacity: 0.9;
+  transition: var(--tran-0-3);
+}
+.scrollUp-btn:hover .scrollUp-icon{
+  opacity: 1;
+}
+@media screen and (max-width: 1150px) {
+  .swiper-button-prev {
+    left: 10rem;
+}
+  .swiper-button-next {
+    right: 10rem;
+}
+}
+
+@media screen and (max-width: 1000px) {
+  .swiper-button-prev {
+    left: 3rem;
+}
+  .swiper-button-next {
+    right: 3rem;
+}
+  .section-description {
+    padding: 0 8rem;
+  }
+  .about-imageContent {
+    height: 400px;
+  }
+  .aboutImg-textBox {
+    padding: 1.5rem 2rem;
+  }
+  .menu .menu-content {
+    grid-template-columns: 1.5fr 1fr;
+    column-gap: 3rem;
+  }
+  .brand-images{
+    grid-template-columns: repeat(3,1fr);
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .section.review{
+    padding: 7rem 1rem 3rem;
+  }
+  .review .swiper{
+    padding-bottom: 6.5rem;
+  }
+  .swiper-navBtn{
+    visibility: hidden;
+  }
+  .swiper-pagination-bullet{
+    visibility: visible;
+  }
+
+  .section {
+    padding: 7rem 1rem;
+}
+.section-description,
+.review-quote{
+  padding: 0 6rem;
+}
+.about-content{
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+  justify-items: center;
+}
+.about .content-subtitle,
+.about .content-title,
+.about .content-description{
+  text-align: center;
+}
+.about-details {
+  justify-items: center;
+}
+.about-lists{
+  justify-content: center;
+}
+.menu .menu-content {
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+}
+
+}
+
+@media screen and (max-width: 600px){
+  .container{
+    padding: 0.5rem;
+  }
+  .section-description, .review-quote{
+    padding: 0;
+  }
+  .aboutImg-textBox{
+    right: -2rem
+  }
+  .menuItem-price{
+    border: none;
+  }
+  .menu-img{
+    height: 70px;
+    width: 70px;
+    margin-right: 0;
+}
+  .brand-images{
+    grid-template-columns: repeat(2,1fr);
+  }
+  .brand-img{
+    width: 130px;
+  }
+  
+}
+@media screen and (max-width: 400px) {
+  .homeTitle{
+    font-size:3rem;
+  }
+  .menu-item{
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    row-gap: 2rem;
+  }
+  .menuItem-details{
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .menuItem-price{
+    padding-left: 0;
+    flex-direction: row;
+  }
+  .menuItem-des{
+    text-align: center;
+}
+  .newsletter-input {
+    padding: 0 11rem 0 2rem;
+
+}
+  .newsletter-button {
+    padding: 1.4rem 2rem;
+
+}
+}
+.firstT{
+  color:white;
+  align-items: center;
+  justify-self: center;
+}
+.firstT tbody td{
+  padding: 2rem;
+  border: 2px solid var(--white-color);
+}
+.firstT tbody td:first-child{
+  background:black;
+}
+.odd{
+  background-color: var(--section-bg);
+}
+.odd span{
+  color:var(--primary-color);
+  font-size:var(--h2-font);
+}
+.odd .s-cont{
+  font-size: 2rem;
+  line-height: 1.5;
+  color:var(--s-cont-text);
+}
+
+.even span{
+  color:var(--primary-color);
+  font-size:var(--h2-font);
+}
+.even .s-cont{
+  font-size: 2.5rem;
+  line-height: 1.5;
+  color:var(--text-color);
+}
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+    </script>
+<script type=text/javascript>
+  $(function(){
+    $("#footerM").load("http://localhost/new/footer.html");
+  });
+</script>
+</head>
+<body>
+<!-- Header -->
+    <header class="header">
+            <nav class="nav container flex">
+                    <a class="logo-content flex">
+                        <img onclick="backHome()" src="http://localhost/new/image/download1.png">
+                    </a>
+
+                    <div class="menu-content">
+                            <ul class="menu-list flex">
+                                    <li><a href="#home" class="nav-link active-navlink">home</a></li>
+                                    <li><a href="#about" class="nav-link">intro</a></li>
+                                    <li><a href="#menu" class="nav-link">fertilizer</a></li>
+                                    <li><a href="#review" class="nav-link">footer</a></li>
+                            </ul>
+                    </div>
+                </nav>
+        
+    </header>
+
+<!-- Home Section -->
+    <main>
+        <section class="home" id="home">
+                <div class="home-content">
+                        <div class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg1.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Tea farming: patience, dedication, love of the land.</h4>
+                                                                <h2 class="homeTitle">The tea plantations of the world are <br>places of serene beauty and quiet contemplation.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg2.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Tea: art of nature and nurture.</h4>
+                                                                <h2 class="homeTitle">The best tea comes from the heart, <br>and it starts with the soil, the sun, and the rain.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg3.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Best tea from the heart: soil, sun, rain.</h4>
+                                                                <h2 class="homeTitle">A cup of tea is a cup of peace. <br>It's a simple pleasure that can bring joy to the soul.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg4.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Tea farming: labor of love and nurturing.</h4>
+                                                                <h2 class="homeTitle">Tea is a beautiful, serene, and noble drink. <br>It has the power to calm the mind and bring people together.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg5.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Tea: way of life that connects us.</h4>
+                                                                <h2 class="homeTitle">Tea is not just a drink, it's a way of life. <br>It connects us to the earth, to each other, and to ourselves.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="swiper-button-next swiper-navBtn"></div>
+                                <div class="swiper-button-prev swiper-navBtn"></div>
+                                <div class="swiper-pagination"></div>
+                        </div>
+                </div>
+        </section>
+
+    
+<!-- About Section -->
+        <section class="section about" id="about">
+                <div class="about-content container">
+                        <div class="about-imageContent">
+                                <img src="images/aboutImg.jpg" alt="" class="about-img">
+
+                                <div class="aboutImg-textBox">
+                                        <i class='bx bx-heart heart-icon flex'></i>
+                                        <p class="content-description">Morning tea's can help give a stress-free start to your day.</p>
+                                </div>
+                        </div>
+
+                        <div class="about-details">
+                                <div class="about-text">
+                                        <h4 class="content-subtitle"><i>Introduction To Tea Farming:-</i></h4>
+                                        <h2 class="content-title"><p align="justify"> The following information is about the Cultivation Practices of Tea crop and Tea Farming Project Report. </p></h2>
+                                        <p class="content-description">Tea is an evergreen shrub native to Asia. It is categorized as a beverage, normally consumed hot either prepared with water or milk. Tea is considered to have originated from southwest China, where it was consumed as a medicinal drink. Slowly the fame of tea spread to East Asian countries and finally reached Europe around the 16<sup>th</sup>  century. Tea cultivation is mainly restricted to tropical and subtropical regions. This is the second largest beverage consumed by the entire world next to the water. The tea plant is biologically known as Camellia sinensis. The tea leaves contain caffeine but is non-alcoholic in nature. The life of a tea bush is 100 years in terms of economic use. The different forms of tea obtained these days are due to the difference in their manufacturing process.</p>
+
+                                        <ul class="about-lists flex">
+                                                <li class="about-list">Tea</li>
+                                                <li class="about-list dot">.</li>
+                                                <li class="about-list">form</li>
+                                                <li class="about-list dot">.</li>
+                                                <li class="about-list">data</li>
+                                        </ul>
+                                </div>
+                        </div>
+
+                </div>
+        </section>
+
+  
+  <section class="section odd" >
+    <div class="s-cont">
+      <p align="justify">
+        <span>
+        <strong>Tea farming – scope and importance </strong>
+      </span><br>
+      &emsp;&emsp;India is one of the largest producers of tea in the world accounting to 1325.05 million kgs of production in FY 2018. The revenue generated from the export of tea also has risen to 5064.88 crores. This shows that the production of tea in a developing country like India helps boost its economy. The major tea producing states in India are Assam and West Bengal. For the state of Assam, tea production contributes 15% to the state’s economy. The tea industry creates employment opportunities for the rural population of the state. The total tea produced in Assam and West Bengal accounts for 45% and 22.36% of the total production respectively. The tea from Assam has a pungent smell and is famous for its liquor, whereas the tea from West Bengal is famous for its aroma and flavor. Due to these globally acclaimed varieties of tea produced in the country, there has been a great demand from countries like Egypt, Iran, Pakistan, Russia etc. It is important to note that India is also the largest consumer of tea in the world. So, the trend of cultivating more varieties and blends is always on the rise and efforts should be made to bring more area under cultivation. Ensuring proper quality and post-harvest management can help the tea industry perform better.
+    </p>
+
+    </div>
+</section>
+
+<section class="section even">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+      <strong>Plant and Leaf Properties: </strong>
+    </span><br>
+    &emsp;&emsp;The tea is also a flowering plant variety from the Theaceae family. The tea plant, when left in the wild, can grow and develop into a bowl-shaped canopy. The bark of the plant is rough and gray in color. The tea plant can reach a maximum height of 9 m, but for commercial cultivation, they are pruned to 2 m approximately. The leaves of the plant are dark green in color with serrated edges and a pointed tip. The shape of the leaves is oval and they are arranged alternately. The length of the tea leaf is around 5-10 cm and they look hairy on the underside. The flowers of the plant are white and they grow in clusters. Each flower has a diameter of 4 cm with 5 sepals and 5 or 9 petals. The flowers of this plant are hermaphrodite and are generally pollinated by bees.
+  </p><br>
+  
+  <ul>
+    <li>The leaves of tea contain 3% caffeine and the astringent taste of tea is due to the presence of 30 to 40% polyphenol compounds.</li>
+    <li>Just like caffeine, tea leaves also contain stimulants like theobromine, theophylline etc. and xanthines.</li>
+    <li>Atmospheric pollution has resulted in the presence of fluoride and aluminum in tea leaves. These elements are mostly found in older leaves.</li>
+    <li>The leaves contain amino acids like theanine, which gives brothiness to the tea.</li>
+    <li>They contain enzymes like polyphenol oxidase and peroxidase responsible for the browning of the leaves.</li>
+    <li>They contain pigments, which give colour to the leaf. When oxidized the green color of the leaf changes to black due to change in chlorophyll pigment into pheophytins.</li>
+    <li>There are also some volatile substances found in tea leaves responsible for flavor and aroma.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section odd" >
+  <div class="s-cont">
+    <p><span>
+      <strong>
+        Cultivars:-
+      </strong>
+    </span> <br>
+    &emsp;&emsp;Species that produce tea are C. assamica and C. sinensis generally known as the Assam type and China type respectively. The tea scientific department, UPASI and research institutes have developed some clones to be used for cultivation in the South Indian region. They are named as jayaram, Sundaram, Golconda, athrey, Pandian etc. some exclusive varieties of tea grown in India are named after the places where they are grown such as:
+  <br><br><h2>Darjeeling tea</h2><br>
+  <ul>
+    <li>It has been already given the GI tag in India, hence protected</li>
+    <li>Production is around 10,000 tonnes each year</li>
+    <li>The flavor is musky</li>
+    <li>Plucking process is slow and time-consuming</li>
+  </ul>
+  <br><br><h2>Assam tea</h2><br>
+  <ul>
+    <li>Tea here is grown in the plains</li>
+    <li>Deep amber coloured liquor with a strong, brisk and malty taste</li>
+    <li>The second flush has a typical taste and bright liquor colour</li>
+    <li>This is also registered for the GI tag in India</li>
+    </ul>
+    <br><br><h2>Dooars and Terai tea</h2><br>
+    <ul>
+      <li>The two regions together produce 226 million kgs of tea</li>
+      <li>Dooars tea is black, heavy and has good volume</li>
+      <li>The first flush of Dooars tea is bright and has a good fragrance, whereas the second flush is brisk</li>
+      <li>Tea from Terai is spicy and slightly sweet</li>
+      </ul>
+    <br><br><h2>Kangra tea</h2><br>
+    <ul>
+      <li>Organic tea plantations are found here</li>
+      <li>Most famous for black and green tea cultivation</li>
+      <li>Exquisite flavor of tea</li>
+      </ul>
+    <br><br><h2>Nilgiri tea</h2><br>
+      <ul>
+        <li>Exceptional flavour and fragrance</li>
+        <li>Golden tallow colour liquor</li>
+        <li>Creamy taste</li>
+        <li>Registered for the geographical indication tag in India</li>
+        <li>92 million kgs of this tea are produced each year.</li>
+        </ul>
+    <br><br><h2>Annamalaiis tea</h2><br>
+    <ul>
+      <li>Liquor is golden saffron in colour</li>
+      <li>Strong flavour with high tone fragrance</li>
+      </ul>
+    <br><br><h2>Karnataka tea</h2><br>
+    <ul>
+      <li>Has golden ochre liquor with sufficient briskness and body</li>
+      <li>Simple in fragrance and medium toned</li>
+      <li>Production is around 5 million kgs each year</li>
+      </ul>
+  </p>
+    
+  </div>
+</section>
+
+<section class="section even">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>soil and climatic requirements:</strong>
+      </span><br>
+      &emsp;&emsp;Tea can be grown in a variety of soil conditions, but the most suitable soil should be slightly acidic with no calcium content. Tea plantations are intolerant to water stagnation; therefore the soil should have sub-layers with the good percolation ability. Soft and light loamy soil with good iron content is desirable for tea cultivation. The pH of the soil for tea cultivation should be in the range of 4.5 to 5. To avoid soil erosion, the tea shrubs are planted along the lines of the contours.
+      <br><br>&emsp;&emsp;The ideal temperature range for tea cultivation is 20 to 27˚C and rainfall needed is around 125 to 150 cm annually. The humidity of the plantation area is expected to be 80%. Too dry weather conditions are not suitable for tea. Tea can be grown in the plains or at altitudes of 600 to 2200 m above mean sea level.
+    </p>
+  </div>
+</section>
+
+<section class="section odd" >
+  <div class="s-cont">
+    <p align="justify">
+      <strong>
+      <span>Propagation Methods:</span> 
+    </strong><br>
+    &emsp;&emsp;Propagation can either be done by seeds or by cuttings. Seeds are obtained from the fruit and are soaked in water to check the heaviness; the seeds which sink to the bottom are used for sowing. Germination of the seed takes place after 20 to 30 days and then it is carefully put into polythene sleeves and used as a planting material after 9 months.
+    <br><br>&emsp;&emsp;Cuttings are initially grown in a nursery and it is estimated that to grow 1.25 lakh cuttings, 0.15 hectares of nursery space is required. The nursery area should have 67% shade for growing these cuttings. Pruning the mother bushes induces juvenile shoots in them. 3 cm of these juvenile shoots with a healthy mother leaf and active axillary bud are collected from the parent plant; these are then planted in polythene bags filled with planting soil and sand mixture in the ratio 3:1. The planting mixture should also contain red subsoil and sand mixture in the ratio 1:1 at the bottom. The cuttings should be planted in such a way that the petiole must not touch the soil and light watering should be done. The bags are covered with polythene sheets to preserve moisture. The process of callusing starts within 4 to 6 weeks and it develops roots in 10 to 12 weeks. The shade is gradually removed when 80% rooting is observed so that the plants get to harden. These plants are left in the nursery for 6 to 8 months before transplanting them into the main area.
+
+  </p>
+  </div>
+</section>
+
+<section class="section even">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Land Preparation and Planting</strong>
+      </span>
+      <br> &emsp;&emsp;The land must be thoroughly cleared of existing growth or unwanted plants and substances. Deep forking the land to a depth of 18 to 24 inches helps remove old roots and stones. The land should be levelled following which lateral and leader drains are made to prevent soil erosion.
+      <br><br>&emsp;&emsp;Pits of dimensions 30 x 30 x 45 cm are dug and planting material which is 12 to 15 months old is selected for planting. The polythene sleeves should be carefully removed so as not to damage the roots. After planting into the pit the soil should be gently pressed. Planting is generally done during June-July or September-October. There are three different methods of planting in tea. They are:
+      <br><br><h2>Up and Down System</h2><br>
+        <ul>
+          <li>The spacing between plants is 1.2 x 1.2 m</li>
+          <li>of plants accommodated in 1 hectare of land is 6,800</li>
+        </ul>
+      <br><br><h2>Single Hedge System</h2><br>  
+        <ul>
+          <li>The spacing between the plants is 1.2 x 0.75 m</li>
+          <li>Can accommodate 10,800 plants/ hectare</li>
+        </ul>
+      <br><br><h2>Double Hedge System</h2><br>    
+      <ul>
+        <li>Spacing between the plants is 1.35 x 0.75 x 0.75</li>
+        <li>Can accommodate 13,200 plants/hectare</li>
+      </ul>
+    </p>
+  </div>
+</section>
+
+<section class="section odd" >
+  <div class="s-cont">
+    <p align="justify">
+      <strong>
+        <span>Irrigation Requirements:</span> 
+      </strong>
+      <br> &emsp;&emsp;Tea is generally cultivated in areas with adequate rainfall both in the monsoon and winter seasons. So, extra irrigation is not required in these conditions. Subsoil irrigation is given to young plants during the summer and places which are in the rain shadow region or have scanty rainfall predictions, 2 or 3 irrigation cycles should be provided to the tea farms.
+    </p>
+  </div>
+</section>
+
+<section class="section even">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Pest and Disease Management</strong>
+      </span> 
+      <br> &emsp;&emsp;Pests commonly infesting the tea plantations are scales, phassus borer, aphids, red spider mite, pink mite, scarlet mite, thrips, nematodes, and tea mosquito bug. Proper choice of insecticides and farm management techniques can control these pests.
+      <br><br>&emsp;&emsp;The common diseases occurring in tea plants are blister blight, black root, red root, and brownout. Using healthy cutting and disease resistant varieties can be helpful. Sometimes fumigation the soil with chemicals can remove and control most of the root diseases.
+    </p>
+  </div>
+</section>
+
+<section class="section odd" >
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Intercultural Practices</strong>
+      </span>
+      <br> &emsp;&emsp;Weed control increases the productivity of the farm. Manual weeding is done when the tea plants are young. As the plants grow, a proper choice of herbicides can help control the weeds.
+      <br><br>&emsp;&emsp;Planting of shade trees is an essential practice in tea plantations because tea shrubs require shade in the initial years of growth. Two types of shade trees are grown along with tea plants, i.e. the temporary shade trees and permanent shade trees. Temporary shade trees serve the tea plants during the first 2 or 3 years and then they are removed. Meanwhile, the permanent shade trees establish themselves in the farm.
+      <br><br>&emsp;&emsp;Mulching the base of the plant with water hyacinth, citronella etc. is important to retain soil moisture, prevent erosion, control weeds and increase the organic content in the soil.
+      <br><br>&emsp;&emsp;Training the tea bush after planting increases its productivity. It involves many operations like centering, tipping, and pruning. Cutting the main stem by leaving only 8 or 10 leaves after 3 to 5 months of planting is called ‘centering’. Removing the leaves along with the bud is called ‘tipping’ and first tipping is done at a height of 35 cm and the next one is done at 60 cm from the base level. ‘Pruning’ is the removal of all the unnecessary vegetative growth of the plants. 5 different types of pruning are observed in tea plantations such as:
+    </p><br><br>
+      <ul>
+        <li>Cutting the entire bush to 30 cm of base level is called rejuvenation pruning.</li>
+        <li>Removing the leaves and stems up to 45 cm from the base level to facilitate the proper spread and growth is called hard pruning.</li>
+        <li>Helping the bush grow to a specified height and stimulate new wood at a level of 60 cm from the base is called medium pruning.</li>
+        <li>Pruning to a height of 65 cm above the ground level for convenient picking is called light pruning.</li>
+        <li>Removing 5 to 8 cm of the new growth on the tea shrub is termed as skiffing.</li>
+      </ul>
+      <p align="justify">To protect the tea plantation from stray animals, fencing is done during the initial years of planting. Barbed wire fencing with wooden posts can be an economical option for fencing.
+
+      </p>
+  </div>
+</section>
+
+<section class="section even">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Harvesting and Yield:</strong>
+      </span> 
+      <br> &emsp;&emsp;Generally, picking 2 or 3 leaves along with the bud is the process of harvesting the plants. Harvesting needs extensive labor and this is the factor on which the quality of tea depends. After a bud from the axillary root sprouts, it takes around 60 to 90 days for harvesting. Plucking is done in two ways, hard plucking and light plucking.
+      <br><br>&emsp;&emsp;When the shoots are plucked up to the mother leaf, then it is called light plucking and is done either in April-June or October-December. 60% of the total crop is plucked with an interval of 7 to 10 days.
+      <br><br>&emsp;&emsp;When plucking is done beyond the mother leaf, then it is termed as hard plucking. This is usually done during July-September or January-March. The interval between plucking is 12 to 15 days and only 40% of the crop is plucked.
+      <br><br>&emsp;&emsp;There are many factors which influence the growth and yield of tea such as elevation, planting material, pruning methods, and management. 3000 kgs of processed tea from the leaves is considered a high yield for tea farms.
+    </p>
+  </div>
+</section>
+
+<section class="section odd" >
+  <div class="s-cont">
+    <p align="justify">
+      <strong>
+        <span>Post-Harvest Management and Processing:</span> 
+      </strong>
+      <br> &emsp;&emsp;After the leaves are plucked, they are sent to the processing industry. Processing of tea leaves is done either by an orthodox method or by CTC method. The steps involved in the processing of leaves are common in both methods. They are described below:
+      <br><br>&emsp;&emsp;<b>Withering</b> – artificially drying the leaves for about 12 to 18 hours to remove the moisture content by spreading them on troughs is called withering.
+      <br><br>&emsp;&emsp;<b>Rolling</b> – it is done to break the cells within the tea leaves such that they oxidize and produce color to the leaves. The leaves are either rolled using single or multiple rollers for 30 to 40 minutes.
+      <br><br>&emsp;&emsp;<b>Fermentation</b> – spreading the rolled leaves on aluminum trays or concrete floors with high humidity in the area for about 1 or 2 hours decides the quality of tea.
+      <br><br>&emsp;&emsp;<b>Drying</b> – passing the fermented tea in thin layers over conveyors into a drier maintained at 250 to 280˚F removes any extra moisture left in the leaves. The drier has two temperatures one for the inlet and the other for an outlet. And the process takes 30 to 40 minutes.
+      <br><br>&emsp;&emsp;<b>Grading</b> – fiber is removed from the processed tea before grading. Later, the tea is passed through the meshes of different sizes for grading.
+    </p>
+  </div>
+</section>
+
+<section class="section even">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Cost and Profit Analysis/Economics</strong>
+      </span> 
+      <br> &emsp;&emsp;The cost of investment for cultivating tea in 1 hectare of land is discussed here. These are approximated values and should be taken as a reference only. There may be variations in the values and cost of materials depending on the location on the farm.
+    </p>
+  </div>
+</section>
+
+        <section class="section menu" id="menu">
+            <center><div class="menu-container container">
+                      <div class="meu-text">
+                              <h4 class="section-subtitle"><i>Fertilizers and Manures</i></h4>
+                              <h2 class="section-title">Fertilizers and Manures in Tea Growing:-</h2>
+                              <p class="section-description">
+                                Timely application of fertilizers and manures ensure the high yields of Tea Leaves. Here is the manures and fertilizer requirement in Tea growing.
+                              </p>
+                      </div>
+                    </div></center>
+
+                    
+<strong style="color:#C87E4F;">(A) Soil application</strong>
+<div align="justify" class="menu-items">
+<table class="firstT" style="width: 100%;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td valign="top" bgcolor="#C87E4F" width="382"><strong>Operation/Step</strong></td>
+<td colspan="2" valign="top" bgcolor="#C87E4F">
+<p align="center"><strong>Key Points</strong></p>
+</td>
+</tr>
+<tr>
+<td rowspan="6" valign="top" width="382"><strong>1.Time of application</strong></td>
+<td align="center" valign="top" width="95">i)</td>
+<td valign="top" width="799">Apply fertilizers after receiving first spring rain during March-April on moist soil.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">ii)</td>
+<td valign="top" width="799">Soil should be moist upto a depth of 45 cm.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">iii)</td>
+<td valign="top" width="799">Apply fertilizer on weed free clean ground.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">iv)</td>
+<td valign="top" width="799">Inunpruned sections, apply fertilizers after the bushes have made some growth.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">v)</td>
+<td valign="top" width="799">In prune tea or skiffed tea, apply fertilizers after the bushes have produced a few leaves.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">vi)</td>
+<td valign="top" width="799">Do not apply fertilizers during heavy rainy days.</td>
+</tr>
+<tr>
+<td rowspan="3" valign="top" width="382"><strong>2. Number of Splits</strong></td>
+<td align="center" valign="top" width="95">i)</td>
+<td valign="top" width="799">Apply fertilizers in two splits.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">&nbsp; ii)&nbsp;</td>
+<td valign="top" width="799">Apply the first split during March-April and the second split during August-September.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">iii)</td>
+<td valign="top" width="799">Apply 60% N, 100%&nbsp;P<sub>2</sub>O<sub>5</sub> and 60%&nbsp;K<sub>2</sub>O in the first split and 40% N and 40 %&nbsp;K<sub>2</sub>O in the second split.</td>
+</tr>
+<tr>
+<td rowspan="2" valign="top" width="382"><strong>3.Selection and Procurement of Fertilizers</strong></td>
+<td align="center" valign="top" width="95">i)</td>
+<td valign="top" width="799">Select the fertilizers available in the store or in the market.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">ii)</td>
+<td valign="top" width="799">Procure fertilizers from a reliable source or dealer.</td>
+</tr>
+<tr>
+<td rowspan="4" valign="top" width="382"><strong>4.Computing the Quantity of Fertilizers</strong></td>
+<td align="center" valign="top" width="95">i)</td>
+<td valign="top" width="799">Determine the rate of application of NPK on the basis of average yield during the last pruning cycle and soil potash status.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">ii)</td>
+<td valign="top" width="799">Calculate the total quantity of individual fertilizer material required for the whole section/area.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">iii)</td>
+<td valign="top" width="799">Calculate the total quantity of different fertilizer material required for the split.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">iv)</td>
+<td valign="top" width="799">Apply secondary nutrients like Sulphur at the recommended dose along with NPK fertilizers.</td>
+</tr>
+<tr>
+<td rowspan="7" valign="top" width="382"><strong>5.Mixing of Fertilizers</strong></td>
+<td align="center" valign="top" width="95">i)</td>
+<td valign="top" width="799">Weigh the computed amount of fertilizer separately.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">ii)</td>
+<td valign="top" width="799">Mix the fertilizer near the site of application.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">iii)</td>
+<td valign="top" width="799">Use rotary drums for proper mixing of the fertilizers</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">iv)</td>
+<td valign="top" width="799">Alternatively, spread the different fertilizers in alternative layers on a tarpaulin sheet, fold it backward and forward and mix the fertilizers thoroughly using a hoe.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">v)</td>
+<td valign="top" width="799">Good supervision for thorough mixing of the fertilizers is a must.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">vi)</td>
+<td valign="top" width="799">If the fertilizer mixture weighs more than 75 kg, mix the fertilizers in two or more batches for uniform mixing.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">vii)</td>
+<td valign="top" width="799">Apply the mixture as soon as possible.</td>
+</tr>
+<tr>
+<td rowspan="4" valign="top" width="382"><strong>6.Method of Application</strong></td>
+<td align="center" valign="top" width="95">i)</td>
+<td valign="top" width="799">Broadcast the fertilizer mixture uniformly over the area covered by the tea canopy.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">ii)</td>
+<td valign="top" width="799">Take care not to apply the fertilizers on or near the collar of the bush and on the leaves.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">iii)</td>
+<td valign="top" width="799">Note that fertilizers are not applied in lumps on the collar region.This may cause injury to the roots.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="95">iv)</td>
+<td valign="top" width="799">Preferably use the plastic buckets of convenient size for carrying the fertilizers inside the section.&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p align="justify"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><br /> <strong style="color:#C87E4F;">(B)Foliar Application</strong></p>
+<div align="justify">
+<table class="firstT" style="width: 100%;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td colspan="2" valign="top" bgcolor="#C87E4F"><strong>Operation/step</strong></td>
+<td colspan="2" valign="top" bgcolor="#C87E4F">
+<p align="center"><strong>Key Points</strong></p>
+</td>
+</tr>
+<tr>
+
+<td rowspan="10" valign="top" width="329"><strong>Application of Nutrients and Care</strong></td>
+<td align="center" valign="top" width="101">i)</td>
+<td valign="top" width="793">Apply recommended doses of NPK mixture, Zinc sulphate (Z<sub>n</sub>SO<sub>4</sub>) and Magnesium sulphate (M<sub>g</sub>SO<sub>4</sub>) and also, if necessary, Manganese sulphate (M<sub>g</sub>SO<sub>4</sub>) and Boric acid, as foliar spray.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="101">ii)</td>
+<td valign="top" width="793">Apply foliar spray at the recommended periods of the year.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="101">iii)</td>
+<td valign="top" width="793">Most fertilizers, except lime sulphur,are compatible with fungicides and pesticides.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="101">iv)</td>
+<td valign="top" width="793">Check compatibility chart prior to mixing, if you wish to mix.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="101">v)</td>
+<td valign="top" width="793">While mixing,see that the total solids do not exceed 4 % (8 kg in 200 litres of water) in mature tea and 2 % in young tea.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="101">vi)</td>
+<td valign="top" width="793">Monitor the spraying equipment and also the speed of the person who is spraying to avoid drip (excessive spray fluid) on the plant parts, as it may cause sun scorching of the foliage.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="101">vii)</td>
+<td valign="top" width="793">On hot sunny days, spray during late afternoon/evening.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="101">viii)</td>
+<td valign="top" width="793">Spray the fluid on the under surface of the leaves also.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="101">ix)</td>
+<td valign="top" width="793">Use hand sprayer or power sprayer as per requirement and availability.</td>
+</tr>
+<tr>
+<td align="center" valign="top" width="101">x)</td>
+<td valign="top" width="793">Clean the sprayers thoroughly after spraying.</td>
+</tr>
+</tbody>
+</table>
+</div>
+        </section>
+        <section class="section brand" id="review">
+            <div class="brand-container container">
+                    <h4 class="section-subtitle"><i>TEA PRODUCTION</i></h4>
+
+                    <div class="brand-images">
+                            <div class="brand-image">
+                                    <img src="images/brandImg1.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg2.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg3.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg4.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg5.png" alt="" class="brand-img">
+                            </div>
+                    </div>
+            </div>
+        </section>
+
+      <div id="footerM"></div>
+        <a href="#home" class="scrollUp-btn flex">
+                <i class='bx bx-up-arrow-alt scrollUp-icon'></i>
+        </a>
+
+</main>
+ <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+ <script src="https://unpkg.com/scrollreveal"></script>
+
+<script type="text/javascript">
+        var swiper = new Swiper(".mySwiper", {
+          slidesPerView: 1,
+          loop: true,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+
+
+        const body = document.querySelector('body'),
+              navMenu = body.querySelector('.menu-content'),
+              navOpenBtn = body.querySelector('.navOpen-btn'),
+              navCloseBtn = navMenu.querySelector('.navClose-btn');
+
+        if(navMenu && navOpenBtn){
+          navOpenBtn.addEventListener("click", () =>{
+            navMenu.classList.add("open");
+            body.style.overflowY = "hidden";
+          })
+        }
+
+        if(navMenu && navCloseBtn){
+          navCloseBtn.addEventListener("click", () =>{
+            navMenu.classList.remove("open");
+            body.style.overflowY = "scroll";
+          })
+        }
+
+
+        window.addEventListener("scroll", () => {
+          const scrollY = window.pageYOffset;
+
+          if(scrollY > 5){
+            document.querySelector("header").classList.add("header-active");
+          }else{
+            document.querySelector("header").classList.remove("header-active");
+          }
+
+
+          const scrollUpBtn = document.querySelector('.scrollUp-btn');
+
+          if(scrollY > 250){
+            scrollUpBtn.classList.add("scrollUpBtn-active");
+          }else{
+            scrollUpBtn.classList.remove("scrollUpBtn-active");
+          }
+          
+          const sections = document.querySelectorAll('section[id]');
+          sections.forEach(section =>{
+            const sectionHeight = section.offsetHeight,
+                  sectionTop = section.offsetTop - 100;
+
+                  let navId = document.querySelector(`.menu-content a[href='#${section.id}']`);
+                  if(scrollY > sectionTop && scrollY <=  sectionTop + sectionHeight){
+                    navId.classList.add("active-navlink");           
+                  }else{
+                    navId.classList.remove("active-navlink");     
+                  }
+                  
+                  navId.addEventListener("click", () => {
+                    navMenu.classList.remove("open");
+                    body.style.overflowY = "scroll";
+                  })
+          })
+        });  
+
+          ScrollReveal({
+            origin: 'top',
+            distance: '60px',
+            duration: 2000,
+            delay: 400,
+          });
+          
+          ScrollReveal().reveal(`.section-title, .section-subtitle, .section-description, .brand-image, .tesitmonial, .newsletter 
+          .logo-content, .newsletter-inputBox, .newsletter-mediaIcon`, {interval:100,})
+          
+          ScrollReveal().reveal(`.about-imageContent, .menu-items,.s-cont span,.s-cont li`, {origin: 'left'})
+          ScrollReveal().reveal(`.about-details, .time-table,.brand-image`, {origin: 'right'})
+          ScrollReveal().reveal(`.s-cont p`,{origin:'top'})
+
+              function backHome(){
+              window.history.go(-1)
+            }
+            function move_Cont(){
+        window.scrollTo({top:1270,behavior:"smooth"});
+    }
+</script>
+</body>
+</html>
