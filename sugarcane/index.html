@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sugarcane page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+:root{
+
+--body-font: 'Poppins', sans-serif;
+--big-font: 4rem;
+--h1-font: 3.6rem;
+--h2-font: 2.4rem;
+--h3-font: 2rem;
+--h4-font: 1.8rem;
+--normal-font: 1.6rem;
+--small-font: 1.4rem;
+--smaller-font: 1.3rem;
+
+--font-regular: 400;
+--font-medium: 500;
+--font-semi-bold: 600;
+
+--primary-color: #C87E4F;
+--primary-color-hover: #C2703D;
+--text-color: #333;
+--text-color-light: #888682;
+--border-color: #484848;
+--white-color: #FFF;
+--section-bg: #2C3034;
+--s-cont-text:rgb(224, 224, 224);
+
+--z-overlay: 10;
+--z-fixed: 100;
+
+--tran-0-2: 0.2s;
+--tran-0-3: 0.3s;
+--tran-0-5: 0.5s;
+}
+@media screen and (max-width: 990px) {
+:root {
+  --big-font: 3.5rem;
+  --h1-font: 2.4rem;
+  --h2-font: 2rem;
+  --h3-font: 1.8rem;
+  --h4-font: 1.6rem;
+  --normal-font: 1.5rem;
+  --small-font: 1.3rem;
+  --smaller-font: 1.2rem;
+}
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  overflow-x: hidden;
+  background-color: var(--white-color);
+}
+
+::selection{
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+::-webkit-scrollbar{
+  width: 8px;
+}
+::-webkit-scrollbar-track{
+  background-color: #f9f1ec;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 1rem;
+  background-color: var(--primary-color);
+}
+::-webkit-scrollbar-thumb:hover{
+  border-radius: 1rem;
+  background-color: var(--primary-color-hover)
+}
+
+body,
+button,
+input{
+  font-family: var(--body-font);
+  font-size: var(--normal-font);
+  font-weight: var(--font-regular);
+  color: var(--text-color);
+}
+
+input{
+  outline: none;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section{
+  padding: 7rem 2rem;
+}
+.container{
+  max-width: 1030px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+.flex{
+  display: flex;
+  align-items: center;
+  column-gap: 0.6rem;
+}
+.logo-content img {
+  width: 20rem;
+  border-radius: 20px;
+  margin-left: -17rem;
+}
+.button{
+  border: none;
+  outline: none;
+  color: var(--white-color);
+  padding: 1.4rem 4rem;
+  border-radius: 3rem;
+  background-color: var(--primary-color);
+  transition: var(--tran-0-3);
+  cursor: pointer;
+}
+.button:hover{
+  background-color: var(--primary-color-hover);
+}
+h2.content-title {
+    font-size: 1.5rem;
+}
+.section-subtitle,
+.content-subtitle{
+  color: var(--primary-color);
+  font-size: var(--normal-font);
+  letter-spacing: 1px;
+  font-weight: var(--font-medium);
+  text-align: center;
+}
+.section-title,
+.content-title{
+  text-align: center;
+  font-size: var(--h2-font);
+  font-weight: var(--font-medium);
+  margin: 1rem 0;
+}
+.section-description,
+.content-description{
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.section-description{
+  padding: 0 16rem;
+}
+/* Header */
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 7rem;
+  width: 100%;
+  z-index: var(--z-fixed);
+  transition: var(--tran-0-5);
+}
+.header-active{
+  height: 6rem;
+  background-color: var(--white-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav{
+  position: relative;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-icon,
+.logo-text,
+.nav-link,
+.phone-icon,
+.phone-number{
+  color: var(--white-color);
+}
+
+.header-active .logo-icon,
+.header-active .logo-text,
+.header-active .nav-link,
+.header-active .phone-icon,
+.header-active .phone-number{
+  color: var(--text-color);
+}
+
+.logo-icon,
+.phone-icon{
+  font-size: 2rem;
+}
+.menu-list{
+  column-gap: 2rem;
+}
+.nav-link{
+  position: relative;
+  text-transform: capitalize;
+}
+.nav-link::before{
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background-color: var(--white-color);
+  opacity: 0;
+}
+.active-navlink::before{
+  opacity: 1;
+}
+.header-active .active-navlink::before{
+  background-color: var(--text-color);
+}
+.media-icons{
+  column-gap: 1rem;
+}
+.media-icons a{
+  color: var(--text-color-light);
+}
+.navClose-btn,
+.navOpen-btn,
+.media-icons{
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-content{
+    display: none;
+  }
+  .navClose-btn,
+  .navOpen-btn,
+  .media-icons{
+  display: block;
+}
+  .nav .menu-content{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    max-width: 300px;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-fixed);
+    padding: 10rem 0 5rem;
+    background-color: var(--white-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--tran-0-5);
+  }
+  .nav .menu-content.open{
+    right: 0;
+  }
+  .menu-list{
+    flex-direction: column;
+    row-gap: 2.5rem;
+    font-size: var(--h4-font);
+  }
+  .nav-link{
+    color: var(--text-color);
+  }
+  .nav-link::before{
+    background-color: var(--text-color);
+  }
+  .navClose-btn{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+  .navOpen-btn{
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--white-color);
+  }
+  .header-active .navOpen-btn{
+    color: var(--text-color);
+  }
+}
+
+.home{
+  height: 100vh;
+  width: 100%;
+}
+.swiper-slide{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+.home .swiper-slide::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: var(--z-overlay);
+}
+.home-img{
+  height: 100%;
+  width: 100%;
+}
+
+.swiper-navBtn{
+  height: 5rem;
+  width: 5rem;
+  color: var(--white-color);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: var(--tran-0-2);
+  opacity: 0;
+  visibility: visible;
+}
+.home:hover .swiper-navBtn,
+.review:hover .swiper-navBtn{
+  opacity: 1;
+}
+.swiper-navBtn:hover{
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.swiper-navBtn::after,
+.swiper-navBtn::before{
+  font-size: 2rem;
+}
+
+.swiper-button-next{
+  right: 5rem;
+}
+.swiper-button-prev{
+  left: 5rem;
+}
+
+.swiper-pagination-bullet{
+  background-color: var(--white-color);
+  opacity: 1;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-bottom: 2rem;
+  visibility: hidden;
+}
+.swiper-pagination-bullet-active{
+  border: 3px solid var(--white-color);
+  background-color: var(--primary-color);
+}
+.home-details{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: var(--z-fixed);
+  transform: translate(-50%, -50%);
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  row-gap: 4rem;
+}
+
+.homeSubtitle{
+  text-align: center;
+  font-size: var(--normal-font);
+  color: var(--white-color);
+}
+.homeTitle{
+  text-align: center;
+  font-size: var(--big-font);
+  color: var(--white-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.about .content-subtitle,
+.about .content-title,
+.about .content-description{
+  text-align: left;
+}
+.about-content{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  column-gap: 7rem;
+  align-items: center;
+  padding: 0 5rem;
+}
+.about-imageContent{
+  position: relative;
+  max-width: 400px;
+  height: 450px;
+  border: 6px solid var(--section-bg);
+}
+.aboutImg-textBox{
+  position: absolute;
+  bottom: 2rem;
+  right: -5rem;
+  padding: 2rem;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  border: 6px solid var(--section-bg);
+  background-color: var(--white-color);
+}
+.aboutImg-textBox .content-description{
+  text-align: center;
+  margin-bottom: 0;
+}
+.heart-icon{
+  position: absolute;
+  left: -1.9rem;
+  top: 50%;
+  height: 3rem;
+  width: 3rem;
+  color: var(--white-color);
+  background-color: var(--section-bg);
+  transform: translateY(-50%);
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.about-details{
+  display: grid;
+  row-gap: 4rem;
+}
+.about-lists{
+  column-gap: 1rem;
+  align-items: baseline;
+}
+.about-list{
+  font-weight: var(--font-medium);
+  font-size: 1.8rem;
+}
+.about-list:nth-child(1){
+  color: var(--primary-color);
+}
+.about-list.dot{
+  font-size: 2.5rem;
+}
+.about-buttons{
+  column-gap: 2rem;
+}
+.about-link .link-text,
+.about-arrowIcon{
+  color: var(--text-color);
+  text-transform: uppercase;
+}
+.about-arrowIcon{
+  transition: var(--tran-0-3);
+}
+.about-link:hover .about-arrowIcon{
+  margin-left: 4px;
+}
+
+.menu{
+  background-color: var(--section-bg);
+}
+.section-title,
+.section-description{
+  color: var(--white-color);
+}
+
+.menu-img{
+  height: 80px;
+  width: 80px;
+  margin-right: 1.5rem;
+}
+.menu-items{
+  display: grid;
+  row-gap: 1.5rem;
+}
+
+.menu-item{
+  position: relative;
+  padding: 2rem 2.5rem;
+  background-color: var(--white-color);
+}
+.menuItem-details{
+  margin-right: 1.5rem;
+}
+.menuItem-topic{
+  font-weight: var(--font-semi-bold);
+}
+.menuItem-des{
+  font-size: var(--small-font);
+}
+.menuItem-price{
+  flex-direction: column;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(0, 0, 0, 0.3);
+}
+.discount-price{
+  font-size: 1.8rem;
+}
+.real-price{
+  text-decoration: line-through;
+}
+.time-topic{
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: var(--font-regular);
+  padding: 1.5rem 0;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+}
+.time-list{
+  padding: 1.5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  justify-content: space-between;
+  background-color: var(--white-color);
+}
+.time-list:nth-child(7){
+  border-bottom: none;
+}
+
+.brand-images{
+  display: grid;
+  align-items: center;
+  column-gap: 2rem;
+  justify-content: space-between;
+  justify-items: center;
+  margin-top: 3rem;
+  grid-template-columns: repeat(5,1fr);
+}
+.brand-img{
+  width: 150px;
+  object-fit: contain;
+  opacity: 0.4;
+  transition: var(--tran-0-5);
+}
+.brand-img:hover{
+  opacity: 1;
+}
+.review{
+  background-color: #f2f2f2;
+}
+.review .section-title,
+.review .section-description{
+  color: var(--text-color);
+}
+.testi-content{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  row-gap: 2rem;
+  flex-direction: column;
+}
+.review-img{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+}
+.review-quote{
+  padding: 0 15rem;
+  text-align: center;
+}
+.quote-icon{
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+.testi-personDetails{
+  flex-direction: column;
+}
+.testi-personDetails .name{
+  font-size: 1.8rem;
+  font-weight: var(--font-medium);
+}
+
+.review .swiper-navBtn{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.review .swiper-button-next{
+  right: 2rem;
+  transform: translateY(2rem);
+}
+.review .swiper-button-prev{
+  left: 2rem;
+  transform: translateY(2rem);
+}
+.review .swiper-navBtn:hover{
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.newsletter .logo-icon,
+.newsletter .logo-text,
+.newsletter .section-description{
+  color: var(--text-color);
+}
+.newletter-container{
+  display: grid;
+  justify-items: center;
+  row-gap: 4rem;
+}
+.newsletter .logo-icon{
+  font-size: 3rem;
+  color: var(--text-color-light);
+}
+.newsletter .logo-text{
+  color: var(--text-color-light);
+  font-size: 2rem;
+  font-weight: var(--font-medium);
+}
+.newsletter-inputBox{
+  position: relative;
+  height: 5rem;
+  max-width: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+.newletter-input{
+  height: 100%;
+  width: 100%;
+  border-radius: 3rem;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  padding: 0 16rem 0 2rem;
+}
+.newsletter-button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 3rem 3rem 0;
+}
+.newsletter .media-icons{
+  display: flex;
+}
+.scrollUp-btn{
+  position: fixed;
+  bottom: -30%;
+  right: 3rem;
+  height: 3rem;
+  width: 3rem;
+  font-size: 2rem;
+  border-radius: 4px;
+  color: var(--primary-color-hover);
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  background-color: var(--white-color);
+  z-index: var(--z-overlay);
+  justify-content: center;
+  transition: var(--tran-0-3);
+}
+.scrollUpBtn-active{
+  bottom: 3rem;
+}
+.scrollUp-icon{
+  opacity: 0.9;
+  transition: var(--tran-0-3);
+}
+.scrollUp-btn:hover .scrollUp-icon{
+  opacity: 1;
+}
+@media screen and (max-width: 1150px) {
+  .swiper-button-prev {
+    left: 8rem;
+}
+  .swiper-button-next {
+    right: 8rem;
+}
+}
+
+@media screen and (max-width: 1000px) {
+  .swiper-button-prev {
+    left: 3rem;
+}
+  .swiper-button-next {
+    right: 3rem;
+}
+  .section-description {
+    padding: 0 8rem;
+  }
+  .about-imageContent {
+    height: 400px;
+  }
+  .aboutImg-textBox {
+    padding: 1.5rem 2rem;
+  }
+  .menu .menu-content {
+    grid-template-columns: 1.5fr 1fr;
+    column-gap: 3rem;
+  }
+  .brand-images{
+    grid-template-columns: repeat(3,1fr);
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .section.review{
+    padding: 7rem 1rem 3rem;
+  }
+  .review .swiper{
+    padding-bottom: 6.5rem;
+  }
+  .swiper-navBtn{
+    visibility: hidden;
+  }
+  .swiper-pagination-bullet{
+    visibility: visible;
+  }
+
+  .section {
+    padding: 7rem 1rem;
+}
+.section-description,
+.review-quote{
+  padding: 0 6rem;
+}
+.about-content{
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+  justify-items: center;
+}
+.about .content-subtitle,
+.about .content-title,
+.about .content-description{
+  text-align: center;
+}
+.about-details {
+  justify-items: center;
+}
+.about-lists{
+  justify-content: center;
+}
+.menu .menu-content {
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+}
+
+}
+
+@media screen and (max-width: 600px){
+  .container{
+    padding: 0.5rem;
+  }
+  .section-description, .review-quote{
+    padding: 0;
+  }
+  .aboutImg-textBox{
+    right: -2rem
+  }
+  .menuItem-price{
+    border: none;
+  }
+  .menu-img{
+    height: 70px;
+    width: 70px;
+    margin-right: 0;
+}
+  .brand-images{
+    grid-template-columns: repeat(2,1fr);
+  }
+  .brand-img{
+    width: 130px;
+  }
+  
+}
+@media screen and (max-width: 400px) {
+  .homeTitle{
+    font-size:3rem;
+  }
+  .menu-item{
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    row-gap: 2rem;
+  }
+  .menuItem-details{
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .menuItem-price{
+    padding-left: 0;
+    flex-direction: row;
+  }
+  .menuItem-des{
+    text-align: center;
+}
+  .newsletter-input {
+    padding: 0 11rem 0 2rem;
+
+}
+  .newsletter-button {
+    padding: 1.4rem 2rem;
+
+}
+}
+.firstT{
+  color:white;
+  align-items: center;
+  justify-self: center;
+}
+.firstT tbody td{
+  padding: 2rem;
+  border: 2px solid var(--white-color);
+}
+.firstT tbody td:first-child{
+  background:black;
+}
+.odd{
+  background-color: var(--section-bg);
+}
+.odd span{
+  color:var(--primary-color);
+  font-size:var(--h2-font);
+}
+.odd .s-cont{
+  font-size: 2rem;
+  line-height: 1.5;
+  color:var(--s-cont-text);
+}
+
+.even span{
+  color:var(--primary-color);
+  font-size:var(--h2-font);
+}
+.even .s-cont{
+  font-size: 2.5rem;
+  line-height: 1.5;
+  color:var(--text-color);
+}
+.PAD{
+  padding: 7rem 10rem;
+}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+    </script>
+<script type=text/javascript>
+  $(function(){
+    $("#footerM").load("http://localhost/new/footer.html");
+  });
+</script>
+</head>
+<body>
+<!-- Header -->
+    <header class="header">
+            <nav class="nav container flex">
+                    <a class="logo-content flex">
+                        <img onclick="backHome()" src="http://localhost/new/image/download1.png">
+                    </a>
+
+                    <div class="menu-content">
+                            <ul class="menu-list flex">
+                                    <li><a href="#home" class="nav-link active-navlink">home</a></li>
+                                    <li><a href="#about" class="nav-link">intro</a></li>
+                                    <li><a href="#menu" class="nav-link">fertilizer</a></li>
+                                    <li><a href="#review" class="nav-link">footer</a></li>
+                            </ul>
+                    </div>
+                </nav>
+        
+    </header>
+
+<!-- Home Section -->
+    <main>
+        <section class="home" id="home">
+                <div class="home-content">
+                        <div class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg1.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Sugarcane is not just a crop, it's a way of life.</h4>
+                                                                <h2 class="homeTitle">Agriculture is the most healthful, <br>most useful and most noble employment of man.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg2.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Sugarcane is the sweetest thing in life worth farming."</h4>
+                                                                <h2 class="homeTitle">The farmer has to be an optimist or he wouldn't still be a farmer.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg3.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Farming is a profession of hope.</h4>
+                                                                <h2 class="homeTitle">Agriculture is the most healthful,<br>most useful and most noble employment of man.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg4.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">The farmer is the backbone of our society.</h4>
+                                                                <h2 class="homeTitle">Sugarcane is a gift of nature that gives us sweetness, <br>energy, and a reason to be grateful.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg5.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Sugarcane is a symbol of endurance and resilience.</h4>
+                                                                <h2 class="homeTitle">Sugarcane is a gift of nature that gives us sweetness and energy.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="swiper-button-next swiper-navBtn"></div>
+                                <div class="swiper-button-prev swiper-navBtn"></div>
+                                <div class="swiper-pagination"></div>
+                        </div>
+                </div>
+        </section>
+
+    
+<!-- About Section -->
+        <section class="section about" id="about">
+                <div class="about-content container">
+                        <div class="about-imageContent">
+                                <img src="images/aboutImg.jpg" alt="" class="about-img">
+
+                                <div class="aboutImg-textBox">
+                                        <i class='bx bx-heart heart-icon flex'></i>
+                                        <p class="content-description">Sugarcane brings joy, sweetness, and happiness.</p>
+                                </div>
+                        </div>
+
+                        <div class="about-details">
+                                <div class="about-text">
+                                        <h4 class="content-subtitle"><i>Introduction To Sugarcane Farming:-</i></h4>
+                                        <h2 class="content-title"><p align="justify"> Sugarcane is a widely grown crop in India. It provides employment to over a million people directly or indirectly besides contributing significantly to the national exchequer. Sugarcane growing countries of the world lay between the latitude 36.7° north and 31.0° south of the equator extending from tropical to subtropical zones. Sugar cane originated in New Guinea where it has been known for thousands of years.</p></h2>
+                                        <p class="content-description">Sugar cane plants spread along human migration routes to Asia and the Indian subcontinent. Here it cross-bred with some wild sugar cane relatives to produce the commercial sugar cane we know today.</p>
+
+                                        <ul class="about-lists flex">
+                                                <li class="about-list">Sugarcane</li>
+                                                <li class="about-list dot">.</li>
+                                                <li class="about-list">form</li>
+                                                <li class="about-list dot">.</li>
+                                                <li class="about-list">data</li>
+                                        </ul>
+                                </div>
+                        </div>
+
+                </div>
+        </section>
+
+  
+  <section class="section odd PAD" >
+    <div class="s-cont">
+      <p align="justify">
+        <span>
+        <strong>Agro-Climatic Condition for Sugarcane:</strong>
+      </span><br>
+      &emsp;&emsp;Sugarcane is considered as essentially a tropical plant. It is a long duration crop and thus it encounters all the seasons’ viz., rainy, winter and summer during its life cycle. The Sugarcane plant grows best in tropical hot sunny areas. The “ideal” climate for the production of maximum sugar from sugarcane farming is characterized as:
+    </p>
+    <ol>
+      <li>
+      <div align="left">A long, warm growing season with a high incidence of solar radiation and adequate moisture (rainfall) – the plant uses from 148 to 300g of water to produce 1.0g of dry substance.</div>
+      </li>
+      <li>
+      <div align="left">A fairly dry, sunny and cool, but frost-free season for ripening and harvesting – moisture percentage drops steadily throughout the life of the sugarcane plant, from 83% in very young cane to 71% in mature cane, meanwhile, sucrose grows from less than 10 to more than 45% of the dry weight.</div>
+      </li>
+      </ol>
+    </div>
+</section>
+
+<section class="section even PAD">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+      <strong>Suitable Soil for Sugarcane Plants:</strong>
+    </span><br>
+    &emsp;&emsp;Soil testing before planting is desirable while setting up a sugarcane farming as it helps in determining the optimum quantity of macro and micronutrient application. Chemical constraints in the soils, such as acidity and low fertility, are relatively easy to correct or control.
+    <br><br>&emsp;&emsp;A well-drained, deep, loamy soil with a bulk density of 1.1 to 1.2 g/cm<sup>3</sup> (1.3-1.4 g/cm<sup>3</sup> in sandy soils) and total porosity, with an adequate balance between pores of various sizes, is higher than 50%; groundwater table below 1.5 to 2.0 m from soil surface and an available water holding capacity of 15% or more (15 cm per meter depth of soil is considered ideal for sugarcane cultivation).In sugarcane farming, the optimum soil pH is about 6.5 but sugarcane can tolerate a considerable degree of soil acidity and alkalinity. Hence, it is found growing in soils with pH in the range of 5 to 8.5. Liming is required if pH is less than 5.0, or gypsum application if pH is more than 9.5. Nematode infestations are likely to occur in very sandy soils.
+  </p>
+  </div>
+</section>
+
+<section class="section odd PAD" >
+  <div class="s-cont">
+    <p><span>
+      <strong>
+        Sugarcane Planting Seasons across India:
+      </strong>
+    </span> <br>
+    <ol>
+      <li>In India, sugarcane is planted thrice a year in October (autumn), February-March (spring) and July (adsali).</li>
+      <li>Adsali planting is quite common in Maharashtra while autumn and spring plantings are more common in northern India.</li>
+      <li>Under North Indian conditions, sugarcane, by and large, are planted in spring.</li>
+      <li>Sugarcane requires about 25-32°C for good germination. This temperature requirement is met twice in north Indian conditions i.e. in the month of October and also in the months of February-March.</li>
+      <li>Autumn planting of sugarcane is done in the month of October.</li>
+      <li>For good yields, planting should be completed up to 20th October.</li>
+      <li>Delay in planting may cause a reduction in yield as germination of sugarcane is reduced due to low temperature in late planting.</li>
+      <li>Spring cane is planted in February-March. March is the best time for cane planting in Punjab and Haryana, February-March in Uttar Pradesh and January-February in Bihar.</li>
+      <li>The planting time is advanced as we move towards the east. In Tamil Nadu, Andhra Pradesh, Maharashtra, and Karnataka cane planting are done in December-February.</li>
+      </ol>
+  </div>
+</section>
+
+<section class="section even PAD">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Land Preparation for Sugarcane Plantation:</strong>
+      </span><br>
+      &emsp;&emsp;Every time a new crop is planted is absolutely essential to bring the soil to a fine tilth for proper germination of the sets and field emergence and root growth. Tillage is the physical manipulation of the soil with appropriate implements to loosen the surface soil layer.
+      <br><br><span>
+        <strong>Main Objective Of Land Preparation are:</strong>
+      </span><br><br>
+      <ol>
+        <li>
+        <div align="left">To prepare a seedbed which permits optimal soil water air relations</div>
+        </li>
+        <li>Good physical conditions for early root penetration and proliferation</li>
+        <li>To incorporate preceding crop residues and organic manures</li>
+        <li>To destroy weeds and hibernating pest &amp; disease organisms</li>
+        <li>To facilitate proper soil chemical and microbial activity</li>
+        </ol>
+        <br><br>&emsp;&emsp;Tillage operations through tractor drew implements are most ideal and quick. For initial plowing use either moldboard plow or disc plow. Whenever soil turning is desired, a moldboard plow should be used in sugarcane farming.
+    </p>
+  </div>
+</section>
+
+<section class="section odd PAD" >
+  <div class="s-cont">
+    <p align="justify">
+      <strong>
+      <span>Planting Methods of Sugarcane:</span> 
+    </strong><br>
+    &emsp;&emsp;Basically, there are 4 planting methods in Sugarcane Farming which are described below :
+    </p>
+    <br><br><span>A) Ridge and Furrow Method:-</span>
+    <br><br><ul>
+      <li>This is the most common method of sugarcane planting followed in Maharashtra.</li>
+      <li>In this method, the ridges and furrows are opened with the help of ridger by keeping 120 cm distance between furrows in heavy soil and 105 cm distance in light to medium soil.</li>
+      <li>Main and sub-irrigation channels are opened at an appropriate distance.</li>
+      <li>First sets are laid on the end of the top ridge to end and later planted in furrows by two ways known as wet method and dry method of planting.</li>
+      <li><strong><span class="style4">Wet Method:-&nbsp;</span></strong>This method is followed in light to medium soil. Irrigation is given to the field before planting. Sets are planted by pressing 2.5 to 5 cm deep in furrows with feet or hand. The sets are placed end to end by facing buds on sides.</li>
+      <li><span class="style4"><strong>Dry Method</strong></span><strong>:-</strong> This method is followed in heavy soil to avoid the pressing as setts deep into the soil. Sets are placed in the furrow end to end by facing eye buds on sides and covered by giving a layer of soil. After completion of planting, irrigation is given to the field.</li>
+      </ul>
+    <br><br><span>B) Flat Bed Method:- </span> 
+    <br><br><ul>
+      <li>Flatbed method of sugarcane planting is followed in North Indian states like U.P.; Bihar etc</li>
+      <li>&nbsp;The land is plowed, harrowed, leveled and flatbeds are prepared. </li>
+      <li>&nbsp;Cane sets are laid down in flatbeds end to end in rows.</li>
+      <li>&nbsp;60 to 90 cm. distance is kept between two rows depending upon soil type.</li>
+      <li>&nbsp;They are pressed into the soil with hand or feet to a depth 2.5 to 5 cm and covered with soil.</li>
+      <li>&nbsp;At the time of planting care should be taken that buds should face on the sides otherwise lower buds cannot germinate.</li>
+      <li>&nbsp;This method is followed where there is abundant moisture.</li>
+      <li>&nbsp;Earthing up operation is done in the rainy season.</li>
+      </ul>
+    <br><br><span>C) Rayungan Method:-</span>  
+    <br><br><ul>
+      <li>Rayungan method is followed for adsali sugarcane planting at river side’s fields in heavy rainfall areas of Kolhapur district.</li>
+      <li>In these areas usually, cane fields get flooded during the rainy season which affects germination.</li>
+      <li>In such cases set cannot be planted directly in the main field.</li>
+      <li>Single bud sets are planted vertically in nurseries which are prepared high lying area of the farm in the month of June – July.</li>
+      <li>After six weeks the sprouted sets are transplanted in the main field when the danger of flooding is over.</li>
+      </ul>
+    <br><br><span>D) Trench or Jawa Method:-</span>  
+    <br><br><ul>
+      <li>This method is practiced in Jawa and Mauritius.</li>
+      <li>Trenches are made about 90 to 120 cm. apart and 22 to 30 cm. deep.</li>
+      <li>The soil at bottom is loosened and mixed with manures.</li>
+      <li>The sets are planted in the middle of the trenches and covered with soil.</li>
+      <li>Irrigation is given after completion of planting.</li>
+      <li>This method produces large clumps of cane which do not lodge when tied together.</li>
+      <li>The damage from wild animals is also less.</li>
+      <li>This method has not given good results with Indian varieties hence not followed in India.</li>
+      </ul>    
+  </div>
+</section>
+
+
+
+
+<section class="section even PAD">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Manures and Fertilizers Requirement for Sugarcane:</strong>
+      </span> <br><br>
+       <ul>
+        <li class="style3">Sugarcane is a long durational and heavy feeder crop thus, manure requirement is very high.</li>
+        <li class="style3">The 25 to 50 tons of FYM/ha is applied during the preparation of land.</li>
+        <li class="style1">The recommended doses of fertilizers for adsali, pre-seasonal and suru sugarcane crop are given below.</li>
+        </ul> </p>
+  </div>
+</section>
+
+        <section class="section menu" id="menu">
+            <center><div class="menu-container container">
+                      <div class="meu-text">
+                              <h4 class="section-subtitle"><i>Fertilizers and Manures</i></h4>
+                              <h2 class="section-title">Fertilizers and Manures in Sugarcane Growing:-</h2>
+                              <p class="section-description">
+                                Timely application of fertilizers and manures ensure the high yields of Sugarcane. Here is the manures and fertilizer requirement in Sugarcane growing.
+                              </p>
+                      </div>
+                    </div></center>
+
+                    
+<strong style="color:#C87E4F;">(A) Fertilizer Dose for Adsali Plantation:-</strong>
+<div align="justify" class="menu-items">
+<table class="firstT" style="width: 100%;" border="1" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+    <td  width="159">
+    <p align="center">Time of Application</p>
+    </td>
+    <td style="background-color:var(--primary-color);" width="51">
+    <p align="center">N (kg)</p>
+    </td>
+    <td style="background-color:var(--primary-color);" width="47">
+    <p align="center">P (kg)</p>
+    </td>
+    <td style="background-color:var(--primary-color);" width="51">
+    <p align="center">K (kg)</p>
+    
+    </td>
+    <td style="background-color:var(--primary-color);" width="55">
+    <p align="center">FYM</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="159"><span>1) At the time of planting (10% N, 50 % P &amp; K)</span></td>
+    <td width="51">
+    <p align="center"><span>45</span></p>
+    </td>
+    <td width="47">
+    <p align="center"><span>85</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>85</span></p>
+    </td>
+    <td width="55">
+    <p align="center"><span>50 tons/ha.</span></p>
+    </td>
+    </tr>
+    <tr>
+    <td width="159"><span>2) 6-8 weeks after&nbsp;&nbsp; (40% N)</span></td>
+    <td width="51">
+    <p align="center"><span>180</span></p>
+    </td>
+    <td width="47">
+    <p align="center"><span>–</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>–</span></p>
+    </td>
+    <td width="55"><span>&nbsp;</span></td>
+    </tr>
+    <tr>
+    <td width="159"><span>3) 8-12 weeks after (10% N)</span></td>
+    <td width="51">
+    <p align="center"><span>45</span></p>
+    
+    </td>
+    <td width="47">
+    <p align="center"><span>–</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>—</span></p>
+    </td>
+    <td width="55"><span>&nbsp;</span></td>
+    </tr>
+    <tr>
+    <td width="159"><span>4) 20-24 weeks after (40% N, 50%</span></td>
+    <td width="51">
+    <p align="center"><span>180</span></p>
+    </td>
+    <td width="47">
+    <p align="center"><span>85</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>85</span></p>
+    </td>
+    <td width="55"><span>&nbsp;</span></td>
+    </tr>
+    <tr>
+    <td width="159">
+    <p align="center"><span>Total</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>450</span></p>
+    </td>
+    <td width="47">
+    <p align="center"><span>170</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>170</span></p>
+    </td>
+    <td width="55">
+    <p align="center"><span>50</span></p>
+    </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<p align="justify"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><br /> <strong style="color:#C87E4F;">(B)Fertilizer Dose for Pre-seasonal Plantation:-</strong></p>
+<div align="justify">
+<table class="firstT" style="width: 100%;" border="1" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td  width="159">
+      <p align="center">Time of Application</p>
+      </td>
+      <td style="background-color:var(--primary-color);" width="51">
+      <p align="center">N (kg)</p>
+      </td>
+      <td style="background-color:var(--primary-color);" width="47">
+      <p align="center">P (kg)</p>
+      </td>
+      <td style="background-color:var(--primary-color);" width="51">
+      <p align="center">K (kg)</p>
+      
+      </td>
+      <td style="background-color:var(--primary-color);" width="55">
+      <p align="center">FYM</p>
+      </td>
+      </tr>
+    <tr>
+    <td width="159"><span>1) At the time of planting (10 % N, 50 % P &amp; K)</span></td>
+    <td width="51">
+    <p align="center"><span>35</span></p>
+    </td>
+    <td width="47">
+    <p align="center"><span>85</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>85</span></p>
+    </td>
+    <td width="55">
+    <p align="center"><span>35 tons/ha.</span></p>
+    </td>
+    </tr>
+    <tr>
+    <td width="159"><span>2) 6-8 weeks after (40 % N)</span></td>
+    <td width="51">
+    <p align="center"><span>140</span></p>
+    </td>
+    <td width="47">
+    <p align="center"><span><strong>–</strong></span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span><strong>–</strong></span></p>
+    </td>
+    <td width="55">
+    <p align="center"><span><strong>&nbsp;</strong></span></p>
+    </td>
+    </tr>
+    <tr>
+    <td width="159" height="52"><span>3) 8-12 weeks after (10% N)</span></td>
+    <td width="51">
+    <p align="center"><span>35</span></p>
+    </td>
+    <td width="47">
+    <p align="center"><span><strong>–</strong></span></p>
+    
+    </td>
+    <td width="51">
+    <p align="center"><span><strong>–</strong></span></p>
+    </td>
+    <td width="55">
+    <p align="center"><span><strong>&nbsp;</strong></span></p>
+    </td>
+    </tr>
+    <tr>
+    <td width="159"><span>4) 20-24 weeks after (40% N, 50% P &amp; K)</span></td>
+    <td width="51">
+    <p align="center"><span>140</span></p>
+    </td>
+    <td width="47">
+    <p align="center"><span>85</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>85</span></p>
+    </td>
+    <td width="55">
+    <p align="center"><span><strong>&nbsp;</strong></span></p>
+    </td>
+    </tr>
+    <tr>
+    <td width="159">
+    <p align="center"><span>Total</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>350</span></p>
+    </td>
+    <td width="47">
+    <p align="center"><span>170</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>170</span></p>
+    </td>
+    <td width="55">
+    <p align="center"><span">35</span></p>
+    </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<p align="justify"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><br /> <strong style="color:#C87E4F;">(C)Fertilizer Dose for seasonal Plantation:-</strong></p>
+<div align="justify">
+<table class="firstT" style="width: 100%;" border="1" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td  width="159">
+      <p align="center">Time of Application</p>
+      </td>
+      <td style="background-color:var(--primary-color);" width="51">
+      <p align="center">N (kg)</p>
+      </td>
+      <td style="background-color:var(--primary-color);" width="47">
+      <p align="center">P (kg)</p>
+      </td>
+      <td style="background-color:var(--primary-color);" width="51">
+      <p align="center">K (kg)</p>
+      
+      </td>
+      <td style="background-color:var(--primary-color);" width="55">
+      <p align="center">FYM</p>
+      </td>
+      </tr>
+    <tr>
+    <td width="159"><span>1) At the time of planting (10% N, 50% P &amp; K)</span></td>
+    <td width="51">
+    <p align="center"><span>25</span></p>
+    </td>
+    <td width="47">
+    <p align="center"><span>62</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>62</span></p>
+    </td>
+    <td width="55">
+    <p align="center"><span>25 tons/ha</span></p>
+    </td>
+    </tr>
+    <tr>
+    <td width="159"><span>2) 6-8 weeks after (40% N)</span></td>
+    <td width="51">
+    <p align="center"><span>100</span></p>
+    </td>
+    <td width="47">
+    <p align="center"><span>–</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>–</span></p>
+    </td>
+    <td width="55"><span>&nbsp;</span></td>
+    </tr>
+    <tr>
+    <td width="159"><span>3) 8-12 weeks after (10% N)</span></td>
+    <td width="51">
+    <p align="center"><span>25</span></p>
+    </td>
+    <td width="47">
+    <p align="center"><span>–</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>–</span></p>
+    </td>
+    <td width="55"><span>&nbsp;</span></td>
+    </tr>
+    <tr>
+    <td width="159"><span>4) 20-24 weeks after (40% N, 50 % P &amp; K)</span></td>
+    <td width="51">
+    <p align="center"><span>100</span></p>
+    </td>
+    <td width="47">
+    <p align="center"><span>63</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>63</span></p>
+    </td>
+    <td width="55"><span>&nbsp;</span></td>
+    </tr>
+    <tr>
+    <td width="159">
+    <p align="center"><span>Total</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>250</span></p>
+    </td>
+    <td width="47">
+    <p align="center"><span>125</span></p>
+    </td>
+    <td width="51">
+    <p align="center"><span>125</span></p>
+    </td>
+    <td width="55">
+    <p align="center"><span>25</span></p>
+    </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+        </section>
+        <section class="section brand" id="review">
+            <div class="brand-container container">
+                    <h4 class="section-subtitle"><i>SUGARCANE PRODUCTION</i></h4>
+
+                    <div class="brand-images">
+                            <div class="brand-image">
+                                    <img src="images/brandImg1.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg2.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg3.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg4.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg5.png" alt="" class="brand-img">
+                            </div>
+                    </div>
+            </div>
+        </section>
+
+      <div id="footerM"></div>
+        <a href="#home" class="scrollUp-btn flex">
+                <i class='bx bx-up-arrow-alt scrollUp-icon'></i>
+        </a>
+
+</main>
+ <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+ <script src="https://unpkg.com/scrollreveal"></script>
+
+<script type="text/javascript">
+        var swiper = new Swiper(".mySwiper", {
+          slidesPerView: 1,
+          loop: true,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+
+
+        const body = document.querySelector('body'),
+              navMenu = body.querySelector('.menu-content'),
+              navOpenBtn = body.querySelector('.navOpen-btn'),
+              navCloseBtn = navMenu.querySelector('.navClose-btn');
+
+        if(navMenu && navOpenBtn){
+          navOpenBtn.addEventListener("click", () =>{
+            navMenu.classList.add("open");
+            body.style.overflowY = "hidden";
+          })
+        }
+
+        if(navMenu && navCloseBtn){
+          navCloseBtn.addEventListener("click", () =>{
+            navMenu.classList.remove("open");
+            body.style.overflowY = "scroll";
+          })
+        }
+
+
+        window.addEventListener("scroll", () => {
+          const scrollY = window.pageYOffset;
+
+          if(scrollY > 5){
+            document.querySelector("header").classList.add("header-active");
+          }else{
+            document.querySelector("header").classList.remove("header-active");
+          }
+
+
+          const scrollUpBtn = document.querySelector('.scrollUp-btn');
+
+          if(scrollY > 250){
+            scrollUpBtn.classList.add("scrollUpBtn-active");
+          }else{
+            scrollUpBtn.classList.remove("scrollUpBtn-active");
+          }
+          
+          const sections = document.querySelectorAll('section[id]');
+          sections.forEach(section =>{
+            const sectionHeight = section.offsetHeight,
+                  sectionTop = section.offsetTop - 100;
+
+                  let navId = document.querySelector(`.menu-content a[href='#${section.id}']`);
+                  if(scrollY > sectionTop && scrollY <=  sectionTop + sectionHeight){
+                    navId.classList.add("active-navlink");           
+                  }else{
+                    navId.classList.remove("active-navlink");     
+                  }
+                  
+                  navId.addEventListener("click", () => {
+                    navMenu.classList.remove("open");
+                    body.style.overflowY = "scroll";
+                  })
+          })
+        });  
+
+          ScrollReveal({
+            origin: 'top',
+            distance: '60px',
+            duration: 2000,
+            delay: 400,
+          });
+          
+          ScrollReveal().reveal(`.section-title, .section-subtitle, .section-description, .brand-image, .tesitmonial, .newsletter 
+          .logo-content, .newsletter-inputBox, .newsletter-mediaIcon`, {interval:100,})
+          
+          ScrollReveal().reveal(`.about-imageContent, .menu-items,.s-cont span,.s-cont li`, {origin: 'left'})
+          ScrollReveal().reveal(`.about-details, .time-table,.brand-image`, {origin: 'right'})
+          ScrollReveal().reveal(`.s-cont p`,{origin:'top'})
+
+              function backHome(){
+              window.history.go(-1)
+            }
+            function move_Cont(){
+        window.scrollTo({top:1250,behavior:"smooth"});
+    }
+</script>
+</body>
+</html>
