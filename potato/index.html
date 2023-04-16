@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potato Website</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+:root{
+
+--body-font: 'Poppins', sans-serif;
+
+--big-font: 4rem;
+--h1-font: 3.6rem;
+--h2-font: 2.4rem;
+--h3-font: 2rem;
+--h4-font: 1.8rem;
+--normal-font: 1.6rem;
+--small-font: 1.4rem;
+--smaller-font: 1.3rem;
+
+--font-regular: 400;
+--font-medium: 500;
+--font-semi-bold: 600;
+
+--primary-color: #C87E4F;
+--primary-color-hover: #C2703D;
+--text-color: #333;
+--text-color-light: #888682;
+--border-color: #484848;
+--white-color: #FFF;
+--section-bg: #2C3034;
+--s-cont-text:rgb(224, 224, 224);
+
+--z-overlay: 10;
+--z-fixed: 100;
+
+--tran-0-2: 0.2s;
+--tran-0-3: 0.3s;
+--tran-0-5: 0.5s;
+}
+@media screen and (max-width: 990px) {
+:root {
+  --big-font: 3.5rem;
+  --h1-font: 2.4rem;
+  --h2-font: 2rem;
+  --h3-font: 1.8rem;
+  --h4-font: 1.6rem;
+  --normal-font: 1.5rem;
+  --small-font: 1.3rem;
+  --smaller-font: 1.2rem;
+}
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  overflow-x: hidden;
+  background-color: var(--white-color);
+}
+
+::selection{
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+::-webkit-scrollbar{
+  width: 8px;
+}
+::-webkit-scrollbar-track{
+  background-color: #f9f1ec;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 1rem;
+  background-color: var(--primary-color);
+}
+::-webkit-scrollbar-thumb:hover{
+  border-radius: 1rem;
+  background-color: var(--primary-color-hover)
+}
+
+body,
+button,
+input{
+  font-family: var(--body-font);
+  font-size: var(--normal-font);
+  font-weight: var(--font-regular);
+  color: var(--text-color);
+}
+
+input{
+  outline: none;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section{
+  padding: 7rem 2rem;
+}
+.container{
+  max-width: 1030px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+.flex{
+  display: flex;
+  align-items: center;
+  column-gap: 0.6rem;
+}
+.logo-content img {
+  width: 20rem;
+  border-radius: 20px;
+  margin-left: -17rem;
+}
+.button{
+  border: none;
+  outline: none;
+  color: var(--white-color);
+  padding: 1.4rem 4rem;
+  border-radius: 3rem;
+  background-color: var(--primary-color);
+  transition: var(--tran-0-3);
+  cursor: pointer;
+}
+.button:hover{
+  background-color: var(--primary-color-hover);
+}
+h2.content-title {
+    font-size: 1.5rem;
+}
+.section-subtitle,
+.content-subtitle{
+  color: var(--primary-color);
+  font-size: var(--normal-font);
+  letter-spacing: 1px;
+  font-weight: var(--font-medium);
+  text-align: center;
+}
+.section-title,
+.content-title{
+  text-align: center;
+  font-size: var(--h2-font);
+  font-weight: var(--font-medium);
+  margin: 1rem 0;
+}
+.section-description,
+.content-description{
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.section-description{
+  padding: 0 16rem;
+}
+/* Header */
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 7rem;
+  width: 100%;
+  z-index: var(--z-fixed);
+  transition: var(--tran-0-5);
+}
+.header-active{
+  height: 6rem;
+  background-color: var(--white-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav{
+  position: relative;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-icon,
+.logo-text,
+.nav-link,
+.phone-icon,
+.phone-number{
+  color: var(--white-color);
+}
+
+.header-active .logo-icon,
+.header-active .logo-text,
+.header-active .nav-link,
+.header-active .phone-icon,
+.header-active .phone-number{
+  color: var(--text-color);
+}
+
+.logo-icon,
+.phone-icon{
+  font-size: 2rem;
+}
+.menu-list{
+  column-gap: 2rem;
+}
+.nav-link{
+  position: relative;
+  text-transform: capitalize;
+}
+.nav-link::before{
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background-color: var(--white-color);
+  opacity: 0;
+}
+.active-navlink::before{
+  opacity: 1;
+}
+.header-active .active-navlink::before{
+  background-color: var(--text-color);
+}
+.media-icons{
+  column-gap: 1rem;
+}
+.media-icons a{
+  color: var(--text-color-light);
+}
+.navClose-btn,
+.navOpen-btn,
+.media-icons{
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-content{
+    display: none;
+  }
+  .navClose-btn,
+  .navOpen-btn,
+  .media-icons{
+  display: block;
+}
+  .nav .menu-content{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    max-width: 300px;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-fixed);
+    padding: 10rem 0 5rem;
+    background-color: var(--white-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--tran-0-5);
+  }
+  .nav .menu-content.open{
+    right: 0;
+  }
+  .menu-list{
+    flex-direction: column;
+    row-gap: 2.5rem;
+    font-size: var(--h4-font);
+  }
+  .nav-link{
+    color: var(--text-color);
+  }
+  .nav-link::before{
+    background-color: var(--text-color);
+  }
+  .navClose-btn{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+  .navOpen-btn{
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--white-color);
+  }
+  .header-active .navOpen-btn{
+    color: var(--text-color);
+  }
+}
+
+.home{
+  height: 100vh;
+  width: 100%;
+}
+.swiper-slide{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+.home .swiper-slide::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: var(--z-overlay);
+}
+.home-img{
+  height: 100%;
+  width: 100%;
+}
+
+.swiper-navBtn{
+  height: 5rem;
+  width: 5rem;
+  color: var(--white-color);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: var(--tran-0-2);
+  opacity: 0;
+  visibility: visible;
+}
+.home:hover .swiper-navBtn,
+.review:hover .swiper-navBtn{
+  opacity: 1;
+}
+.swiper-navBtn:hover{
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.swiper-navBtn::after,
+.swiper-navBtn::before{
+  font-size: 2rem;
+}
+
+.swiper-button-next{
+  right: 16rem;
+}
+.swiper-button-prev{
+  left: 16rem;
+}
+
+.swiper-pagination-bullet{
+  background-color: var(--white-color);
+  opacity: 1;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-bottom: 2rem;
+  visibility: hidden;
+}
+.swiper-pagination-bullet-active{
+  border: 3px solid var(--white-color);
+  background-color: var(--primary-color);
+}
+.home-details{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: var(--z-fixed);
+  transform: translate(-50%, -50%);
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  row-gap: 4rem;
+}
+
+.homeSubtitle{
+  text-align: center;
+  font-size: var(--normal-font);
+  color: var(--white-color);
+}
+.homeTitle{
+  text-align: center;
+  font-size: var(--big-font);
+  color: var(--white-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.about .content-subtitle,
+.about .content-title,
+.about .content-description{
+  text-align: left;
+}
+.about-content{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  column-gap: 7rem;
+  align-items: center;
+  padding: 0 5rem;
+}
+.about-imageContent{
+  position: relative;
+  max-width: 400px;
+  height: 450px;
+  border: 6px solid var(--section-bg);
+}
+.aboutImg-textBox{
+  position: absolute;
+  bottom: 2rem;
+  right: -5rem;
+  padding: 2rem;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  border: 6px solid var(--section-bg);
+  background-color: var(--white-color);
+}
+.aboutImg-textBox .content-description{
+  text-align: center;
+  margin-bottom: 0;
+}
+.heart-icon{
+  position: absolute;
+  left: -1.9rem;
+  top: 50%;
+  height: 3rem;
+  width: 3rem;
+  color: var(--white-color);
+  background-color: var(--section-bg);
+  transform: translateY(-50%);
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.about-details{
+  display: grid;
+  row-gap: 4rem;
+}
+.about-lists{
+  column-gap: 1rem;
+  align-items: baseline;
+}
+.about-list{
+  font-weight: var(--font-medium);
+  font-size: 1.8rem;
+}
+.about-list:nth-child(1){
+  color: var(--primary-color);
+}
+.about-list.dot{
+  font-size: 2.5rem;
+}
+.about-buttons{
+  column-gap: 2rem;
+}
+.about-link .link-text,
+.about-arrowIcon{
+  color: var(--text-color);
+  text-transform: uppercase;
+}
+.about-arrowIcon{
+  transition: var(--tran-0-3);
+}
+.about-link:hover .about-arrowIcon{
+  margin-left: 4px;
+}
+
+.menu{
+  background-color: var(--section-bg);
+}
+.section-title,
+.section-description{
+  color: var(--white-color);
+}
+
+.menu-img{
+  height: 80px;
+  width: 80px;
+  margin-right: 1.5rem;
+}
+.menu-items{
+  display: grid;
+  row-gap: 1.5rem;
+}
+
+.menu-item{
+  position: relative;
+  padding: 2rem 2.5rem;
+  background-color: var(--white-color);
+}
+.menuItem-details{
+  margin-right: 1.5rem;
+}
+.menuItem-topic{
+  font-weight: var(--font-semi-bold);
+}
+.menuItem-des{
+  font-size: var(--small-font);
+}
+.menuItem-price{
+  flex-direction: column;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(0, 0, 0, 0.3);
+}
+.discount-price{
+  font-size: 1.8rem;
+}
+.real-price{
+  text-decoration: line-through;
+}
+.time-topic{
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: var(--font-regular);
+  padding: 1.5rem 0;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+}
+.time-list{
+  padding: 1.5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  justify-content: space-between;
+  background-color: var(--white-color);
+}
+.time-list:nth-child(7){
+  border-bottom: none;
+}
+
+.brand-images{
+  display: grid;
+  align-items: center;
+  column-gap: 2rem;
+  justify-content: space-between;
+  justify-items: center;
+  margin-top: 3rem;
+  grid-template-columns: repeat(7,1fr);
+}
+.brand-img{
+  width: 122px;
+  object-fit: contain;
+  opacity: 0.4;
+  transition: var(--tran-0-5);
+}
+.brand-img:hover{
+  opacity: 1;
+}
+.review{
+  background-color: #f2f2f2;
+}
+.review .section-title,
+.review .section-description{
+  color: var(--text-color);
+}
+.testi-content{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  row-gap: 2rem;
+  flex-direction: column;
+}
+.review-img{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+}
+.review-quote{
+  padding: 0 15rem;
+  text-align: center;
+}
+.quote-icon{
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+.testi-personDetails{
+  flex-direction: column;
+}
+.testi-personDetails .name{
+  font-size: 1.8rem;
+  font-weight: var(--font-medium);
+}
+
+.review .swiper-navBtn{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.review .swiper-button-next{
+  right: 2rem;
+  transform: translateY(2rem);
+}
+.review .swiper-button-prev{
+  left: 2rem;
+  transform: translateY(2rem);
+}
+.review .swiper-navBtn:hover{
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.newsletter .logo-icon,
+.newsletter .logo-text,
+.newsletter .section-description{
+  color: var(--text-color);
+}
+.newletter-container{
+  display: grid;
+  justify-items: center;
+  row-gap: 4rem;
+}
+.newsletter .logo-icon{
+  font-size: 3rem;
+  color: var(--text-color-light);
+}
+.newsletter .logo-text{
+  color: var(--text-color-light);
+  font-size: 2rem;
+  font-weight: var(--font-medium);
+}
+.newsletter-inputBox{
+  position: relative;
+  height: 5rem;
+  max-width: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+.newletter-input{
+  height: 100%;
+  width: 100%;
+  border-radius: 3rem;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  padding: 0 16rem 0 2rem;
+}
+.newsletter-button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 3rem 3rem 0;
+}
+.newsletter .media-icons{
+  display: flex;
+}
+.scrollUp-btn{
+  position: fixed;
+  bottom: -30%;
+  right: 3rem;
+  height: 3rem;
+  width: 3rem;
+  font-size: 2rem;
+  border-radius: 4px;
+  color: var(--primary-color-hover);
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  background-color: var(--white-color);
+  z-index: var(--z-overlay);
+  justify-content: center;
+  transition: var(--tran-0-3);
+}
+.scrollUpBtn-active{
+  bottom: 3rem;
+}
+.scrollUp-icon{
+  opacity: 0.9;
+  transition: var(--tran-0-3);
+}
+.scrollUp-btn:hover .scrollUp-icon{
+  opacity: 1;
+}
+@media screen and (max-width: 1150px) {
+  .swiper-button-prev {
+    left: 10rem;
+}
+  .swiper-button-next {
+    right: 10rem;
+}
+}
+
+@media screen and (max-width: 1000px) {
+  .swiper-button-prev {
+    left: 3rem;
+}
+  .swiper-button-next {
+    right: 3rem;
+}
+  .section-description {
+    padding: 0 8rem;
+  }
+  .about-imageContent {
+    height: 400px;
+  }
+  .aboutImg-textBox {
+    padding: 1.5rem 2rem;
+  }
+  .menu .menu-content {
+    grid-template-columns: 1.5fr 1fr;
+    column-gap: 3rem;
+  }
+  .brand-images{
+    grid-template-columns: repeat(3,1fr);
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .section.review{
+    padding: 7rem 1rem 3rem;
+  }
+  .review .swiper{
+    padding-bottom: 6.5rem;
+  }
+  .swiper-navBtn{
+    visibility: hidden;
+  }
+  .swiper-pagination-bullet{
+    visibility: visible;
+  }
+
+  .section {
+    padding: 7rem 1rem;
+}
+.section-description,
+.review-quote{
+  padding: 0 6rem;
+}
+.about-content{
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+  justify-items: center;
+}
+.about .content-subtitle,
+.about .content-title,
+.about .content-description{
+  text-align: center;
+}
+.about-details {
+  justify-items: center;
+}
+.about-lists{
+  justify-content: center;
+}
+.menu .menu-content {
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+}
+
+}
+
+@media screen and (max-width: 600px){
+  .container{
+    padding: 0.5rem;
+  }
+  .section-description, .review-quote{
+    padding: 0;
+  }
+  .aboutImg-textBox{
+    right: -2rem
+  }
+  .menuItem-price{
+    border: none;
+  }
+  .menu-img{
+    height: 70px;
+    width: 70px;
+    margin-right: 0;
+}
+  .brand-images{
+    grid-template-columns: repeat(2,1fr);
+  }
+  .brand-img{
+    width: 130px;
+  }
+  
+}
+@media screen and (max-width: 400px) {
+  .homeTitle{
+    font-size:3rem;
+  }
+  .menu-item{
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    row-gap: 2rem;
+  }
+  .menuItem-details{
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .menuItem-price{
+    padding-left: 0;
+    flex-direction: row;
+  }
+  .menuItem-des{
+    text-align: center;
+}
+  .newsletter-input {
+    padding: 0 11rem 0 2rem;
+
+}
+  .newsletter-button {
+    padding: 1.4rem 2rem;
+
+}
+}
+.firstT{
+  color:white;
+  align-items: center;
+  justify-self: center;
+}
+.firstT tbody td{
+  padding: 2rem;
+  border: 2px solid var(--white-color);
+}
+.firstT tbody td:first-child{
+  background:black;
+}
+.odd{
+  background-color: var(--section-bg);
+}
+.odd span{
+  color:var(--primary-color);
+  font-size:var(--h2-font);
+}
+.odd .s-cont{
+  font-size: 2rem;
+  line-height: 1.5;
+  color:var(--s-cont-text);
+}
+
+.even span{
+  color:var(--primary-color);
+  font-size:var(--h2-font);
+}
+.even .s-cont{
+  font-size: 2.5rem;
+  line-height: 1.5;
+  color:var(--text-color);
+}
+.PAD{
+  padding: 7rem 10rem;
+}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+    </script>
+<script type=text/javascript>
+  $(function(){
+    $("#footerM").load("http://localhost/new/footer.html");
+  });
+</script>
+</head>
+<body>
+<!-- Header -->
+    <header class="header">
+            <nav class="nav container flex">
+                    <a class="logo-content flex">
+                        <img onclick="backHome()" src="http://localhost/new/image/download1.png">
+                    </a>
+
+                    <div class="menu-content">
+                            <ul class="menu-list flex">
+                                    <li><a href="#home" class="nav-link active-navlink">home</a></li>
+                                    <li><a href="#about" class="nav-link">intro</a></li>
+                                    <li><a href="#menu" class="nav-link">fertilizer</a></li>
+                                    <li><a href="#review" class="nav-link">footer</a></li>
+                            </ul>
+                    </div>
+                </nav>
+        
+    </header>
+
+<!-- Home Section -->
+    <main>
+        <section class="home" id="home">
+                <div class="home-content">
+                        <div class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg1.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Potatoes are like little balls of happiness.</h4>
+                                                                <h2 class="homeTitle">Potatoes: the unsung hero of the vegetable world.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg2.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">The potato: a root vegetable that brings people together.</h4>
+                                                                <h2 class="homeTitle">The potato is a blank canvas that can be transformed into a masterpiece with just a little creativity.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg3.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Potatoes are the silent heroes of the culinary world.</h4>
+                                                                <h2 class="homeTitle">Potatoes are the ultimate comfort food - they warm you up from <br>the inside out and make everything feel better.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg4.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Potatoes are proof that the best things in life are often the simplest.</h4>
+                                                                <h2 class="homeTitle">One potato, two potato, three potato, four - five potato, <br>six potato, seven potato, more!</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg5.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Potatoes: simple, unassuming, and utterly delicious</h4>
+                                                                <h2 class="homeTitle">The potato is a humble tuber, but it has the power to bring people together around <br>the table and nourish both body and soul.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="swiper-button-next swiper-navBtn"></div>
+                                <div class="swiper-button-prev swiper-navBtn"></div>
+                                <div class="swiper-pagination"></div>
+                        </div>
+                </div>
+        </section>
+
+    
+<!-- About Section -->
+        <section class="section about" id="about">
+                <div class="about-content container">
+                        <div class="about-imageContent">
+                                <img src="images/aboutImg.jpg" alt="" class="about-img">
+
+                                <div class="aboutImg-textBox">
+                                        <i class='bx bx-heart heart-icon flex'></i>
+                                        <p class="content-description">Love is like a potato - simple but satisfying.</p>
+                                </div>
+                        </div>
+
+                        <div class="about-details">
+                                <div class="about-text">
+                                        <h4 class="content-subtitle"><i>Introduction to Potato Cultivation:-</i></h4>
+                                        <h2 class="content-title"><p align="justify">Potato, native to South America is now grown worldwide. Potato is a member of the nightshade family, Solanaceae. It is the most important food crop in the world.The potato, which originated in South America, is today grown all over the world. It is a member of the nightshade family, Solanaceae, and is the world's most significant food crop. Potatoes are high in vitamins and minerals. According to the 2018 data, potato production was 368 million tonnes. Raw potatoes contain a lot of water and starch.p class="content-description">Seed potatoes and tubers are used to grow potatoes. Potatoes are used in a variety of cuisines, chips, and for industrial purposes such as the manufacturing of starch and alcohol. </p></h2>
+                                        <p>Moving on to potato cultivation, all the requirements and how to boost production for a doubled earning. Continue reading to the end to get all of the facts.</p>
+                                        <ul class="about-lists flex">
+                                                <li class="about-list">Potato</li>
+                                                <li class="about-list dot">.</li>
+                                                <li class="about-list">form</li>
+                                                <li class="about-list dot">.</li>
+                                                <li class="about-list">data</li>
+                                        </ul>
+                                </div>
+                        </div>
+
+                </div>
+        </section>
+
+  <section class="section odd PAD">
+          <div class="s-cont">
+            <p align="justify">
+              <span>
+                <strong>The Soil type is Suitable for Potato Plantation:- </strong>
+              </span><br>
+              &emsp;Potatoes will grow in just about any well-drained soil, but they dislike soggy soil. Because they do all their growing underground, they can expand more easily in loose, loamy soil than in heavy, compacted, clay soil that keeps plant roots from getting the air and water they need.
+            </p>
+          </div>
+  </section>
+  <section class="section even PAD" >
+    <div class="s-cont">
+      <p align="justify">
+        <span>
+        <strong>Best Planting or Sowing Time of Potato:- </strong>
+      </span><br>
+      &emsp;&emsp;To secure high yields, it is essential to plant the potatoes at an optimum time. The best time of planting is when the maximum and minimum temperatures are from 30°C to 32°C and 18°C to 20°C, respectively; The planting period for different potato growing regions is given.
+    </p>
+    <ol>
+      <li>Plant seed potatoes (pieces of the whole potato or a small whole potato, with at least 2 eyes per piece) 0-2 weeks after last spring frost.</li>
+      <li>If you are cutting up potato pieces for planting, do so 1-2 days ahead of time. This will give them the chance to form a protective layer, both for moisture retention and rot resistance.</li>
+      <li>You may start planting earlier, as soon as soil can be worked, but be aware that some crops will be ruined by a frost.</li>
+      <li>Spread and mix in rotted manure or organic compost in the bottom of the trench before planting.</li>
+      <li>Plant seed potatoes one foot apart in a 4-inch deep trench, eye side up.</li>
+      <li>Potatoes are best grown in rows. To begin with, dig a trench that is 6-8 inches deep. Plant each piece of potato (cut side down, with the eyes pointing up) every 12-15 inches, with the rows spaced 3 feet apart. If your space is limited or if you would like to grow only baby potatoes, you can decrease the spacing between plants. To begin with only fill the trench in with 4 inches of soil. Let the plants start to grow and then continue to fill in the trench and even mound the soil around the plants as they continue to grow. Prior to planting, always make sure to cultivate the soil one last time. This will remove any weeds and will loosen the soil and allow the plants to become established more quickly.</li>
+      </ol>
+  </div>
+</section>
+
+<section class="section odd PAD">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+      <strong>Irrigation Requirement for Potato Crop:- </strong>
+    </span><br>
+    &emsp;&emsp;Keep your potato vines well watered throughout the summer, especially during the period when the plants are flowering and immediately following the flowering stage. During this flowering period, the plants are creating their tubers and steady water supply is crucial to good crop outcome.
+    <br><br>&emsp;&emsp;Potatoes need consistent moisture, so water regularly when tubers start to form Potatoes do well with 1-2 inches of water or rain per week. When the foliage turns yellow and begins to die back, discontinue watering. This will help start curing the potatoes for harvest time. Drip irrigation helps Indian farmers increase potato yield.
+
+  </p>
+    </div>
+</section>
+
+<section class="section even PAD" >
+  <div class="s-cont">
+    <p align="justify"><span>
+      <strong>
+       Crop Rotation in Potato Crop Production:-
+      </strong>
+    </span> <br>
+    &emsp;&emsp;Crop Rotation is very important in potato farming, so practice yearly crop rotation.
+  </p>
+  <p align="justify"><span> 
+    Common Pests and care in Potato Plantation:-
+  </span> <br>
+  <ol>
+    <li>Aphids</li>
+    <li>Flea Beetles</li> 
+    <li>Leaf Hoppers</li> 
+    <li>Early/Late Blight</li> 
+    <li>Potato Scab:</li> </ol><br>
+    <p align="justify">Potato Scab: Most likely caused by soil with high pH. Remember Potatoes like acidic soil (do not plant in soil with a pH higher than 5.2). Dust seed potatoes with sulfur before planting.</p>
+    
+</p>
+  </div>
+</section>
+
+<section class="section odd PAD">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Manure application for Potato Plants:-</strong>
+      </span><br>
+      &emsp;&emsp;Potatoes like a slightly acid soil, pH of around 5.0 but will grow in a range from 5.0 to 6.5. Common potato scab (brown corky tissue on the surface of tubers) can be a problem if the soil pH levels are on the alkaline or “sweet” side.
+      <br><br>&emsp;&emsp;If you have access to animal manures, aged or composted manures are the best. Nutrient quality and quantities can vary a lot, with the age and storage method being two of the most important. No matter what the quality of the manure, there is still enormous value as far as providing the soil microbes with a material they need to build fertility.
+      <br><br>&emsp;&emsp;Manures are best added to the soil in the fall before planting to allow the soil microbes time to do their magic, breaking it down into usable nutrients. Spread the manure over the garden before folding it into the top 6-8 inches (15-20 cm ) of soil with a plow, rotary tiller-hoe or shovel.
+    </p>
+      </div>
+</section>
+
+<section class="section even PAD" >
+  <div class="s-cont">
+    <p align="justify">
+      <strong>
+      <span>Harvesting Potatoes:-</span> 
+    </strong><br>
+    </p>
+    <ol>
+      <li>Baby potatoes typically can be harvested 2-3 weeks after the plants have finished flowering. Gently dig around the plants to remove potatoes for fresh eating, being careful not to be too intrusive. Try to remove the biggest new potatoes and leave the smaller ones in place so they can continue to grow.</li>
+      <li>The potato must be harvested at the right stage of maturity when leaves turn yellow and dry.</li>
+      <li>If there is a demand in the market slightly early harvesting may be done.</li>
+      <li>Irrigation is withheld before harvesting and harvesting is done when soil becomes dry.</li>
+      <li>Cut the plants at ground level eight days prior to the date of harvesting.</li>
+      <li>It is done with the help of kudali or potato digger or by plowing with deshi plow.</li>
+      <li>Care should be taken to the dugout the tubers without injury.</li>
+      <li>Collect the exposed tubers and cleaned off by removing soil, roots, stolons, etc.</li>
+      <li>The damaged and diseased potatoes are sorted out and discarded.</li>
+      <li>Remaining potatoes graded according to size and stored in shade to avoid sun injury.</li>
+      <li>The diseases free, medium to big size potatoes are selected and stored separately for seed purpose.</li>
+      </ol>
+  </div>
+</section>
+
+<section class="section odd PAD">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>The yield of Potatoes per Hectare:- </strong>
+      </span>
+      <br> 
+    <ul>
+      <li>The yield of potato varies from a variety from variety season of planting and care taken during cultivation.</li>
+      <li>The average yield of potato in Maharashtra is about 125 qt/ha.</li>
+      <li>The average yield of potato in India is about 200 to 300 qt/ha.</li>
+      </ul><br>
+      &emsp;&emsp;Friends, that’s all about how you can grow potatoes on your own and keep growing vegetables for building a healthy world.
+    </p>
+  </div>
+</section>
+
+<section class="section even PAD" >
+  <div class="s-cont">
+    <p align="justify">
+      <strong>
+        <span>Bottom Line of Growing Potatoes:-</span> 
+      </strong>
+      <br> &emsp;&emsp;Potato farming is profitable with abundant water supply and sunshine along with care.
+       </p>
+      </div>
+</section>
+
+
+
+
+        <section class="section menu odd" id="menu">
+            <center><div class="menu-container container">
+                    <div class="meu-text">
+                            <h4 class="section-subtitle"><i>Fertilizers and Manures</i></h4>
+                            <h2 class="section-title">Fertilizers and Manures in Potato cultivation:-</h2>
+                            <p class="section-description">
+                              Timely application of fertilizers and manures ensure the high yields of Potato. Here is the manures and fertilizer requirement in Potato growing.
+                            </p>
+                    </div>
+                    <table class="firstT">
+                      <tbody> 
+                      <tr>  
+                            <td style="background-color:#C87E4F;">Element</td>
+                            <td style="background-color:#C87E4F;">Petiole sampled</td>
+                            <td style="background-color:#C87E4F;">Whole leaf (leaflets + petiole) sampled</td>
+                       </tr>
+                                
+                          <tr class="odd">
+                                  <td>
+                                    Total N
+                                  </td>
+                                  <td>--
+                                  </td>
+                                  <td>
+                                    3.5-4.5 %
+                                  </td>
+                                </tr>
+                          <tr>
+                                <td>Vegetative Nitrate-N</td>
+                                <td>1.7 - 2.2 %</td>
+                                <td>--</td>
+                          </tr>
+                          <tr>
+                                <td>Tuber bulking Nitrate-N</td>
+                                <td>1.1 - 1.5 %</td>
+                                <td>--</td>
+                          </tr>
+                          <tr>
+                                <td>Maturation Nitrate-N</td>
+                                <td>0.6 - 0.9 %</td>
+                                <td>--</td>
+                          </tr>
+                          <tr>
+                                <td>Phosphorus</td>
+                                <td>0.22 - 0.40 %</td>
+                                <td>0.25 - 0.50 %</td>
+                          </tr>
+                          <tr>
+                                <td>Potassium</td>
+                                <td>8.0 - 10.0 %</td>
+                                <td>4.0 - 6.0 %</td>
+                          </tr>
+                          <tr>
+                                <td>Calcium</td>
+                                <td>0.6 - 1.0 %</td>
+                                <td>0.5 - 0.9 %</td>
+                          </tr>
+                          <tr>
+                                <td>Magnesium</td>
+                                <td>0.30 - 0.55 %</td>
+                                <td>0.25 - 0.50 %</td>
+                          </tr>
+                          <tr>
+                                <td>Sulfur</td>
+                                <td>0.20 - 0.35 %</td>
+                                <td>0.19 - 0.35 %</td>
+                          </tr>
+                          <tr>
+                                <td>Zinc</td>
+                                <td>20 - 40 ppm</td>
+                                <td>20 - 40 ppm</td>
+                          </tr>
+                          <tr>
+                                <td>Boron</td>
+                                <td>20 - 40 ppm</td>
+                                <td>20 - 40 ppm</td>
+                          </tr>
+                          <tr>
+                                <td>Manganese</td>
+                                <td>30 - 300 ppm</td>
+                                <td>20 - 450 ppm</td>
+                          </tr>
+                          <tr>
+                                <td>Iron</td>
+                                <td>50 - 200 ppm</td>
+                                <td>30 - 150 ppm</td>
+                          </tr>
+                          <tr>
+                                <td>Copper</td>
+                                <td>4 - 20 ppm</td>
+                                <td>5 - 20 ppm</td>
+                          </tr>
+                        </tbody>
+                    </table>
+            </div></center>
+        </section>
+
+    
+
+        <section class="section brand" id="review">
+            <div class="brand-container container">
+                    <h4 class="section-subtitle"><i>POTATO PRODUCTION</i></h4>
+
+                    <div class="brand-images">
+                            <div class="brand-image">
+                                    <img src="images/brandImg1.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg2.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg3.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg4.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg5.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg6.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                              <img src="images/brandImg7.png" alt="" class="brand-img">
+                      </div>
+                    </div>
+            </div>
+        </section>
+
+      <div id="footerM"></div>
+        <a href="#home" class="scrollUp-btn flex">
+                <i class='bx bx-up-arrow-alt scrollUp-icon'></i>
+        </a>
+
+</main>
+ <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+ <script src="https://unpkg.com/scrollreveal"></script>
+
+<script type="text/javascript">
+        var swiper = new Swiper(".mySwiper", {
+          slidesPerView: 1,
+          loop: true,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+
+
+        const body = document.querySelector('body'),
+              navMenu = body.querySelector('.menu-content'),
+              navOpenBtn = body.querySelector('.navOpen-btn'),
+              navCloseBtn = navMenu.querySelector('.navClose-btn');
+
+        if(navMenu && navOpenBtn){
+          navOpenBtn.addEventListener("click", () =>{
+            navMenu.classList.add("open");
+            body.style.overflowY = "hidden";
+          })
+        }
+
+        if(navMenu && navCloseBtn){
+          navCloseBtn.addEventListener("click", () =>{
+            navMenu.classList.remove("open");
+            body.style.overflowY = "scroll";
+          })
+        }
+
+
+        window.addEventListener("scroll", () => {
+          const scrollY = window.pageYOffset;
+
+          if(scrollY > 5){
+            document.querySelector("header").classList.add("header-active");
+          }else{
+            document.querySelector("header").classList.remove("header-active");
+          }
+
+
+          const scrollUpBtn = document.querySelector('.scrollUp-btn');
+
+          if(scrollY > 250){
+            scrollUpBtn.classList.add("scrollUpBtn-active");
+          }else{
+            scrollUpBtn.classList.remove("scrollUpBtn-active");
+          }
+          
+          const sections = document.querySelectorAll('section[id]');
+          sections.forEach(section =>{
+            const sectionHeight = section.offsetHeight,
+                  sectionTop = section.offsetTop - 100;
+
+                  let navId = document.querySelector(`.menu-content a[href='#${section.id}']`);
+                  if(scrollY > sectionTop && scrollY <=  sectionTop + sectionHeight){
+                    navId.classList.add("active-navlink");           
+                  }else{
+                    navId.classList.remove("active-navlink");     
+                  }
+                  
+                  navId.addEventListener("click", () => {
+                    navMenu.classList.remove("open");
+                    body.style.overflowY = "scroll";
+                  })
+          })
+        });  
+
+          ScrollReveal({
+            origin: 'top',
+            distance: '60px',
+            duration: 2000,
+            delay: 400,
+          });
+          
+          ScrollReveal().reveal(`.section-title, .section-subtitle, .section-description, .brand-image, .tesitmonial, .newsletter 
+          .logo-content, .newsletter-inputBox, .newsletter-mediaIcon`, {interval:100,})
+          
+          ScrollReveal().reveal(`.about-imageContent, .menu-items,.s-cont span,.s-cont li`, {origin: 'left'})
+          ScrollReveal().reveal(`.about-details, .time-table,.brand-image`, {origin: 'right'})
+          ScrollReveal().reveal(`.s-cont p`,{origin:'top'})
+
+              function backHome(){
+              window.history.go(-1)
+            }
+            function move_Cont(){
+        window.scrollTo({top:1270,behavior:"smooth"});
+    }
+</script>
+</body>
+</html>

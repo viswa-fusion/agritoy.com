@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomato Website</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+:root{
+
+--body-font: 'Poppins', sans-serif;
+
+--big-font: 4rem;
+--h1-font: 3.6rem;
+--h2-font: 2.4rem;
+--h3-font: 2rem;
+--h4-font: 1.8rem;
+--normal-font: 1.6rem;
+--small-font: 1.4rem;
+--smaller-font: 1.3rem;
+
+--font-regular: 400;
+--font-medium: 500;
+--font-semi-bold: 600;
+
+--primary-color: #C87E4F;
+--primary-color-hover: #C2703D;
+--text-color: #333;
+--text-color-light: #888682;
+--border-color: #484848;
+--white-color: #FFF;
+--section-bg: #2C3034;
+--s-cont-text:rgb(224, 224, 224);
+
+--z-overlay: 10;
+--z-fixed: 100;
+
+--tran-0-2: 0.2s;
+--tran-0-3: 0.3s;
+--tran-0-5: 0.5s;
+}
+@media screen and (max-width: 990px) {
+:root {
+  --big-font: 3.5rem;
+  --h1-font: 2.4rem;
+  --h2-font: 2rem;
+  --h3-font: 1.8rem;
+  --h4-font: 1.6rem;
+  --normal-font: 1.5rem;
+  --small-font: 1.3rem;
+  --smaller-font: 1.2rem;
+}
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  overflow-x: hidden;
+  background-color: var(--white-color);
+}
+
+::selection{
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+::-webkit-scrollbar{
+  width: 8px;
+}
+::-webkit-scrollbar-track{
+  background-color: #f9f1ec;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 1rem;
+  background-color: var(--primary-color);
+}
+::-webkit-scrollbar-thumb:hover{
+  border-radius: 1rem;
+  background-color: var(--primary-color-hover)
+}
+
+body,
+button,
+input{
+  font-family: var(--body-font);
+  font-size: var(--normal-font);
+  font-weight: var(--font-regular);
+  color: var(--text-color);
+}
+
+input{
+  outline: none;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section{
+  padding: 7rem 2rem;
+}
+.container{
+  max-width: 1030px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+.flex{
+  display: flex;
+  align-items: center;
+  column-gap: 0.6rem;
+}
+.logo-content img {
+  width: 20rem;
+  border-radius: 20px;
+  margin-left: -17rem;
+}
+.button{
+  border: none;
+  outline: none;
+  color: var(--white-color);
+  padding: 1.4rem 4rem;
+  border-radius: 3rem;
+  background-color: var(--primary-color);
+  transition: var(--tran-0-3);
+  cursor: pointer;
+}
+.button:hover{
+  background-color: var(--primary-color-hover);
+}
+h2.content-title {
+    font-size: 1.5rem;
+}
+.section-subtitle,
+.content-subtitle{
+  color: var(--primary-color);
+  font-size: var(--normal-font);
+  letter-spacing: 1px;
+  font-weight: var(--font-medium);
+  text-align: center;
+}
+.section-title,
+.content-title{
+  text-align: center;
+  font-size: var(--h2-font);
+  font-weight: var(--font-medium);
+  margin: 1rem 0;
+}
+.section-description,
+.content-description{
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.section-description{
+  padding: 0 16rem;
+}
+/* Header */
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 7rem;
+  width: 100%;
+  z-index: var(--z-fixed);
+  transition: var(--tran-0-5);
+}
+.header-active{
+  height: 6rem;
+  background-color: var(--white-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav{
+  position: relative;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-icon,
+.logo-text,
+.nav-link,
+.phone-icon,
+.phone-number{
+  color: var(--white-color);
+}
+
+.header-active .logo-icon,
+.header-active .logo-text,
+.header-active .nav-link,
+.header-active .phone-icon,
+.header-active .phone-number{
+  color: var(--text-color);
+}
+
+.logo-icon,
+.phone-icon{
+  font-size: 2rem;
+}
+.menu-list{
+  column-gap: 2rem;
+}
+.nav-link{
+  position: relative;
+  text-transform: capitalize;
+}
+.nav-link::before{
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background-color: var(--white-color);
+  opacity: 0;
+}
+.active-navlink::before{
+  opacity: 1;
+}
+.header-active .active-navlink::before{
+  background-color: var(--text-color);
+}
+.media-icons{
+  column-gap: 1rem;
+}
+.media-icons a{
+  color: var(--text-color-light);
+}
+.navClose-btn,
+.navOpen-btn,
+.media-icons{
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-content{
+    display: none;
+  }
+  .navClose-btn,
+  .navOpen-btn,
+  .media-icons{
+  display: block;
+}
+  .nav .menu-content{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    max-width: 300px;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-fixed);
+    padding: 10rem 0 5rem;
+    background-color: var(--white-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--tran-0-5);
+  }
+  .nav .menu-content.open{
+    right: 0;
+  }
+  .menu-list{
+    flex-direction: column;
+    row-gap: 2.5rem;
+    font-size: var(--h4-font);
+  }
+  .nav-link{
+    color: var(--text-color);
+  }
+  .nav-link::before{
+    background-color: var(--text-color);
+  }
+  .navClose-btn{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+  .navOpen-btn{
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--white-color);
+  }
+  .header-active .navOpen-btn{
+    color: var(--text-color);
+  }
+}
+
+.home{
+  height: 100vh;
+  width: 100%;
+}
+.swiper-slide{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+.home .swiper-slide::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: var(--z-overlay);
+}
+.home-img{
+  height: 100%;
+  width: 100%;
+}
+
+.swiper-navBtn{
+  height: 5rem;
+  width: 5rem;
+  color: var(--white-color);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: var(--tran-0-2);
+  opacity: 0;
+  visibility: visible;
+}
+.home:hover .swiper-navBtn,
+.review:hover .swiper-navBtn{
+  opacity: 1;
+}
+.swiper-navBtn:hover{
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.swiper-navBtn::after,
+.swiper-navBtn::before{
+  font-size: 2rem;
+}
+
+.swiper-button-next{
+  right: 16rem;
+}
+.swiper-button-prev{
+  left: 16rem;
+}
+
+.swiper-pagination-bullet{
+  background-color: var(--white-color);
+  opacity: 1;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-bottom: 2rem;
+  visibility: hidden;
+}
+.swiper-pagination-bullet-active{
+  border: 3px solid var(--white-color);
+  background-color: var(--primary-color);
+}
+.home-details{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: var(--z-fixed);
+  transform: translate(-50%, -50%);
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  row-gap: 4rem;
+}
+
+.homeSubtitle{
+  text-align: center;
+  font-size: var(--normal-font);
+  color: var(--white-color);
+}
+.homeTitle{
+  text-align: center;
+  font-size: var(--big-font);
+  color: var(--white-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.about .content-subtitle,
+.about .content-title,
+.about .content-description{
+  text-align: left;
+}
+.about-content{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  column-gap: 7rem;
+  align-items: center;
+  padding: 0 5rem;
+}
+.about-imageContent{
+  position: relative;
+  max-width: 400px;
+  height: 450px;
+  border: 6px solid var(--section-bg);
+}
+.aboutImg-textBox{
+  position: absolute;
+  bottom: 2rem;
+  right: -5rem;
+  padding: 2rem;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  border: 6px solid var(--section-bg);
+  background-color: var(--white-color);
+}
+.aboutImg-textBox .content-description{
+  text-align: center;
+  margin-bottom: 0;
+}
+.heart-icon{
+  position: absolute;
+  left: -1.9rem;
+  top: 50%;
+  height: 3rem;
+  width: 3rem;
+  color: var(--white-color);
+  background-color: var(--section-bg);
+  transform: translateY(-50%);
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.about-details{
+  display: grid;
+  row-gap: 4rem;
+}
+.about-lists{
+  column-gap: 1rem;
+  align-items: baseline;
+}
+.about-list{
+  font-weight: var(--font-medium);
+  font-size: 1.8rem;
+}
+.about-list:nth-child(1){
+  color: var(--primary-color);
+}
+.about-list.dot{
+  font-size: 2.5rem;
+}
+.about-buttons{
+  column-gap: 2rem;
+}
+.about-link .link-text,
+.about-arrowIcon{
+  color: var(--text-color);
+  text-transform: uppercase;
+}
+.about-arrowIcon{
+  transition: var(--tran-0-3);
+}
+.about-link:hover .about-arrowIcon{
+  margin-left: 4px;
+}
+
+.menu{
+  background-color: var(--section-bg);
+}
+.section-title,
+.section-description{
+  color: var(--white-color);
+}
+
+.menu-img{
+  height: 80px;
+  width: 80px;
+  margin-right: 1.5rem;
+}
+.menu-items{
+  display: grid;
+  row-gap: 1.5rem;
+}
+
+.menu-item{
+  position: relative;
+  padding: 2rem 2.5rem;
+  background-color: var(--white-color);
+}
+.menuItem-details{
+  margin-right: 1.5rem;
+}
+.menuItem-topic{
+  font-weight: var(--font-semi-bold);
+}
+.menuItem-des{
+  font-size: var(--small-font);
+}
+.menuItem-price{
+  flex-direction: column;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(0, 0, 0, 0.3);
+}
+.discount-price{
+  font-size: 1.8rem;
+}
+.real-price{
+  text-decoration: line-through;
+}
+.time-topic{
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: var(--font-regular);
+  padding: 1.5rem 0;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+}
+.time-list{
+  padding: 1.5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  justify-content: space-between;
+  background-color: var(--white-color);
+}
+.time-list:nth-child(7){
+  border-bottom: none;
+}
+
+.brand-images{
+  display: grid;
+  align-items: center;
+  column-gap: 2rem;
+  justify-content: space-between;
+  justify-items: center;
+  margin-top: 3rem;
+  grid-template-columns: repeat(6,1fr);
+}
+.brand-img{
+  width: 150px;
+  object-fit: contain;
+  opacity: 0.4;
+  transition: var(--tran-0-5);
+}
+.brand-img:hover{
+  opacity: 1;
+}
+.review{
+  background-color: #f2f2f2;
+}
+.review .section-title,
+.review .section-description{
+  color: var(--text-color);
+}
+.testi-content{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  row-gap: 2rem;
+  flex-direction: column;
+}
+.review-img{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+}
+.review-quote{
+  padding: 0 15rem;
+  text-align: center;
+}
+.quote-icon{
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+.testi-personDetails{
+  flex-direction: column;
+}
+.testi-personDetails .name{
+  font-size: 1.8rem;
+  font-weight: var(--font-medium);
+}
+
+.review .swiper-navBtn{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.review .swiper-button-next{
+  right: 2rem;
+  transform: translateY(2rem);
+}
+.review .swiper-button-prev{
+  left: 2rem;
+  transform: translateY(2rem);
+}
+.review .swiper-navBtn:hover{
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.newsletter .logo-icon,
+.newsletter .logo-text,
+.newsletter .section-description{
+  color: var(--text-color);
+}
+.newletter-container{
+  display: grid;
+  justify-items: center;
+  row-gap: 4rem;
+}
+.newsletter .logo-icon{
+  font-size: 3rem;
+  color: var(--text-color-light);
+}
+.newsletter .logo-text{
+  color: var(--text-color-light);
+  font-size: 2rem;
+  font-weight: var(--font-medium);
+}
+.newsletter-inputBox{
+  position: relative;
+  height: 5rem;
+  max-width: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+.newletter-input{
+  height: 100%;
+  width: 100%;
+  border-radius: 3rem;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  padding: 0 16rem 0 2rem;
+}
+.newsletter-button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 3rem 3rem 0;
+}
+.newsletter .media-icons{
+  display: flex;
+}
+.scrollUp-btn{
+  position: fixed;
+  bottom: -30%;
+  right: 3rem;
+  height: 3rem;
+  width: 3rem;
+  font-size: 2rem;
+  border-radius: 4px;
+  color: var(--primary-color-hover);
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  background-color: var(--white-color);
+  z-index: var(--z-overlay);
+  justify-content: center;
+  transition: var(--tran-0-3);
+}
+.scrollUpBtn-active{
+  bottom: 3rem;
+}
+.scrollUp-icon{
+  opacity: 0.9;
+  transition: var(--tran-0-3);
+}
+.scrollUp-btn:hover .scrollUp-icon{
+  opacity: 1;
+}
+@media screen and (max-width: 1150px) {
+  .swiper-button-prev {
+    left: 10rem;
+}
+  .swiper-button-next {
+    right: 10rem;
+}
+}
+
+@media screen and (max-width: 1000px) {
+  .swiper-button-prev {
+    left: 3rem;
+}
+  .swiper-button-next {
+    right: 3rem;
+}
+  .section-description {
+    padding: 0 8rem;
+  }
+  .about-imageContent {
+    height: 400px;
+  }
+  .aboutImg-textBox {
+    padding: 1.5rem 2rem;
+  }
+  .menu .menu-content {
+    grid-template-columns: 1.5fr 1fr;
+    column-gap: 3rem;
+  }
+  .brand-images{
+    grid-template-columns: repeat(3,1fr);
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .section.review{
+    padding: 7rem 1rem 3rem;
+  }
+  .review .swiper{
+    padding-bottom: 6.5rem;
+  }
+  .swiper-navBtn{
+    visibility: hidden;
+  }
+  .swiper-pagination-bullet{
+    visibility: visible;
+  }
+
+  .section {
+    padding: 7rem 1rem;
+}
+.section-description,
+.review-quote{
+  padding: 0 6rem;
+}
+.about-content{
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+  justify-items: center;
+}
+.about .content-subtitle,
+.about .content-title,
+.about .content-description{
+  text-align: center;
+}
+.about-details {
+  justify-items: center;
+}
+.about-lists{
+  justify-content: center;
+}
+.menu .menu-content {
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+}
+
+}
+
+@media screen and (max-width: 600px){
+  .container{
+    padding: 0.5rem;
+  }
+  .section-description, .review-quote{
+    padding: 0;
+  }
+  .aboutImg-textBox{
+    right: -2rem
+  }
+  .menuItem-price{
+    border: none;
+  }
+  .menu-img{
+    height: 70px;
+    width: 70px;
+    margin-right: 0;
+}
+  .brand-images{
+    grid-template-columns: repeat(2,1fr);
+  }
+  .brand-img{
+    width: 130px;
+  }
+  
+}
+@media screen and (max-width: 400px) {
+  .homeTitle{
+    font-size:3rem;
+  }
+  .menu-item{
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    row-gap: 2rem;
+  }
+  .menuItem-details{
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .menuItem-price{
+    padding-left: 0;
+    flex-direction: row;
+  }
+  .menuItem-des{
+    text-align: center;
+}
+  .newsletter-input {
+    padding: 0 11rem 0 2rem;
+
+}
+  .newsletter-button {
+    padding: 1.4rem 2rem;
+
+}
+}
+.firstT{
+  color:white;
+  align-items: center;
+  justify-self: center;
+}
+.firstT tbody td{
+  padding: 2rem;
+  border: 2px solid var(--white-color);
+}
+.firstT tbody td:first-child{
+  background:black;
+}
+.odd{
+  background-color: var(--section-bg);
+}
+.odd span{
+  color:var(--primary-color);
+  font-size:var(--h2-font);
+}
+.odd .s-cont{
+  font-size: 2rem;
+  line-height: 1.5;
+  color:var(--s-cont-text);
+}
+
+.even span{
+  color:var(--primary-color);
+  font-size:var(--h2-font);
+}
+.even .s-cont{
+  font-size: 2.5rem;
+  line-height: 1.5;
+  color:var(--text-color);
+}
+.PAD{
+  padding: 7rem 10rem;
+}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+    </script>
+<script type=text/javascript>
+  $(function(){
+    $("#footerM").load("http://localhost/new/footer.html");
+  });
+</script>
+</head>
+<body>
+<!-- Header -->
+    <header class="header">
+            <nav class="nav container flex">
+                    <a class="logo-content flex">
+                        <img onclick="backHome()" src="http://localhost/new/image/download1.png">
+                    </a>
+
+                    <div class="menu-content">
+                            <ul class="menu-list flex">
+                                    <li><a href="#home" class="nav-link active-navlink">home</a></li>
+                                    <li><a href="#about" class="nav-link">intro</a></li>
+                                    <li><a href="#menu" class="nav-link">fertilizer</a></li>
+                                    <li><a href="#review" class="nav-link">footer</a></li>
+                            </ul>
+                    </div>
+                </nav>
+        
+    </header>
+
+<!-- Home Section -->
+    <main>
+        <section class="home" id="home">
+                <div class="home-content">
+                        <div class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg1.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Tomatoes: from tiny seeds to bountiful fruit.</h4>
+                                                                <h2 class="homeTitle">Watching a tomato grow is one of life's simple pleasures.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg2.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">The tomato: a canvas for nature's art.</h4>
+                                                                <h2 class="homeTitle">The tomato is a symbol of hope and perseverance.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg3.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Nurture a tomato plant, reap the juicy rewards.</h4>
+                                                                <h2 class="homeTitle">Growing a tomato is a lesson in patience and perseverance.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg4.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">A tomato plant: a small miracle of nature.</h4>
+                                                                <h2 class="homeTitle">A tomato plant is a living testament to the miracle of life.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg5.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Tomatoes: a tasty reminder of the power of growth.</h4>
+                                                                <h2 class="homeTitle">The beauty of a tomato plant lies in its journey to produce fruit.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="swiper-button-next swiper-navBtn"></div>
+                                <div class="swiper-button-prev swiper-navBtn"></div>
+                                <div class="swiper-pagination"></div>
+                        </div>
+                </div>
+        </section>
+
+    
+<!-- About Section -->
+        <section class="section about" id="about">
+                <div class="about-content container">
+                        <div class="about-imageContent">
+                                <img src="images/aboutImg.jpg" alt="" class="about-img">
+
+                                <div class="aboutImg-textBox">
+                                        <i class='bx bx-heart heart-icon flex'></i>
+                                        <p class="content-description">Love, like a tomato plant, requires care and attention to thrive.</p>
+                                </div>
+                        </div>
+
+                        <div class="about-details">
+                                <div class="about-text">
+                                        <h4 class="content-subtitle"><i>Introduction to Tomato Cultivation:-</i></h4>
+                                        <h2 class="content-title"><p align="justify">The following article gives information about “Tomato Cultivation”, “How to grow Tomatoes”, Tomato farming techniques. Tomato is a warm season crop, it requires a warm and cool climate. The plants cannot withstand frost and high humidity. Also, light intensity affects pigmentation, fruit color, fruit set. The plant is highly affected by adverse climatic conditions. It requires different climatic range for seed germination, seedling growth, flower and fruit set, and fruit quality. Temperature below 10<sup>0</sup>C and above 38<sup>0</sup>C adversely affects plant tissues thereby slow down physiological activities. It thrives well in temperature 10<sup>0</sup>C to 30<sup>0</sup>C with the optimum range of temperature is 21-24<sup>0</sup>C. The mean temperature below 16<sup>0</sup>C and above 27<sup>0</sup>C is not desirable. The plant doesn’t withstand frost, it requires low to medium rainfall, and does well under an average monthly temperature of 21 to 23<sup>0</sup>C. Avoid water stress and long dry period as it causes cracking of fruits. Bright sunshine at the time of fruit set helps to develop dark red colored fruits.</p></h2>
+                                        
+                                        <ul class="about-lists flex">
+                                                <li class="about-list">Tomato</li>
+                                                <li class="about-list dot">.</li>
+                                                <li class="about-list">form</li>
+                                                <li class="about-list dot">.</li>
+                                                <li class="about-list">data</li>
+                                        </ul>
+                                </div>
+                        </div>
+
+                </div>
+        </section>
+
+  <section class="section odd PAD">
+          <div class="s-cont">
+            <p align="justify">
+              <span>
+                <strong>Temperature Requirements for tomato cultivation:- </strong>
+              </span><br>
+              <table class="firstT">
+                <tbody>
+                <tr>
+                <td rowspan="2">Sr.<br>
+                 No.</td>
+                <td rowspan="2">Stages</td>
+                <td colspan="3">Temperature (<sup>0</sup>C)</td>
+                </tr>
+                <tr>
+                <td>Minimum</td>
+                <td>Suitable</td>
+                <td>Maximum</td>
+                </tr>
+                <tr>
+                <td>1.</td>
+                <td>Seed germination</td>
+                <td>11</td>
+                <td>16-29</td>
+                <td>34</td>
+                </tr>
+                <tr>
+                <td>2.</td>
+                <td>Seedling growth</td>
+                <td>18</td>
+                <td>21-24</td>
+                <td>32</td>
+                </tr>
+                <tr>
+                <td rowspan="2">3.</td>
+                <td rowspan="2">Fruit set (day)<br>
+                 (night)</td>
+                <td>10</td>
+                <td>15-17</td>
+                <td>30</td>
+                </tr>
+                <tr>
+                <td>18</td>
+                <td>20-24</td>
+                <td>30</td>
+                </tr>
+                <tr>
+                <td>4.</td>
+                <td>Red color development</td>
+                <td>10</td>
+                <td>20-24</td>
+                <td>30</td>
+                </tr>
+                </tbody>
+                </table>
+          </div>
+  </section>
+  <section class="section even PAD" >
+    <div class="s-cont">
+      <p align="justify">
+        <span>
+        <strong>Land Soil Requirements for tomato cultivation:- </strong>
+      </span><br>
+      &emsp;&emsp;Tomatoes do very well on most mineral soils, but they prefer deep, well-drained sandy loams. The upper layer of soil should be porous with little sand and good clay in the subsoil. Soil depth 15 to 20cm proves to be good for a healthy crop. Deep tillage can allow for adequate root penetration in heavy clay type soils, which allows for production in these soil types.</p>
+      <br><br>&emsp;&emsp;Tomato is a moderately tolerant crop to a wide pH range. A pH of 5.5- 6.8 is preferred. Though tomato plants will do well in more acidic soils with adequate nutrient supply and availability. Tomato is moderately tolerant to acid a soil that is a pH of 5.5. The soils with proper water holding capacity, aeration, free from salts are selected for tomato cultivation.
+      <br><br>&emsp;&emsp;Soils extremely high in organic matter are not recommended due to the high moisture content of this media and nutrient deficiencies. But, as always, the addition of organic matter to mineral soils will increase yield.
+    </div>
+</section>
+
+<section class="section odd PAD">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+      <strong>Choice of seeds for tomato cultivation:- </strong>
+    </span><br>
+    &emsp;&emsp;After seed production, diseased, broken seeds are discarded. The seeds for sowing should be free from inert matter. Early germinating, bold, uniform in shape and size, seeds are selected for sowing. Hybrid seeds from F1 generation are advantageous for sowing as it gives early and high yield uniform fruity, resistant to adverse environmental conditions.</p><br>
+  </div>
+</section>
+
+<section class="section even PAD" >
+  <div class="s-cont">
+    <p><span>
+      <strong>
+        Time of planting for tomato cultivation:-
+      </strong>
+    </span> <br>
+    <ol>
+      <li>Tomato is a day-neutral plant so wildly it found grown in any season.</li>
+      <li>In the northern plains three crops are taken but in frost affected area rabi crop is not fruitful. The Kharif crop is transplanted in July, rabi crop in October – November and Zaid crop in February months.</li>
+      <li>In the southern plains where there is no danger of frost, The first transplanting is done in December-January, Second June-July Third in September-October depending on the irrigation facilities available.</li>
+      </ol>
+  </div>
+</section>
+
+<section class="section odd PAD">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Tomato Seed and sowing:-</strong>
+      </span><br>
+      &emsp;&emsp;Tomato is generally cultivated by transplanting seedlings on ridges and furrows. At the time of transplanting, seedlings are harder by exposing to open weather or by withholding irrigation. A seed rate of 400 to 500g/ha is required.</p>
+      <br><br>&emsp;&emsp;Seeds are treated with Thiram @ 3g/kg of seed to protect from seed born diseases. Seed treatment with B. naphthoxyacetic acid (BNOA) at 25 and 50 ppm, gibberellic acid (GA3) at 5-20 ppm and chlorophenoxy acetic at 10 and 20 ppm was found to improve the growth and yield of tomato.
+      <br><br>&emsp;&emsp;Seeds are sown in June July for autumn winter crop and for spring summer crop seeds are sown in November. In the hills, the seed is sown in March April. The spacing recommended for the autumn-winter crop is 75 cm x 60 cm and for spring summer crop 75 cm x 45 cm.
+    </div>
+</section>
+
+
+
+<section class="section even PAD">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Transplanting of tomato seedlings:- </strong>
+      </span>
+      <br><ol>
+        <li>The transplanting is done in small flatbeds or in shallow furrow depending upon the availability of irrigation.</li>
+        <li>In heavy soil, it is usually transplanted on ridges and during the rains also it is advantageous to plant the seedlings on ridges.</li>
+        <li>For indeterminate varieties/hybrids, the seedlings have to be staked using bamboo sticks of two-meter length or planted in the broad ridge of 90 cm width and 15 cm height. The seedlings are planted in the furrows at a spacing of 30 cm and the plant is allowed to spread on the broad ridge.</li>
+        </ol></p>
+  </div>
+</section>
+
+<section class="section odd PAD" >
+  <div class="s-cont">
+    <p align="justify">
+      <strong>
+        <span>The spacing of tomato plants:-</span> 
+      </strong>
+      <br> &emsp;&emsp;The spacing recommended for the autumn-winter crop is 75 x 60 cm and for the spring-summer crop 75 x 45 cm.
+      <br><br>
+        <span>Nursery Preparation and Care of Tomato:-</span> 
+      <br> &emsp;&emsp;The ideal seedbed should be 60cm wide, 5-6cm long and 20-25cm high. Clods and stubbles should be removed from the seedbed. Add sieved FYM and fine sand on the seedbed. Bring them to a fine tilth. Drench the bed with Fytolon/Dithane M-45 @ 2-2.5 g/lit of water. Draw the lines 10 to 15cm apart throughout the length of the seedbed. Sow the seeds thinly spaced in lines, press gently, cover with fine sand and then cover the bed with straw. Irrigate with rose can. Irrigate the seedbed twice a day till the seeds germinate. Remove the straw after the seeds germinate. Apply a little Thimet at 4-5 leaf stage. Spray the seedlings with Metasystox/Thiodan @ 2-2.5 ml/lit water and Dithane M-45 @ 2-2.5 g/lit water.
+    </p>
+      </div>
+</section>
+
+<section class="section even PAD">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Weed Control for tomato cultivation:-</strong>
+      </span> <br> 
+      <ol>
+        <li>There is a need for light hoeing during the first four weeks in the field which encourage the growth but also remove the weeds from the field. The surface soil is loosened by hand hoeing as soon as it is dry enough after every irrigation or shower. All weeds should also be removed in this process.</li>
+        <li>Mulching with straw, black polythene and many other materials have been found beneficial in moisture conservation, in controlling weeds and some diseases.</li>
+        </ol>
+    </div>
+</section>
+
+
+        <section class="section menu odd" id="menu">
+            <center><div class="menu-container container">
+                    <div class="meu-text">
+                            <h4 class="section-subtitle"><i>Fertilizers and Manures</i></h4>
+                            <h2 class="section-title">Fertilizers and Manures in Tomato Cultivation:-</h2>
+                            <p class="section-description">
+                              Timely application of fertilizers and manures ensure the high yields of Tomato. Here is the manures and fertilizer requirement in Tomato growing.
+                            </p>
+                            </div><br><br>
+                            <div class="s-cont">
+                            <p align="justify">
+                              &emsp;&emsp;As the fruit production and quality depends upon nutrient availability and fertilizer application so balance fertilizer are applied as per requirement. The nitrogen in adequate quantity increases fruit quality, fruit size, color, and taste. It also helps in increasing desirable acidic flavor. An adequate amount of potassium is also required for growth, yield, and quality. Mono Ammonium Phosphate (MAP) may be used as a starter fertilizer to supply adequate phosphorus during germination and seedling stages. Calcium availability is also very important to control soil pH and nutrient availability. Sandy soils will require a higher rate of fertilizer, and more frequent applications of these fertilizers due to increased leaching of essential nutrients. The seedlings are sprayed with a starter solution of micronutrient. Before planting farmyard manure @ 50 ton per hectares should be incorporated. Normally tomato crop requires 120 kg Nitrogen (N), 50 kg Phosphorus (P<sub>2</sub>O<sub>5</sub>), and 50 kg Potash (K<sub>2</sub>O). Nitrogen should be given in split doses. Half nitrogen and full P<sub>2</sub>O<sub>5</sub>&nbsp;is given at the time of transplanting and remaining nitrogen is given after 30 days and 60 days of transplanting.
+                              Soil and tissue analyses should be taken throughout the growing and production season to ensure essential nutrients are in their proper amounts and ratios. Tissue analysis of a nutritionally sufficient plant will show the following nutrient status:
+                              <table class="firstT">
+                                <tbody>
+                                <tr>
+                                <td></td>
+                                <td>Nitrogen</td>
+                                <td>Phosphorus</td>
+                                <td>Potassium</td>
+                                <td>Calcium</td>
+                                <td>Magnesium</td>
+                                <td>Sulfur</td>
+                                </tr>
+                                <tr>
+                                <td>%</td>
+                                <td>4.0-5.6</td>
+                                <td>0.30-0.60</td>
+                                <td>3.0-4.5</td>
+                                <td>1.25-3.2</td>
+                                <td>0.4-0.65</td>
+                                <td>0.65-1.4</td>
+                                </tr>
+                                <tr>
+                                <td rowspan="3">&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                <td>ppm</td>
+                                <td>Manganese</td>
+                                <td>Iron</td>
+                                <td>Boron</td>
+                                <td>Copper</td>
+                                <td>Zinc</td>
+                                </tr>
+                                <tr>
+                                <td>&nbsp;</td>
+                                <td>30-400</td>
+                                <td>30-300</td>
+                                <td>20-60</td>
+                                <td>5-15</td>
+                                <td>30-90</td>
+                                </tr>
+                                </tbody>
+                                </table>
+                                <br><br>&emsp;&emsp;In the present situation, it has been realized that the use of inorganic fertilizers should be integrated with renewable and environmentally friendly organic fertilizers, crop residues and green manures.
+                            </p>
+                          </div>
+                          </div></center>
+        </section>
+
+    
+
+        <section class="section brand" id="review">
+            <div class="brand-container container">
+                    <h4 class="section-subtitle"><i>TOMATO PRODUCTION</i></h4>
+
+                    <div class="brand-images">
+                            <div class="brand-image">
+                                    <img src="images/brandImg1.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg2.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg3.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg4.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg5.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg6.png" alt="" class="brand-img">
+                            </div>
+                    </div>
+            </div>
+        </section>
+
+      <div id="footerM"></div>
+        <a href="#home" class="scrollUp-btn flex">
+                <i class='bx bx-up-arrow-alt scrollUp-icon'></i>
+        </a>
+
+</main>
+ <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+ <script src="https://unpkg.com/scrollreveal"></script>
+
+<script type="text/javascript">
+        var swiper = new Swiper(".mySwiper", {
+          slidesPerView: 1,
+          loop: true,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+
+
+        const body = document.querySelector('body'),
+              navMenu = body.querySelector('.menu-content'),
+              navOpenBtn = body.querySelector('.navOpen-btn'),
+              navCloseBtn = navMenu.querySelector('.navClose-btn');
+
+        if(navMenu && navOpenBtn){
+          navOpenBtn.addEventListener("click", () =>{
+            navMenu.classList.add("open");
+            body.style.overflowY = "hidden";
+          })
+        }
+
+        if(navMenu && navCloseBtn){
+          navCloseBtn.addEventListener("click", () =>{
+            navMenu.classList.remove("open");
+            body.style.overflowY = "scroll";
+          })
+        }
+
+
+        window.addEventListener("scroll", () => {
+          const scrollY = window.pageYOffset;
+
+          if(scrollY > 5){
+            document.querySelector("header").classList.add("header-active");
+          }else{
+            document.querySelector("header").classList.remove("header-active");
+          }
+
+
+          const scrollUpBtn = document.querySelector('.scrollUp-btn');
+
+          if(scrollY > 250){
+            scrollUpBtn.classList.add("scrollUpBtn-active");
+          }else{
+            scrollUpBtn.classList.remove("scrollUpBtn-active");
+          }
+          
+          const sections = document.querySelectorAll('section[id]');
+          sections.forEach(section =>{
+            const sectionHeight = section.offsetHeight,
+                  sectionTop = section.offsetTop - 100;
+
+                  let navId = document.querySelector(`.menu-content a[href='#${section.id}']`);
+                  if(scrollY > sectionTop && scrollY <=  sectionTop + sectionHeight){
+                    navId.classList.add("active-navlink");           
+                  }else{
+                    navId.classList.remove("active-navlink");     
+                  }
+                  
+                  navId.addEventListener("click", () => {
+                    navMenu.classList.remove("open");
+                    body.style.overflowY = "scroll";
+                  })
+          })
+        });  
+
+          ScrollReveal({
+            origin: 'top',
+            distance: '60px',
+            duration: 2000,
+            delay: 400,
+          });
+          
+          ScrollReveal().reveal(`.section-title, .section-subtitle, .section-description, .brand-image, .tesitmonial, .newsletter 
+          .logo-content, .newsletter-inputBox, .newsletter-mediaIcon`, {interval:100,})
+          
+          ScrollReveal().reveal(`.about-imageContent, .menu-items,.s-cont span,.s-cont li`, {origin: 'left'})
+          ScrollReveal().reveal(`.about-details, .time-table,.brand-image`, {origin: 'right'})
+          ScrollReveal().reveal(`.s-cont p`,{origin:'top'})
+
+              function backHome(){
+              window.history.go(-1)
+            }
+            function move_Cont(){
+        window.scrollTo({top:1270,behavior:"smooth"});
+    }
+</script>
+</body>
+</html>
