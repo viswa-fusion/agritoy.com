@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+        *{
+        margin: 0;
+        padding: 0;
+        }
+        .navbar{
+        display: none;
+       }
+        ::-webkit-scrollbar {
+            width: 10px;
+            background: black;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: white;
+            border-radius: 10px;
+            opacity: 5px;
+        }
+        .wrapper{
+        display: flex;
+        max-width: 1200px;
+        position: relative;
+        }
+        .wrapper i{
+        top: 50%;
+        height: 44px;
+        width: 44px;
+        color: #343F4F;
+        cursor: pointer;
+        font-size: 1.15rem;
+        position: absolute;
+        text-align: center;
+        line-height: 44px;
+        background: #fff;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.1s linear;
+        }
+        .wrapper i:active{
+        transform: translateY(-50%) scale(0.9);
+        }
+        .wrapper i:hover{
+        background: #f2f2f2;
+        }
+        .wrapper i:first-child{
+        left: -22px;
+        display: none;
+        }
+        .wrapper i:last-child{
+        right: -22px;
+        }
+        .wrapper .carousel{
+        font-size: 0px;
+        cursor: pointer;
+        overflow: hidden;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+        }
+        .carousel.dragging{
+        cursor: grab;
+        scroll-behavior: auto;
+        }
+        .carousel.dragging img{
+        pointer-events: none;
+        }
+        .carousel img{
+        height: 340px;
+        object-fit: cover;
+        user-select: none;
+        margin-left: 14px;
+        width: calc(100% / 3);
+        }
+        .carousel img:first-child{
+        margin-left: 0px;
+        }
+
+        .sbody{
+            font-family: General Sans,sans-serif;
+        }
+        body{
+            background-color: #141414;
+            color:rgb(222,227,234);
+        }
+        .heading{
+            min-width: 1000px;
+            font-size:4.5rem;
+            line-height: 1;
+            margin-top: 200px;
+            padding:0px 50px;
+        }
+        .quates{
+            padding-top: 20px;
+        }
+        .sub{
+             height: 600px;
+        }
+        
+        .sub1{
+            background-image: linear-gradient(to bottom right,rgb(20,20,20),rgba(19,19,241,.424));
+        }
+        
+        .sub1 div{
+            width: 50%;
+            height: 500px;
+            float: right;
+            margin-top: 80px;
+            margin-right: 30px;
+            position: relative;
+            overflow-y: scroll;
+        }
+        .sub1 div::-webkit-scrollbar{
+            background: transparent;
+        }
+        .sub1 div::-webkit-scrollbar-thumb{
+            background: transparent;
+        }
+        .sub1 span{
+            float: left;
+            width: 50%;
+            height:60px;
+            margin-top: 20px;
+            left: 645px;
+            position: absolute;
+        }
+        .Blackspan{
+            margin-top: -150px;
+            margin-left: 50px;
+            position: absolute;
+        }
+        .sub1 img{
+            margin-top: 150px;
+        }
+        .sub1 div p{
+            font-size: 27px;
+            color: rgb( 222,227,234,.8);
+        }
+        .bline {
+            background-color: rgb(89,66,233);
+            border: none;
+            border-radius: 100px;
+            height: 0.6rem;
+            width: 10rem;
+        }
+        /* -------table---------------------*/
+        .specTitle {
+            width: 50%;
+        }
+        tbody tr{
+            border: none;
+        }
+        table td:first-child {
+            height: 50px;
+            padding: 10px 19px;
+            background-color: rgb(89,66,233);
+            color: #fff;
+        }
+        table td:last-child{
+            padding-left: 10px;
+        }
+        tbody {
+            display: table;
+            width: 100%;
+            margin-top: 0;
+        }
+        table {
+            display: table;
+            border-collapse: separate;
+            box-sizing: border-box;
+            text-indent: initial;
+            border-spacing: 3px;
+            border-color: gray;
+        }
+         /* ------- ---------------------*/
+        .Blackcont{
+            margin: 150px 0px 0px 120px;
+            position: absolute;
+        }
+        .robo{
+            position: absolute;
+            margin: 30px 0px 0px 800px;
+        }
+       .navbar{
+        position:absolute;
+       }
+       .gallery{
+            position: relative;
+            transition: all .2s cubic-bezier(.4,0,.2,1);
+            width: -webkit-max-content;
+            width: max-content;
+        }
+       .gallery::after{
+            background: blue;
+            bottom: 0;
+            content: "";
+            height: 3px;
+            position: absolute;
+            right: 0;
+            transition: all .2s cubic-bezier(.4,0,.2,1);
+            width: 0;
+       }
+       .nav{
+        top: 0;
+        width: 100%;
+        height:70px;
+        -webkit-backdrop-filter:blur(10px);
+        backdrop-filter:blur(10px);
+        background-color: rgb(20 20 20 / 27%);
+        position: fixed;
+        z-index: 9;
+       }
+       
+       nav img{
+        margin: 12px 0px 0px 5px;
+       }
+       
+       .btn{
+        color:white;
+        padding: 2px 20px 4px 0px;
+        font-size: 25px;
+        font-weight:700px;
+        background: none;
+        border: none;
+        outline:none;
+        cursor: pointer;
+       }
+       .btn::after{
+        content:'';
+        height: 3px;
+        width: 0%;
+        background-color: rgb(89,66,233);
+        display: block;
+        transition: .5s ease-in-out;
+       }
+       .btn:hover::after{
+        content:'';
+        height: 3px;
+        width: 100%;
+        background-color: rgb(89,66,233);
+        display: block;
+       }
+       #I2{
+        float:right;
+       }
+       .Tmenu{
+        position: absolute;
+        right: 2px;
+        padding: 15px;
+        border-radius:7px ;
+        -webkit-backdrop-filter:blur(10px);
+        backdrop-filter:blur(10px);
+        background-color: rgba(20, 20, 20, 0.644);
+        box-shadow: 0px 0px 6px 4px black;
+        top:5px;
+        display: none;
+       }
+       .Tmenu:hover{
+        display: block;
+       }
+       .Tmenu:focus{
+        display:block;
+       }
+       #I2:hover ~ .Tmenu{
+        display: block;
+       }
+       #truck{
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        margin-top: 220px;
+        transition: 2s ease-in-out;
+       }
+       #truck:hover{
+        transform: translatex(100px);
+       }
+       
+    </style>
+</head>
+<body>
+     <center><img id="truck" src="http://localhost/new/subBodymachine/machineImg/truck.png"/></center>
+     <nav class="nav">
+        <img id="I1" onclick="Home()" src="http://localhost/new/subBodymachine/machineImg/home.png" draggable="false"/>
+        <img id="I2" onclick="showmenu()" src="http://localhost/new/subBodymachine/machineImg/menu.png" draggable="false"/>
+        <div class="Tmenu">
+            <button class="btn" onclick="scrollmedown1()">Mahindra Jivo</button><br>
+            <button class="btn" onclick="scrollmedown2()">SONALIKA DI 50</button><br>
+            <button class="btn" onclick="scrollmedown3()">Mahindra SP Plus</button><br>
+            <button class="btn" onclick="scrollmedown4()">INDO FARM 3048</button><br>
+            <button class="btn" onclick="scrollmedown5()">Mahindra yuvaraj</button>
+        </div>
+     </nav>
+    <center><div Class="maincontent">
+        <h1 class="heading">
+            <span style="color:rgb(119,101,237);">Modern tractor</span>
+            model Information for agri!
+        </h1>
+        <center><h2 class="quates">A tractor is not just a tractor. It's a farmer's livelihood, it's his pride and joy, it's his passion</h2></center>
+        
+    </div></center>
+
+
+
+    <div class="sub1 sub" style="margin-top: 250px;">
+        <img src="subBodymachine/tractor/image/mainImg1.png" alt="img" draggable="false"/>
+        <span>
+        <h1>Mahindra Jivo</h1>
+        <hr class="bline">
+        </span>
+        <div>
+            <br>
+            <p align="justify">&nbsp&nbsp&nbsp Presenting the wide Mahindra JIVO range of compact tractors which are suitable all agricultural operation. From 14.9 kW (20 HP) to 26.84 kW (36 HP), these tractors are powered by fuel efficient Mahindra DI engine and are equipped with latest features including 4 wheel drive to help you complete all tasks at ease.</p>
+            <br><br>
+            <p align="justify">These tractors can be used for all types of crops including row crops like cotton & sugarcane, vineyards and orchards. Their highly efficient transmission ensures that you get more PTO power delivering superior performance in rotary implements.</p>
+            <br>
+                <table class="table">
+                    <tbody>
+                        <tr><td class="specTitle">Model Name</td><td>MAHINDRA JIVO 225 DI</td></tr>
+                        <tr><td class="specTitle">Engine Power (kW)</td><td>14.9 kW (20 HP)</td></tr>
+                        <tr><td class="specTitle">Maximum Torque (Nm)</td><td>73 Nm </td></tr>
+                        <tr><td class="specTitle">Maximum PTO power (kW)</td><td>13.7 kW (18.4 HP)</td></tr>
+                        <tr><td class="specTitle">Rated RPM (r/min)</td><td>2300 </td></tr>
+                        <tr><td class="specTitle">Number of Gears</td><td> 8 F + 4 R</td></tr>
+                        <tr><td class="specTitle">Engine Power (kW)</td><td>14.9 kW (20 HP)</td></tr>
+                        <tr><td class="specTitle">Maximum Torque (Nm)</td><td>73 Nm </td></tr>
+                        <tr><td class="specTitle">Maximum PTO power (kW)</td><td>13.7 kW (18.4 HP)</td></tr>
+                        <tr><td class="specTitle">Rated RPM (r/min)</td><td>2300 </td></tr>
+                        <tr><td class="specTitle">Number of Gears</td><td> 8 F + 4 R</td></tr>
+                        <tr><td class="specTitle">Number of Cylinders</td><td> 2 </td></tr>
+                        <tr><td class="specTitle">Steering Type</td><td> Power Steering (Optional) </td></tr>
+                        <tr><td class="specTitle">Rear Tyre</td><td> 8.3 x 24 </td></tr>
+                        <tr><td class="specTitle">Transmission Type</td><td> Sliding Mesh</td></tr>
+                        <tr><td class="specTitle">Hydraulics Lifting Capacity (kg)</td><td> 750 </td></tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+
+
+
+    <div class="sub"onmouseover="find1()">
+        <span class="Blackspan"><h1>Mahindra Jivo features:</h1>
+            <hr class="bline" style="width:20rem;">
+        </span>
+           <center>
+          <div class="wrapper s1" style="margin-top:250px;">
+            <i id="left" class="fa-solid fa-angle-left"></i>
+            <div class="carousel S1">
+                <img src="subBodymachine/tractor/image/scroll1/img2.png" alt="img" draggable="false">
+                <img src="subBodymachine/tractor/image/scroll1/img3.png" alt="img" draggable="false">
+                <img src="subBodymachine/tractor/image/scroll1/img4.png" alt="img" draggable="false">
+                <img src="subBodymachine/tractor/image/scroll1/img5.png" alt="img" draggable="false">
+                <img src="subBodymachine/tractor/image/scroll1/img6.png" alt="img" draggable="false">
+                <img src="subBodymachine/tractor/image/scroll1/img7.png" alt="img" draggable="false">
+                <img src="subBodymachine/tractor/image/scroll1/img1.jpg" alt="img" draggable="false">
+            </div>
+            <i id="right" class="fa-solid fa-angle-right"></i>
+          </div>
+        </center> 
+    </div>
+
+
+
+    <div class="sub1 sub">
+        <img src="subBodymachine/tractor/image/mainImg2.png" alt="img" draggable="false"/>
+        <span>
+        <h1>SONALIKA DI 50</h1>
+        <hr class="bline" style="width:12rem;">
+        </span>
+        <div>
+            <br>
+            <p align="justify">&nbsp&nbsp&nbsp Sonalika DI 50 Sikander is one of the popular tractor models from the Sonalika tractor brand in India. Sonalika is popularly known for its best-in-class tractors and engines in the tractor and commercial vehicle segment in India. This success has been due to the result of manufacturing tractors for many decades in India. These years of experience has helped Sonalika to develop value for money tractors for the Indian Market. Sonalika DI 50 Sikander is widely used for agricultural and related uses by farmers. It is one of the leading tractors in terms of popularity and sales in the utility tractor range. Sonalika DI 50 Sikander is priced at Rs. 7.00 Lakhs to Rs. 7.50 Lakhs. Sonalika DI 50 Sikander tractor is preferred by farmers who have an average agricultural area and use farming implements like cultivator, trailer, rotavator, and seed drill regularly.</p>
+            <br><br>
+            <p align="justify">This tractor is equipped with modern elements and a powerful engine delivering a total output of 52 HP, Sonalika DI 50 Sikander is one of the popular choices among farmers. To deliver this performance, this engine is connected with a 10-speed gearbox having 2 reverse and 8 forward gears. This gear ratio helps to achieve maximum performance in fields and also to carry out heavy-duty tasks. Additionally, the Sonalika DI 50 Sikander has a lifting capacity of 1800 KG. In order to improve the comfort and handle the power, this tractor is equipped with oil immersed brakes. </p>
+            <br>
+            <h2>Features</h2><br>
+            <p align="justify">&nbsp&nbsp&nbsp Sonalika DI 50 Sikander is powered by a 3067 CC engine delivering a power output of 52 HP. This engine is configured with 3 cylinders with an engine rated RPM of 2100 RPM. This tractor uses a water-cooling setup which helps to deliver maximum output. This tractor is available in Constant Mesh transmission and with dual and single clutch options. Sonalika DI 50 Sikander has 8 forward and 2 reverse gears delivering the maximum top speed of 34.4 Kmph in forward gears. With a 6 spline PTO setup, the tractor delivers a PTO HP of 44 HP at 540 RPM. Additionally, the tractor is known for its excellent performance in off-road and on-road conditions. This is due to the 6 x 16 Inches and 14.9 X 28 inches tyre setup in front and rear respectively. The lifting performance is improved due to the ADDC hydraulic controls used in the system. Also, Sonalika DI 50 Sikander delivers long productive hours on farms due to its fuel-efficient engine and a fuel tank capacity of 55 litres.</p>
+            <br>
+            <h2>Special features</h2><br>
+            <p align="justify">&nbsp&nbsp&nbsp Sonalika DI 50 Sikander is available in 2 wheel and 4 wheel drive options. This tractor is available with additional accessories for design and aesthetics purposes. Sonalika DI 50 Sikander is capable of delivering a maximum torque of 205 mm. This tractor is available with mechanical and power steering options.</p>
+            <br>    
+            <table class="table">
+                    <tbody>
+                        <tr><td class="specTitle">Model Name</td><td>SONALIKA DI 50 SIKANDER</td></tr>
+                        <tr><td class="specTitle">Engine HP</td><td>52 HP</td></tr>
+                        <tr><td class="specTitle">PTO HP</td><td>44 HP </td></tr>
+                        <tr><td class="specTitle">Wheel drive</td><td>2WD / 4WD</td></tr>
+                        <tr><td class="specTitle">Forward Gears</td><td>8 </td></tr>
+                        <tr><td class="specTitle">Reverse Gears</td><td> 2</td></tr>
+                        <tr><td class="specTitle">Brake Type</td><td>Oil Immersed Brakes</td></tr>
+                        <tr><td class="specTitle">NO. OF CYLINDER</td><td>3</td></tr>
+                        <tr><td class="specTitle">LIFTING CAPACITY</td><td>1800kg </td></tr>
+                        <tr><td class="specTitle">WARRANTY</td><td> NA(depend on showroom)</td></tr>
+                        <tr><td class="specTitle">CLUTCH</td><td> Single / Dual </td></tr>
+                        <tr><td class="specTitle">Steering Type</td><td> Mechanical / Power Steering</td></tr>
+                        <tr><td class="specTitle">Fuel Tank Capacity</td><td>55 litres </td></tr>
+                        <tr><td class="specTitle">Wheelbase</td><td> 	2130 MM </td></tr>
+                        <tr><td class="specTitle">Drive Type</td><td> 2WD / 4WD</td></tr>
+                        <tr><td class="specTitle">Price</td><td>₹ 7.00 - 7.50 lakh* </td></tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+    </div>
+    
+    
+    <div class="sub"onmouseover="find4()">
+        <span class="Blackspan"><h1>Mahindra SP features:</h1>
+            <hr class="bline" style="width:16rem;">
+        </span>
+        <center><div class="wrapper s4 " style="margin-top:250px;">
+            <i id="left" class="fa-solid fa-angle-left"></i>
+            <div class="carousel  S4 ">
+              <img src="subBodymachine/tractor/image/scroll5/img1.1.png" alt="img" draggable="false">
+              <img src="subBodymachine/tractor/image/scroll5/img2.jpg" alt="img" draggable="false">
+              <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+              <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+              <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+              <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+              <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+              <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+              <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+            </div>
+            <i id="right" class="fa-solid fa-angle-right"></i>
+          </div></center>
+    </div>
+    
+
+
+    <div class="sub1 sub">
+        <img src="subBodymachine/tractor/image/mainImg3.png" alt="img" draggable="false"/>
+        <span>
+        <h1>Mahindra SP Plus</h1>
+        <hr class="bline" style="width:12rem;">
+        </span>
+        <div>
+            <br>
+            <p align="justify">&nbsp&nbsp&nbsp Presenting the new extremely Tough MAHINDRA SP PLUS Mahindra Tractors, an international company that has manufactured more than 30 lakh tractors for more than 30 years, this time offers a Tough MAHINDRA SP PLUS. The MAHINDRA SP PLUS tractors are extremely powerful with the lowest fuel consumption in their category.</p>
+            <br><br>
+            <p align="justify">Due to its powerful ELS DI engine, high max torque and excellent backup torque, it gives unmatched performance with all farming equipment. With the first time in the industry 6-year warranty the MAHINDRA SP PLUS is truly tough.</p>
+            <br>
+                <table class="table">
+                    <tbody>
+                        <tr><td class="specTitle">Model Name</td><td>MAHINDRA 275 DI SP PLUS</td></tr>
+                        <tr><td class="specTitle">Engine Power (kW)</td><td>27.6 kW (37 HP)</td></tr>
+                        <tr><td class="specTitle">Maximum Torque (Nm)</td><td>136 Nm </td></tr>
+                        <tr><td class="specTitle">Maximum PTO power (kW)</td><td>24.5 kW (32.9 HP)</td></tr>
+                        <tr><td class="specTitle">Rated RPM (r/min)</td><td>2100 </td></tr>
+                        <tr><td class="specTitle">Number of Gears</td><td> 8 F + 2 R</td></tr>
+                        <tr><td class="specTitle">Engine Power (kW)</td><td>27.6 kW (37 HP)</td></tr>
+                        <tr><td class="specTitle">Maximum Torque (Nm)</td><td>136 Nm </td></tr>
+                        <tr><td class="specTitle">Maximum PTO power (kW)</td><td>24.5 kW (32.9 HP)</td></tr>
+                        <tr><td class="specTitle">Rated RPM (r/min)</td><td>2100 </td></tr>
+                        <tr><td class="specTitle">Number of Gears</td><td> 8 F + 2 R</td></tr>
+                        <tr><td class="specTitle">Number of Cylinders</td><td> 3 </td></tr>
+                        <tr><td class="specTitle">Steering Type</td><td> Dual Acting Power Steering / Manual Steering (Optional) </td></tr>
+                        <tr><td class="specTitle">Rear Tyre</td><td> 13.6 x 28 / 12.4 x 28 available </td></tr>
+                        <tr><td class="specTitle">Engine Cooling</td><td> Water Cooled </td></tr>
+                        <tr><td class="specTitle">Transmission Type</td><td> Partial Constant Mesh</td></tr>
+                        <tr><td class="specTitle">Ground speeds (km/h)</td><td> F - 2.8 km/h - 28.5 km/h &lt;br&gt;R - 3.9 km/h- 11.4 km/h</td></tr>
+                        <tr><td class="specTitle">Clutch</td><td> Single (std) Dual with RCRPTO (opt) </td></tr>
+                        <tr><td class="specTitle">Hydraulic Pump Flow (l/m)</td><td> 29.5 (l/m) </td></tr>
+                        <tr><td class="specTitle">Hydraulics Lifting Capacity (kg)</td><td> 1500 </td></tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="sub" onmouseover="find2()">
+    <span class="Blackspan"><h1>Mahindra SP features:</h1>
+        <hr class="bline" style="width:16rem;">
+    </span>
+    <center><div class="wrapper s2"style="margin-top:250px;">
+        <i id="left" class="fa-solid fa-angle-left"></i>
+        <div class="carousel S2">
+                        <img src="subBodymachine/tractor/image/scroll2/img5.png" alt="img" draggable="false">
+                        <img src="subBodymachine/tractor/image/scroll2/img6.png" alt="img" draggable="false">
+                        <img src="subBodymachine/tractor/image/scroll2/img3.png" alt="img" draggable="false">
+                        <img src="subBodymachine/tractor/image/scroll2/img4.png" alt="img" draggable="false">
+                        <img src="subBodymachine/tractor/image/scroll2/img1.png" alt="img" draggable="false">
+                        <img src="subBodymachine/tractor/image/scroll2/img2.png" alt="img" draggable="false">
+                    </div>
+                    <i id="right" class="fa-solid fa-angle-right"></i>
+                  </div></center>
+</div>
+
+
+<div class="sub1 sub">
+    <img src="subBodymachine/tractor/image/mainImg4.png"/>
+    <span>
+    <h1>INDO FARM 3048 DI</h1>
+    <hr class="bline" style="width:12rem;">
+    </span>
+    <div>
+        <br>
+            <p align="justify">&nbsp&nbsp&nbsp Indo Farm 3048 DI is one of the Value for money tractors in its segment of 50 HP tractors in India. To offer maximum stability and comfort, the tractor is well engineered with accurate dimensions. Indo Farm 3048 DI has dimensions of 3750 mm in length and 1850 mm in width. Indo Farm tractor engines are also one of the most discussed engines among farmers. These engines are known for their fuel efficiency. This efficiency is achieved through lightweight tractors but strong built quality. This tractor has a dry weight of 2.1 tons. Indo Farm tractors are known for their lower running and maintenance costs and their universal applicability with farming and commercial attachments. Indo Farm 3048 DI is priced at Rs. 5.89 lakhs to Rs. 7.65 Lakhs. These tractors are used for commercial as well as agricultural purposes.</p>
+            <br><br>
+            <p align="justify">Indo Farm 3048 DI is known for its overall performance and reliability. The engine powering this reliable tractor is a 2856 cc diesel engine delivering a total output of 50 HP. This engine is rated at 2200 RPM for delivering optimum performance. This engine is mated with a Constant mesh transmission through a Single/ Dual-clutch. This transmission is coupled with a 10-speed gearbox having an 8 forward and 2 reverse gears combination. Indo Farm 3048 DI is available in 2-wheel drive and 4-Wheel drive options. This tractor is equipped with dry/Oil Immersed brakes and a Power steering. </p>
+            <br>
+            <h2>Features</h2><br>
+            <p align="justify">&nbsp&nbsp&nbsp Indo Farm 3048 DI is equipped with a 3-cylinder diesel engine having a capacity of 2856 CC and delivering a total output of 50 HP. A 6-spline type PTO helps to deliver an PTO HP output of 43 HP, this PTO has an RPM range of 540 RPM. This tractor has a wheel setup of 6 X 16 / 8 x 18 inches in the front and 13.6 X 28 / 14.9 X 28 inches in the rear. This setup helps to carry out activities in different types of terrains. In order to deliver the maximum power through its transmission which is of Constant mesh type. This transmission is attached through a Single/ Dual clutch.  </p>
+            <br>
+            <h2>Special features</h2><br>
+            <p align="justify">&nbsp&nbsp&nbsp Indo Farm 3048 DI has a total of 2160 KG of weight i.e 2.1 tons. The overall length of the tractor is 3750 mm, the width of 1850 mm, and a ground clearance of 380 mm. These dimensions make this tractor an overall balanced tractor. This tractor is available with additional accessories for design and aesthetics purposes.</p>
+            <br>  
+            <table class="table">
+                <tbody>
+                    <tr><td class="specTitle">Model Name</td><td>MAHINDRA 275 DI SP PLUS</td></tr>
+                    <tr><td class="specTitle">Engine HP</td><td>50 HP</td></tr>
+                    <tr><td class="specTitle">PTO HP</td><td>42.5 HP</td></tr>
+                    <tr><td class="specTitle">Wheel drive</td><td>2WD / 4WD</td></tr>
+                    <tr><td class="specTitle">Forward Gears</td><td> 8</td></tr>
+                    <tr><td class="specTitle">Reverse Gears</td><td> 2</td></tr>
+                    <tr><td class="specTitle">Brake Type</td><td>Dry double disc / Oil Immersed</td></tr>
+                    <tr><td class="specTitle">NO. OF CYLINDER</td><td>3</td></tr>
+                    <tr><td class="specTitle">LIFTING CAPACITY</td><td>1800/2000 kg </td></tr>
+                    <tr><td class="specTitle">WARRANTY</td><td> 2000 hr/2 year</td></tr>
+                    <tr><td class="specTitle">CLUTCH</td><td> Single / Dual Clutch</td></tr>
+                    <tr><td class="specTitle">Steering Type</td><td>Power Steering</td></tr>
+                    <tr><td class="specTitle">Fuel Tank Capacity</td><td> 55 litres </td></tr>
+                    <tr><td class="specTitle">Weight</td><td> 2160 kg </td></tr>
+                    <tr><td class="specTitle">Wheelbase</td><td> 1895 MM</td></tr>
+                    <tr><td class="specTitle">Ground Clearance</td><td>2WD-420 MM / 4WD-380 MM</td></tr>
+                    <tr><td class="specTitle">Price</td><td> ₹ 5.89 - 7.65 lakh*</td></tr>
+                </tbody>
+            </table>
+    </div>
+</div>
+</div>
+
+
+<div class="sub" onmouseover="find5()">
+    <span class="Blackspan"><h1>INDO FARM features:</h1>
+        <hr class="bline" style="width:16rem;">
+    </span>
+    <center><div class="wrapper s5 " style="margin-top:250px;">
+        <i id="left" class="fa-solid fa-angle-left"></i>
+        <div class="carousel  S5">
+          <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+          <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+          <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+          <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+          <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+          <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+          <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+          <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+          <img src="http://localhost/new/image/BashmathiSeed.jpg" alt="img" draggable="false">
+        </div>
+        <i id="right" class="fa-solid fa-angle-right"></i>
+      </div></center>
+</div>
+
+
+
+
+
+
+<div class="sub1 sub">
+    <img src="subBodymachine/tractor/image/mainImg5.png" alt="img" draggable="false"/>
+    <span>
+    <h1>MAHINDRA YUVARAJ 215 NXT</h1>
+    <hr class="bline" style="width:12rem;">
+    </span>
+    <div>
+        <br>
+        <p align="justify">&nbsp&nbsp&nbsp The MAHINDRA YUVRAJ 215 NXT is an 11.2 kW (15 HP) tractor designed to ensure powerful performance and easy operations. It is one of the latest tractors with a stylish design. The Mahindra 2WD tractor comes with a wide range of useful features. This Mahindra Yuvraj tractor is perfect for inter-culture operations and small landholdings, ideally designed to cultivate sugarcane, Maze, cotton, soybean, oranges, mangoes, grapes, and much more. This Mahindra 2x2 tractor is a small tractor that also comes with adjus rear track width, which will allow you to easily use it for various operations such as haulage, cultivation, spraying, threshing, sowing, and rotavating. The MAHINDRA YUVRAJ 215 NXT also offers a Rated RPM (r/min) of 2300, 8 F + 3 R gears, and a Hydraulics Lifting Capacity of 778 kg. So, if you are looking for Mahindra mini tractors for a multitude of agricultural needs, the MAHINDRA YUVRAJ 215 NXT tractors will be your best bet as these compact tractors do not compromise on performance.</p>
+            <br>
+            <table class="table">
+                <tbody>
+                    <tr><td class="specTitle">Model Name</td><td>MAHINDRA YUVRAJ 215 NXT</td></tr>
+                    <tr><td class="specTitle">Engine Power (kW)</td><td>11.2 kW (15 HP)</td></tr>
+                    <tr><td class="specTitle">Rated RPM (r/min)</td><td>2300 </td></tr>
+                    <tr><td class="specTitle">Number of Gears</td><td> 8 F + 3 R</td></tr>
+                    <tr><td class="specTitle">Number of Cylinders</td><td> 1 </td></tr>
+                    <tr><td class="specTitle">Rear Tyre</td><td> 8.00 X 18.6 </td></tr>
+                    <tr><td class="specTitle">Hydraulics Lifting Capacity (kg)</td><td> 778 </td></tr>
+                </tbody>
+            </table>
+    </div>
+</div>
+</div>
+
+
+<div class="sub"onmouseover="find3()">
+    <span class="Blackspan"><h1>MAHINDRA YUVRAJ 215 features:</h1>
+        <hr class="bline" style="width:16rem;">
+    </span>
+    <center><div class="wrapper s3 " style="margin-top:250px;">
+        <i id="left" class="fa-solid fa-angle-left"></i>
+        <div class="carousel  S3 ">
+          <img src="subBodymachine/tractor/image/scroll4/img1.png" alt="img" draggable="false">
+          <img src="subBodymachine/tractor/image/scroll4/img2.png" alt="img" draggable="false">
+          <img src="subBodymachine/tractor/image/scroll4/img3.png" alt="img" draggable="false">
+          <img src="subBodymachine/tractor/image/scroll4/img4.png" alt="img" draggable="false">
+          <img src="subBodymachine/tractor/image/scroll4/img5.png" alt="img" draggable="false">
+          <img src="subBodymachine/tractor/image/scroll4/img6.png" alt="img" draggable="false">
+          <img src="subBodymachine/tractor/image/scroll4/img7.png" alt="img" draggable="false">
+          <img src="subBodymachine/tractor/image/scroll4/img8.png" alt="img" draggable="false">
+        </div>
+        <i id="right" class="fa-solid fa-angle-right"></i>
+      </div></center>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
