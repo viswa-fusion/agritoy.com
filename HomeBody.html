@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        .body{
+            background-image: url("image/homebgfinal.jpg");
+           padding-top: 100px;
+            height: 1000px;
+            width: auto;
+        }
+        .wrap{
+            width:65%;
+            transform-origin:60% 0;
+            transform: rotate(-45deg);
+            position: static;
+        }
+        .wrap > a{
+            float:left;
+            width:19%;
+            padding-bottom:19%;
+            margin:0.5%;
+            background-color: transparent;
+        }
+        .wrap > .a1{
+            background-image: url("image/MH1.png"); 
+            background-size:contain;
+            transform: rotate(90deg);
+        }
+        .wrap > .a2,.wrap > .a8,.wrap > .a5{
+            background-image:url("image/dec-box.png") ;
+            background-size:contain;
+        }
+        .wrap > .a3{
+            background-image: url("image/MH2.jpg");
+            background-size:contain;
+        }
+        .wrap > .a4{
+            background-image: url("image/MH3.png");
+            background-size: contain;
+        }
+        .wrap > .a6{
+            background-image: url("image/MH4.png");
+            background-size: contain;
+        }
+        .wrap > .a7{
+            background-image: url("image/MH5.png");
+            background-size: contain;
+        }
+        .wrap > .a9{
+            background-image: url("image/MH6.png");
+            background-size: contain;
+        }
+        .wrap > a:hover{
+            box-shadow: aquamarine 4px;
+        }
+        .wrap > a:nth-child(4){
+            clear:left;
+            margin-left:20.5%;
+        }
+        .wrap > a:nth-child(7){
+            clear:left;
+            margin-left:40.5%;
+        }
+        .wrap .a1:hover,.wrap .a4:hover,.wrap .a3:hover,.wrap .a7:hover,.wrap .a6:hover,.wrap .a9:hover{
+            box-shadow: 0 0 40px 5px #5cf91d;
+        }
+        .wrap .a2,.wrap .a5,.wrap .a8{
+            animation: flipeer 2s ease-in-out infinite;
+        }
+        @keyframes flipeer{
+            0%{
+                transform:rotateZ(0);
+            }
+            50%{
+                transform: rotateZ(10deg);
+            }
+            100%{
+                transform: rotateZ(0);
+            }
+        }
+        .DRONE{
+            width:40px;
+            position: absolute;
+            z-index: 8;
+        }
+        .DRONE img{
+            width: 338px;
+            margin-top: 150px;
+            cursor: pointer;
+        }
+        .DRONE img:hover{
+            filter: drop-shadow(-2px -1px 7px rgb(255, 45, 45));
+        }
+        .DRONE img{
+    animation:floatImage 1.5s ease-in-out infinite;
+}
+@keyframes floatImage{
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-1.5rem);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+            </style>
+</head>
+<body>
+    <div class="DRONE">
+        <a href="http://localhost/new/drone/drone.html"><img src="image/Drone.png"/></a>
+    </div>
+<div class="body">
+    <div class="wrap">
+        <a class="a1" onclick="MachinePage('subBodymachine/tractor/index.html')" href="#tractor"></a>
+        <a class="a2" href="#"></a>
+        <a class="a3" href="http://localhost\new\wheat\index.html"></a>
+        <a class="a4" href="#"></a>
+        <a class="a5" href="#"></a>
+        <a class="a6" href="http://localhost\new\coffee\index.html"></a>
+        <a class="a7" onclick="MachinePage('subBodymachine/cultivator/index.html')" href="#cultivator"></a>
+        <a class="a8" href="#"></a>
+        <a class="a9" href="#"></a>
+    </div>
+</div><!--body div end-->
+</body>
+</html>
+
+
+

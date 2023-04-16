@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maize Website</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+:root{
+
+--body-font: 'Poppins', sans-serif;
+
+--big-font: 4rem;
+--h1-font: 3.6rem;
+--h2-font: 2.4rem;
+--h3-font: 2rem;
+--h4-font: 1.8rem;
+--normal-font: 1.6rem;
+--small-font: 1.4rem;
+--smaller-font: 1.3rem;
+
+--font-regular: 400;
+--font-medium: 500;
+--font-semi-bold: 600;
+
+--primary-color: #C87E4F;
+--primary-color-hover: #C2703D;
+--text-color: #333;
+--text-color-light: #888682;
+--border-color: #484848;
+--white-color: #FFF;
+--section-bg: #2C3034;
+--s-cont-text:rgb(224, 224, 224);
+
+--z-overlay: 10;
+--z-fixed: 100;
+
+--tran-0-2: 0.2s;
+--tran-0-3: 0.3s;
+--tran-0-5: 0.5s;
+}
+@media screen and (max-width: 990px) {
+:root {
+  --big-font: 3.5rem;
+  --h1-font: 2.4rem;
+  --h2-font: 2rem;
+  --h3-font: 1.8rem;
+  --h4-font: 1.6rem;
+  --normal-font: 1.5rem;
+  --small-font: 1.3rem;
+  --smaller-font: 1.2rem;
+}
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  overflow-x: hidden;
+  background-color: var(--white-color);
+}
+
+::selection{
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+::-webkit-scrollbar{
+  width: 8px;
+}
+::-webkit-scrollbar-track{
+  background-color: #f9f1ec;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 1rem;
+  background-color: var(--primary-color);
+}
+::-webkit-scrollbar-thumb:hover{
+  border-radius: 1rem;
+  background-color: var(--primary-color-hover)
+}
+
+body,
+button,
+input{
+  font-family: var(--body-font);
+  font-size: var(--normal-font);
+  font-weight: var(--font-regular);
+  color: var(--text-color);
+}
+
+input{
+  outline: none;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section{
+  padding: 7rem 2rem;
+}
+.container{
+  max-width: 1030px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+.flex{
+  display: flex;
+  align-items: center;
+  column-gap: 0.6rem;
+}
+.logo-content img {
+  width: 20rem;
+  border-radius: 20px;
+  margin-left: -17rem;
+}
+.button{
+  border: none;
+  outline: none;
+  color: var(--white-color);
+  padding: 1.4rem 4rem;
+  border-radius: 3rem;
+  background-color: var(--primary-color);
+  transition: var(--tran-0-3);
+  cursor: pointer;
+}
+.button:hover{
+  background-color: var(--primary-color-hover);
+}
+h2.content-title {
+    font-size: 1.5rem;
+}
+.section-subtitle,
+.content-subtitle{
+  color: var(--primary-color);
+  font-size: var(--normal-font);
+  letter-spacing: 1px;
+  font-weight: var(--font-medium);
+  text-align: center;
+}
+.section-title,
+.content-title{
+  text-align: center;
+  font-size: var(--h2-font);
+  font-weight: var(--font-medium);
+  margin: 1rem 0;
+}
+.section-description,
+.content-description{
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.section-description{
+  padding: 0 16rem;
+}
+/* Header */
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 7rem;
+  width: 100%;
+  z-index: var(--z-fixed);
+  transition: var(--tran-0-5);
+}
+.header-active{
+  height: 6rem;
+  background-color: var(--white-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav{
+  position: relative;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-icon,
+.logo-text,
+.nav-link,
+.phone-icon,
+.phone-number{
+  color: var(--white-color);
+}
+
+.header-active .logo-icon,
+.header-active .logo-text,
+.header-active .nav-link,
+.header-active .phone-icon,
+.header-active .phone-number{
+  color: var(--text-color);
+}
+
+.logo-icon,
+.phone-icon{
+  font-size: 2rem;
+}
+.menu-list{
+  column-gap: 2rem;
+}
+.nav-link{
+  position: relative;
+  text-transform: capitalize;
+}
+.nav-link::before{
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background-color: var(--white-color);
+  opacity: 0;
+}
+.active-navlink::before{
+  opacity: 1;
+}
+.header-active .active-navlink::before{
+  background-color: var(--text-color);
+}
+.media-icons{
+  column-gap: 1rem;
+}
+.media-icons a{
+  color: var(--text-color-light);
+}
+.navClose-btn,
+.navOpen-btn,
+.media-icons{
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-content{
+    display: none;
+  }
+  .navClose-btn,
+  .navOpen-btn,
+  .media-icons{
+  display: block;
+}
+  .nav .menu-content{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    max-width: 300px;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-fixed);
+    padding: 10rem 0 5rem;
+    background-color: var(--white-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--tran-0-5);
+  }
+  .nav .menu-content.open{
+    right: 0;
+  }
+  .menu-list{
+    flex-direction: column;
+    row-gap: 2.5rem;
+    font-size: var(--h4-font);
+  }
+  .nav-link{
+    color: var(--text-color);
+  }
+  .nav-link::before{
+    background-color: var(--text-color);
+  }
+  .navClose-btn{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+  .navOpen-btn{
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--white-color);
+  }
+  .header-active .navOpen-btn{
+    color: var(--text-color);
+  }
+}
+
+.home{
+  height: 100vh;
+  width: 100%;
+}
+.swiper-slide{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+.home .swiper-slide::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: var(--z-overlay);
+}
+.home-img{
+  height: 100%;
+  width: 100%;
+}
+
+.swiper-navBtn{
+  height: 5rem;
+  width: 5rem;
+  color: var(--white-color);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: var(--tran-0-2);
+  opacity: 0;
+  visibility: visible;
+}
+.home:hover .swiper-navBtn,
+.review:hover .swiper-navBtn{
+  opacity: 1;
+}
+.swiper-navBtn:hover{
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.swiper-navBtn::after,
+.swiper-navBtn::before{
+  font-size: 2rem;
+}
+
+.swiper-button-next{
+  right: 16rem;
+}
+.swiper-button-prev{
+  left: 16rem;
+}
+
+.swiper-pagination-bullet{
+  background-color: var(--white-color);
+  opacity: 1;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-bottom: 2rem;
+  visibility: hidden;
+}
+.swiper-pagination-bullet-active{
+  border: 3px solid var(--white-color);
+  background-color: var(--primary-color);
+}
+.home-details{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: var(--z-fixed);
+  transform: translate(-50%, -50%);
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  row-gap: 4rem;
+}
+
+.homeSubtitle{
+  text-align: center;
+  font-size: var(--normal-font);
+  color: var(--white-color);
+}
+.homeTitle{
+  text-align: center;
+  font-size: var(--big-font);
+  color: var(--white-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.about .content-subtitle,
+.about .content-title,
+.about .content-description{
+  text-align: left;
+}
+.about-content{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  column-gap: 7rem;
+  align-items: center;
+  padding: 0 5rem;
+}
+.about-imageContent{
+  position: relative;
+  max-width: 400px;
+  height: 450px;
+  border: 6px solid var(--section-bg);
+}
+.aboutImg-textBox{
+  position: absolute;
+  bottom: 2rem;
+  right: -5rem;
+  padding: 2rem;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  border: 6px solid var(--section-bg);
+  background-color: var(--white-color);
+}
+.aboutImg-textBox .content-description{
+  text-align: center;
+  margin-bottom: 0;
+}
+.heart-icon{
+  position: absolute;
+  left: -1.9rem;
+  top: 50%;
+  height: 3rem;
+  width: 3rem;
+  color: var(--white-color);
+  background-color: var(--section-bg);
+  transform: translateY(-50%);
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.about-details{
+  display: grid;
+  row-gap: 4rem;
+}
+.about-lists{
+  column-gap: 1rem;
+  align-items: baseline;
+}
+.about-list{
+  font-weight: var(--font-medium);
+  font-size: 1.8rem;
+}
+.about-list:nth-child(1){
+  color: var(--primary-color);
+}
+.about-list.dot{
+  font-size: 2.5rem;
+}
+.about-buttons{
+  column-gap: 2rem;
+}
+.about-link .link-text,
+.about-arrowIcon{
+  color: var(--text-color);
+  text-transform: uppercase;
+}
+.about-arrowIcon{
+  transition: var(--tran-0-3);
+}
+.about-link:hover .about-arrowIcon{
+  margin-left: 4px;
+}
+
+.menu{
+  background-color: var(--section-bg);
+}
+.section-title,
+.section-description{
+  color: var(--white-color);
+}
+
+.menu-img{
+  height: 80px;
+  width: 80px;
+  margin-right: 1.5rem;
+}
+.menu-items{
+  display: grid;
+  row-gap: 1.5rem;
+}
+
+.menu-item{
+  position: relative;
+  padding: 2rem 2.5rem;
+  background-color: var(--white-color);
+}
+.menuItem-details{
+  margin-right: 1.5rem;
+}
+.menuItem-topic{
+  font-weight: var(--font-semi-bold);
+}
+.menuItem-des{
+  font-size: var(--small-font);
+}
+.menuItem-price{
+  flex-direction: column;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(0, 0, 0, 0.3);
+}
+.discount-price{
+  font-size: 1.8rem;
+}
+.real-price{
+  text-decoration: line-through;
+}
+.time-topic{
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: var(--font-regular);
+  padding: 1.5rem 0;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+}
+.time-list{
+  padding: 1.5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  justify-content: space-between;
+  background-color: var(--white-color);
+}
+.time-list:nth-child(7){
+  border-bottom: none;
+}
+
+.brand-images{
+  display: grid;
+  align-items: center;
+  column-gap: 2rem;
+  justify-content: space-between;
+  justify-items: center;
+  margin-top: 3rem;
+  grid-template-columns: repeat(6,1fr);
+}
+.brand-img{
+  width: 150px;
+  object-fit: contain;
+  opacity: 0.4;
+  transition: var(--tran-0-5);
+}
+.brand-img:hover{
+  opacity: 1;
+}
+.review{
+  background-color: #f2f2f2;
+}
+.review .section-title,
+.review .section-description{
+  color: var(--text-color);
+}
+.testi-content{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  row-gap: 2rem;
+  flex-direction: column;
+}
+.review-img{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+}
+.review-quote{
+  padding: 0 15rem;
+  text-align: center;
+}
+.quote-icon{
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+.testi-personDetails{
+  flex-direction: column;
+}
+.testi-personDetails .name{
+  font-size: 1.8rem;
+  font-weight: var(--font-medium);
+}
+
+.review .swiper-navBtn{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.review .swiper-button-next{
+  right: 2rem;
+  transform: translateY(2rem);
+}
+.review .swiper-button-prev{
+  left: 2rem;
+  transform: translateY(2rem);
+}
+.review .swiper-navBtn:hover{
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.newsletter .logo-icon,
+.newsletter .logo-text,
+.newsletter .section-description{
+  color: var(--text-color);
+}
+.newletter-container{
+  display: grid;
+  justify-items: center;
+  row-gap: 4rem;
+}
+.newsletter .logo-icon{
+  font-size: 3rem;
+  color: var(--text-color-light);
+}
+.newsletter .logo-text{
+  color: var(--text-color-light);
+  font-size: 2rem;
+  font-weight: var(--font-medium);
+}
+.newsletter-inputBox{
+  position: relative;
+  height: 5rem;
+  max-width: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+.newletter-input{
+  height: 100%;
+  width: 100%;
+  border-radius: 3rem;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  padding: 0 16rem 0 2rem;
+}
+.newsletter-button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 3rem 3rem 0;
+}
+.newsletter .media-icons{
+  display: flex;
+}
+.scrollUp-btn{
+  position: fixed;
+  bottom: -30%;
+  right: 3rem;
+  height: 3rem;
+  width: 3rem;
+  font-size: 2rem;
+  border-radius: 4px;
+  color: var(--primary-color-hover);
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  background-color: var(--white-color);
+  z-index: var(--z-overlay);
+  justify-content: center;
+  transition: var(--tran-0-3);
+}
+.scrollUpBtn-active{
+  bottom: 3rem;
+}
+.scrollUp-icon{
+  opacity: 0.9;
+  transition: var(--tran-0-3);
+}
+.scrollUp-btn:hover .scrollUp-icon{
+  opacity: 1;
+}
+@media screen and (max-width: 1150px) {
+  .swiper-button-prev {
+    left: 10rem;
+}
+  .swiper-button-next {
+    right: 10rem;
+}
+}
+
+@media screen and (max-width: 1000px) {
+  .swiper-button-prev {
+    left: 3rem;
+}
+  .swiper-button-next {
+    right: 3rem;
+}
+  .section-description {
+    padding: 0 8rem;
+  }
+  .about-imageContent {
+    height: 400px;
+  }
+  .aboutImg-textBox {
+    padding: 1.5rem 2rem;
+  }
+  .menu .menu-content {
+    grid-template-columns: 1.5fr 1fr;
+    column-gap: 3rem;
+  }
+  .brand-images{
+    grid-template-columns: repeat(3,1fr);
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .section.review{
+    padding: 7rem 1rem 3rem;
+  }
+  .review .swiper{
+    padding-bottom: 6.5rem;
+  }
+  .swiper-navBtn{
+    visibility: hidden;
+  }
+  .swiper-pagination-bullet{
+    visibility: visible;
+  }
+
+  .section {
+    padding: 7rem 1rem;
+}
+.section-description,
+.review-quote{
+  padding: 0 6rem;
+}
+.about-content{
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+  justify-items: center;
+}
+.about .content-subtitle,
+.about .content-title,
+.about .content-description{
+  text-align: center;
+}
+.about-details {
+  justify-items: center;
+}
+.about-lists{
+  justify-content: center;
+}
+.menu .menu-content {
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+}
+
+}
+
+@media screen and (max-width: 600px){
+  .container{
+    padding: 0.5rem;
+  }
+  .section-description, .review-quote{
+    padding: 0;
+  }
+  .aboutImg-textBox{
+    right: -2rem
+  }
+  .menuItem-price{
+    border: none;
+  }
+  .menu-img{
+    height: 70px;
+    width: 70px;
+    margin-right: 0;
+}
+  .brand-images{
+    grid-template-columns: repeat(2,1fr);
+  }
+  .brand-img{
+    width: 130px;
+  }
+  
+}
+@media screen and (max-width: 400px) {
+  .homeTitle{
+    font-size:3rem;
+  }
+  .menu-item{
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    row-gap: 2rem;
+  }
+  .menuItem-details{
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .menuItem-price{
+    padding-left: 0;
+    flex-direction: row;
+  }
+  .menuItem-des{
+    text-align: center;
+}
+  .newsletter-input {
+    padding: 0 11rem 0 2rem;
+
+}
+  .newsletter-button {
+    padding: 1.4rem 2rem;
+
+}
+}
+.firstT{
+  color:white;
+  align-items: center;
+  justify-self: center;
+}
+.firstT tbody td{
+  padding: 2rem;
+  border: 2px solid var(--white-color);
+}
+.firstT tbody td:first-child{
+  background:black;
+}
+.odd{
+  background-color: var(--section-bg);
+}
+.odd span{
+  color:var(--primary-color);
+  font-size:var(--h2-font);
+}
+.odd .s-cont{
+  font-size: 2rem;
+  line-height: 1.5;
+  color:var(--s-cont-text);
+}
+
+.even span{
+  color:var(--primary-color);
+  font-size:var(--h2-font);
+}
+.even .s-cont{
+  font-size: 2.5rem;
+  line-height: 1.5;
+  color:var(--text-color);
+}
+.PAD{
+  padding: 7rem 10rem;
+}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+    </script>
+<script type=text/javascript>
+  $(function(){
+    $("#footerM").load("http://localhost/new/footer.html");
+  });
+</script>
+</head>
+<body>
+<!-- Header -->
+    <header class="header">
+            <nav class="nav container flex">
+                    <a class="logo-content flex">
+                        <img onclick="backHome()" src="http://localhost/new/image/download1.png">
+                    </a>
+
+                    <div class="menu-content">
+                            <ul class="menu-list flex">
+                                    <li><a href="#home" class="nav-link active-navlink">home</a></li>
+                                    <li><a href="#about" class="nav-link">intro</a></li>
+                                    <li><a href="#menu" class="nav-link">fertilizer</a></li>
+                                    <li><a href="#review" class="nav-link">footer</a></li>
+                            </ul>
+                    </div>
+                </nav>
+        
+    </header>
+
+<!-- Home Section -->
+    <main>
+        <section class="home" id="home">
+                <div class="home-content">
+                        <div class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg1.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">In the heartland, corn is king.</h4>
+                                                                <h2 class="homeTitle">The sweet aroma of freshly harvested corn on a fall day is unmatched.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg2.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Corn, the crop that feeds the world</h4>
+                                                                <h2 class="homeTitle">"The hard work of corn farming <br>is rewarded by the bounty it provides.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg3.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Corn is not just a crop, it's a cultural icon.</h4>
+                                                                <h2 class="homeTitle">Growing corn is a labor of love, with rewards that go beyond the harvest.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg4.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Corn, a symbol of abundance.</h4>
+                                                                <h2 class="homeTitle">Corn farming is a way of life, <br>passed down from generation to generation.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg5.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Corn, a miracle of nature</h4>
+                                                                <h2 class="homeTitle">Corn: a humble crop with an enormous <br>impact on our daily lives.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="swiper-button-next swiper-navBtn"></div>
+                                <div class="swiper-button-prev swiper-navBtn"></div>
+                                <div class="swiper-pagination"></div>
+                        </div>
+                </div>
+        </section>
+
+    
+<!-- About Section -->
+        <section class="section about" id="about">
+                <div class="about-content container">
+                        <div class="about-imageContent">
+                                <img src="images/aboutImg.jpg" alt="" class="about-img">
+
+                                <div class="aboutImg-textBox">
+                                        <i class='bx bx-heart heart-icon flex'></i>
+                                        <p class="content-description">Golden fields of corn, a sight to behold.</p>
+                                </div>
+                        </div>
+
+                        <div class="about-details">
+                                <div class="about-text">
+                                        <h4 class="content-subtitle"><i>Introduction to Maize Forming(corn):-</i></h4>
+                                        <h2 class="content-title"><p align="justify">Maize is popularly known as “corn” is one of the most versatile emerging cash crops having wider adaptability under varied climatic conditions. It is called the queen of cereals globally. In India, maize or corn is the third most important food cash crops after wheat & rice. The maize is grown throughout the year in all states of the country for various purposes including fodder for animals, food grain, sweet corn, baby corn, green cobs, and popcorn. Corn flour is consumed widely in Indian cooking.</p></h2>
+                                        <p class="content-description">Maize or corn serves as a basic raw material to thousands of industrial products that may include oil, starch, alcoholic beverages, alcoholic beverages, pharmaceutical, food sweeteners, food cereals, cosmetic, and film, gum, textile, package, and paper industries.</p>
+
+                                        <ul class="about-lists flex">
+                                                <li class="about-list">Maize or Corn</li>
+                                                <li class="about-list dot">.</li>
+                                                <li class="about-list">form</li>
+                                                <li class="about-list dot">.</li>
+                                                <li class="about-list">data</li>
+                                        </ul>
+                                </div>
+                        </div>
+
+                </div>
+        </section>
+
+  <section class="section odd PAD">
+          <div class="s-cont">
+            <p align="justify">
+              <span>
+                <strong>Health Benefits of Maize or Corn:- </strong>
+              </span><br>
+              &emsp;Below given are some of the health benefits of maize/corn.
+            </p>
+            <ul>
+              <li>Corn is good for digestion due to its fiber content.</li>
+              <li>Corn helps in lowering LDL (bad) Cholesterol.</li>
+              <li>Corn may prevent diabetes &amp; hypertension.</li>
+              <li>Corn has anti-cancer properties.</li>
+              <li>Corn helps in improving vision.</li>
+              <li>Corn is beneficial for the heart.</li>
+              <li>Corn helps in preventing Alzheimer’s disease.</li>
+              <li>Corn helps in preventing skin Problems.</li>
+              <li>Corn may combat with Hair loss.</li>
+              </ul>
+          </div>
+  </section>
+  <section class="section even PAD" >
+    <div class="s-cont">
+      <p align="justify">
+        <span>
+        <strong>Climatic requirements for Maize Farming:- </strong>
+      </span><br>
+      &emsp;&emsp;In India, Maize is primarily a rainfed Kharif crop which is sown just before monsoon starts. This crop usually grows well under temperatures varying from 22°C to 30°C, although it can tolerate temperatures as high as 35°C. This crop is affected by frost, so it is grown where at least 5 frost-free months available in a year. It requires at least 50 to 90 cm of rainfall. It is not recommended to cultivate this crop in the areas where rainfall is more than 100 mm.</p>
+  </div>
+</section>
+
+<section class="section odd PAD">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+      <strong>Soil Requirements for Maize Farming:- </strong>
+    </span><br>
+    &emsp;&emsp;Maize or Corn can be cultivated successfully in a variety of soils ranging from clay loam to sand loamy to black cotton soil. For a better yield of maize, one should consider soils with good organic matter content having high water holding capacity. Well-drained soils with a pH of 5.5 to 7.0 are preferred for maize farming. A soil test is recommended to find out the deficiency of any nutrient values in the soil, any deficiency can be covered by adding good organic matter or compost at the time of land preparation.</p><br>
+  </div>
+</section>
+
+<section class="section even PAD" >
+  <div class="s-cont">
+    <p><span>
+      <strong>
+        Sowing Season for Maize crop:-
+      </strong>
+    </span> <br>
+    &emsp;&emsp;Maize crop is usually cultivated in India, from June to July, Sept to Oct and Jan to Feb seasons. For seed production, sowing during Nov to Dec is suitable since seed maturity will not coincide with the rainy season.</p>
+    
+  </div>
+</section>
+
+<section class="section odd PAD">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Land Selection and Field Preparation in Maize Farming:-</strong>
+      </span><br>
+      &emsp;&emsp;The selected field should be free of volunteer maize plants.</p>
+      <br><br>&emsp;&emsp;What are volunteer plants?: volunteer plants are basically unwanted plants that are grown from previous maize crop. These maize plants may be a different variety, so there is a chance that genetic contamination may occur.
+      <br><br>&emsp;&emsp;Plowing should be done to get fine tilth, it may take 6 or 7 plows. At least 13 to 14 tons of Farm Yard Manure per hectare (F.M.Y) should be spread across the field or composted coir pith and apply 10 Azospirillum packets in the field. Prepare furrows and ridges with 45 cm to 50 cm spacing to save the irrigated water.
+    </div>
+</section>
+
+<section class="section even PAD" >
+  <div class="s-cont">
+    <p align="justify">
+      <strong>
+      <span>Seed rate and seed treatment in Maize Farming:-</span> 
+    </strong><br>
+    &emsp;&emsp;10 to 11 kg of maize seed is required for sowing one-hectare field. To control any seed borne pathogens of downy mildew (fungal disease), should treat the seed with thiram or carbendazim @ 2 grams per kg seeds. One day after seed treatment should treat the seeds with 600 grams of Azospirillum with rice gruel and shade dry for 15 to 20 minutes. Azosprillum help in fixing the atmospheric nitrogen in the soil.
+    </p>
+  </div>
+</section>
+
+<section class="section odd PAD">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Sowing method in Maize Farming:- </strong>
+      </span>
+      <br> &emsp;&emsp;In Maize, farming propagation is done by seeds. One should adopt a plant-to-plant spacing of 10 cm and sow 2 seeds per hill. Should sow the seeds @ 1/3 rd of the ridge from the bottom.
+    </p>
+  </div>
+</section>
+
+<section class="section even PAD" >
+  <div class="s-cont">
+    <p align="justify">
+      <strong>
+        <span>Irrigation in Maize Farming:-</span> 
+      </strong>
+      <br> &emsp;&emsp;As soon as sowing is done, immediate irrigation is required in the field. Subsequently, give life irrigation on the third or fourth day and based on the soil type and season. (It may not be required in rainy season). Usually for maize crop, up to 25 to 30 days, less number of irrigation is recommended, afterward, it is required to irrigate once in a week. During the early stage of this crop, water stagnation should be avoided and should have good drainage.</p>
+      </div>
+</section>
+
+<section class="section odd PAD">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Diseases and Insects in Maize Farming:-</strong>
+      </span> 
+      <br> &emsp;&emsp;Main diseases in maize farming are downy mildew and leaf spot.
+      <br><br><span>Downy mildew:</span> To control this, remove the affected plants. Spray Metalaxyl 72 WP @ 1 kg per hectare, or Mancozeb 1 kg per hectare, 20 days after sowing.
+      <br><br><span>Leaf spot:</span> To control this, spray Captain or Mancozeb kg per hectare when the disease intensity is high.
+      <br><br>&emsp;&emsp;Usually, insect attack is very low in maize crop. In young plants, only shoot fly effects and stem borer affects the shoot after 20 to 30 days after sowing, to control this, apply carbofuran granules @ 8 kg/acre @ 2 granules per each plant.
+      
+    </div>
+</section>
+
+<section class="section even PAD" >
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Harvesting of Maize or Corn:- </strong>
+      </span>
+      <br> &emsp;&emsp;Harvesting should be done when the crop outer cover of the cob turns from green to white color. Harvesting can be done by hand. Machines are available to separate the seeds.</p>
+        </div>
+</section>
+
+
+        <section class="section menu odd" id="menu">
+            <center><div class="menu-container container">
+                    <div class="meu-text">
+                            <h4 class="section-subtitle"><i>Fertilizers and Manures</i></h4>
+                            <h2 class="section-title">Fertilizers and Manures in Maize:-</h2>
+                            <p class="section-description">
+                              Timely application of fertilizers and manures ensure the high yields of Maize or Corn. Here is the manures and fertilizer requirement in Maize growing.
+                            </p>
+                    </div><div class="s-cont">
+<p align="justify">
+                    <br><br><span><strong>I. IRRIGATED MAIZE</strong></span>
+
+<br><br><span>APPLICATION OF FYM OR COMPOST:</span>
+
+<br><br>&emsp;&emsp;Spread 12.5 t/ha of FYM or compost or composted coir pith evenly on the unploughed field along with 10 packets of Azospirillum + Phosphobacteria 2 kg each/ha or Azophos at 4 kg/ha and incorporate in the soil.
+
+<br><br><span>APPLICATION OF FERTILIZERS</span>
+
+<br><br>&emsp;&emsp;Apply NPK fertilizers as per soil test recommendation as far as possible. If soil test recommendation is not available adopt a blanket recommendation of 135:62.5:50 NPK kg/ha, ZnSO4 at 37.5 kg/ha.<br>
+&emsp;Apply quarter of the dose of N; full dose of P2O and K2O basally before sowing.<br>
+&emsp;In the case of ridge planted crop, open a furrow 6 cm deep on the side of the ridge, at two thirds the distance from the top of the ridge.<br>
+&emsp;Apply the fertilizer mixture along the furrows evenly and cover to a depth of 4 cm with soil.<br>
+&emsp;If bed system of planting is followed, open furrows 6 cm deep at a distance of 60 cm apart.<br>
+&emsp;Place the fertilizer mixture along the furrows evenly and cover to a depth of 4 cm with soil.<br>
+&emsp;When Azospirillum is used as seed and soil application, apply 100 kg of N/ha (25% reduction on the total N recommended by soil test).
+<br><br><span>APPLICATION OF MICRONUTRIENT</span>
+
+<br><br>&emsp;&emsp;12.5 kg of micronutrient mixture formulated by the Department of Agriculture, Tamil Nadu, mixed with sand to make a total quantity of 50 kg/ha is to be applied.<br>
+&emsp;Apply TNAU MN mixture @ 30 kg /ha as Enriched FYM (Prepare enriched FYM at 1:10 ratio of MN mixture & FYM ; mix at friable moisture &incubate for one month in shade).<br>
+&emsp;(or) 5 kg Zn + 40 kg S + 1.5 kg B in deficient soils.<br>
+&emsp;Zinc sulphate @ 37.5 kg/ha is recommended for hybrid maize in Zn deficient soils<br>
+&emsp;Apply the mixture over the furrows and two thirds in the top of ridges, if ridge planting is followed.<br>
+&emsp;If bed system of sowing is followed, apply the micronutrient mixture over the furrows.<br>
+&emsp;Do not incorporate the micronutrient mixture in the soil.<br>
+<br><br><span>SEED TREATMENT</span>
+<br><br>&emsp;&emsp;Step 2: Seed treatment with Metalaxyl or Thiram @ 2 g/kg of seed for the control of downy mildew and crazy top
+
+<br><br>&emsp;&emsp;Step 3: Seeds treated with fungicides may be treated with three packets (600 g/ha) of Azospirillum before sowing.
+
+
+<br><br><span><strong>II.  RAINFED MAIZE</strong></span>
+
+<br><br><span>APPLICATION OF FYM OR COMPOST</span>
+
+<br><br>&emsp;&emsp;Spread 12.5 t/ha of FYM or compost or composted coir pith evenly on the unploughed field along with 10 packets of Azospirillum (2000 g/ha) + 10 packets of Phosphobacteria (2000 g/ha) or Azophos at 4 kg/ha and incorporate in the soil.
+
+<br><br><span>APPLICATION OF FERTILIZER</span>
+
+<br><br>&emsp;&emsp;Apply NPK as per soil test recommendation as far as possible. If soil test recommendation is not available, adopt a blanket recommendation of 60 : 30 : 30 NPK kg/ha for Alfisols and 40 : 20 : 0 NPK kg/ha for Vertisols.<br>
+Apply half of N and full dose of P2O and K2O with enriched FYM as basal<br>
+Top dress remaining half of N at tasseling.<br>
+Apply TNAU MN mixture @ 7.5 kg /ha as Enriched FYM (Prepare enriched FYM at 1:10 ratio of MN mixture & FYM ; mix at friable moisture &incubate for one month in shade).<br>  
+<br><br><span>PRE-TREATMENT OF SEEDS WITH BIOFERTILIZER</span>
+<br><br>&emsp;&emsp;Seeds treated with fungicides may be treated with three packets (600 g/ha) of Azospirillum + Phosphobacteia (600 g/ha) or Azosphos (600g/ha).
+
+<br><br><span>Hybrid Maize</span>
+
+<br><br><span>Fertilizer Requirement</span>
+
+<br><br>Apply 150: 75: 75 kg N, P2O5 and K2O/ha
+<br>Other nutrient management practice are same as in the case of Maize varieties.
+</p>
+</div>
+            </div></center>
+        </section>
+
+    
+
+        <section class="section brand" id="review">
+            <div class="brand-container container">
+                    <h4 class="section-subtitle"><i>CORN PRODUCTION</i></h4>
+
+                    <div class="brand-images">
+                            <div class="brand-image">
+                                    <img src="images/brandImg1.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg2.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg3.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg4.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg5.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg6.png" alt="" class="brand-img">
+                            </div>
+                    </div>
+            </div>
+        </section>
+
+      <div id="footerM"></div>
+        <a href="#home" class="scrollUp-btn flex">
+                <i class='bx bx-up-arrow-alt scrollUp-icon'></i>
+        </a>
+
+</main>
+ <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+ <script src="https://unpkg.com/scrollreveal"></script>
+
+<script type="text/javascript">
+        var swiper = new Swiper(".mySwiper", {
+          slidesPerView: 1,
+          loop: true,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+
+
+        const body = document.querySelector('body'),
+              navMenu = body.querySelector('.menu-content'),
+              navOpenBtn = body.querySelector('.navOpen-btn'),
+              navCloseBtn = navMenu.querySelector('.navClose-btn');
+
+        if(navMenu && navOpenBtn){
+          navOpenBtn.addEventListener("click", () =>{
+            navMenu.classList.add("open");
+            body.style.overflowY = "hidden";
+          })
+        }
+
+        if(navMenu && navCloseBtn){
+          navCloseBtn.addEventListener("click", () =>{
+            navMenu.classList.remove("open");
+            body.style.overflowY = "scroll";
+          })
+        }
+
+
+        window.addEventListener("scroll", () => {
+          const scrollY = window.pageYOffset;
+
+          if(scrollY > 5){
+            document.querySelector("header").classList.add("header-active");
+          }else{
+            document.querySelector("header").classList.remove("header-active");
+          }
+
+
+          const scrollUpBtn = document.querySelector('.scrollUp-btn');
+
+          if(scrollY > 250){
+            scrollUpBtn.classList.add("scrollUpBtn-active");
+          }else{
+            scrollUpBtn.classList.remove("scrollUpBtn-active");
+          }
+          
+          const sections = document.querySelectorAll('section[id]');
+          sections.forEach(section =>{
+            const sectionHeight = section.offsetHeight,
+                  sectionTop = section.offsetTop - 100;
+
+                  let navId = document.querySelector(`.menu-content a[href='#${section.id}']`);
+                  if(scrollY > sectionTop && scrollY <=  sectionTop + sectionHeight){
+                    navId.classList.add("active-navlink");           
+                  }else{
+                    navId.classList.remove("active-navlink");     
+                  }
+                  
+                  navId.addEventListener("click", () => {
+                    navMenu.classList.remove("open");
+                    body.style.overflowY = "scroll";
+                  })
+          })
+        });  
+
+          ScrollReveal({
+            origin: 'top',
+            distance: '60px',
+            duration: 2000,
+            delay: 400,
+          });
+          
+          ScrollReveal().reveal(`.section-title, .section-subtitle, .section-description, .brand-image, .tesitmonial, .newsletter 
+          .logo-content, .newsletter-inputBox, .newsletter-mediaIcon`, {interval:100,})
+          
+          ScrollReveal().reveal(`.about-imageContent, .menu-items,.s-cont span,.s-cont li`, {origin: 'left'})
+          ScrollReveal().reveal(`.about-details, .time-table,.brand-image`, {origin: 'right'})
+          ScrollReveal().reveal(`.s-cont p`,{origin:'top'})
+
+              function backHome(){
+              window.history.go(-1)
+            }
+            function move_Cont(){
+        window.scrollTo({top:1270,behavior:"smooth"});
+    }
+</script>
+</body>
+</html>

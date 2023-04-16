@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+    margin: 0px;
+    padding: 0px;
+}
+ html{
+    height:100%;
+    width:100%;
+    background-image:url("image/Main.jpg");
+    background-size: cover;
+} 
+body{
+    height: auto;
+    width:auto; 
+    font-family:  Montserrat,sans-serif;
+}
+::-webkit-scrollbar{
+  width: 8px;
+}
+::-webkit-scrollbar-track{
+  background-color: #4d4d4d;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 1rem;
+  background-color: black;
+}
+::-webkit-scrollbar-thumb:hover{
+  border-radius: 1rem;
+  background-color: rgb(162, 253, 223)
+}
+.ch h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size:70px;
+    color: rgb(207, 207, 207);
+}
+.ch{
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.ch div{
+    padding-top: 10%;
+    position: absolute;
+}
+section{
+    width: auto;
+    height: fit-content;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    color: aliceblue;
+}
+section span{
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+section p{
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.3;
+}
+section img{
+    width: 100%;
+    height: max-content;
+    margin: 10px;
+    border-radius: 10%;
+}
+
+section .left{
+    width: 100%;
+    padding: 10px 15px;
+}
+.b1{
+    background-color: rgb(0, 0, 0);
+}
+.b2{
+    background-color: rgb(32, 32, 32);
+}
+nav{
+    height:60px;
+    width: 100%;
+    position: fixed;
+    -webkit-backdrop-filter:blur(10px);
+        backdrop-filter:blur(10px);
+        background-color: rgba(20, 20, 20, 0.644);
+        box-shadow: 0px 0px 6px 4px black;
+}
+nav img{
+    width: 20%;
+    padding: 4px;
+}
+    </style>
+     <script src="https://code.jquery.com/jquery-3.3.1.js"
+     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+     crossorigin="anonymous">
+     </script>
+ <script type=text/javascript>
+   $(function(){
+     $("#footerM").load("http://localhost/new/footer.html");
+   });
+ </script>
+</head>
+<body>
+    <nav>
+        <img onclick="backHome()" src="http://localhost/new/image/download1.png">
+    </nav>
+    <center><div class="ch">
+        <div>    
+    <h1 id="headMe">
+        <span style="color: rgb(113, 187, 247);";>Drone </span>
+        Technology In Agriculture
+    </h1><br>
+    <h2 style="text-shadow: none;
+    color: rgb(215 215 215);">Agriculture drones are revolutionizing the way we cultivate and harvest crops. They provide real-time data that allows farmers to make more informed decisions and increase crop yields.
+    </h2>
+    </div>
+    </div></center>
+    
+
+   <section class="b1">
+    <div class="left">
+        <center><strong><span>Monitoring Field Conditions</span></strong></center><br><br>
+        <p align="justify">
+            &emsp;&emsp;Drone field monitoring is also being used to monitor the health of soil and field conditions. Drones can provide accurate field mapping including elevation information that allow growers to find any irregularities in the field. Having information on field elevation is useful in determining drainage patterns and wet/dry spots which allow for more efficient watering techniques. Some agricultural drone retailers and service providers also offer nitrogen level monitoring in soil using enhanced sensors. This allows for precise application of fertilizers, eliminating poor growing spots and improving soil health for years to come.
+        </p>
+    </div>
+        <img src="image/droneImg1.jpg" draggable="false"/>
+   </section>
+   <section class="b2">
+        <img  src="image/droneImg2.gif" draggable="false"/>
+    <div class="left">
+        <center><strong><span>Planting & Seeding</span></strong></center><br><br>
+        <p align="justify">
+            &emsp;&emsp;One of the newer and less wide spread uses of drones in agriculture is for planting seeds. Automated drone seeders are mostly being used in forestry industries right now, but the potential for more widespread use is on the horizon. Planting with drones means very hard to reach areas can be replanted without endangering workers. They are also able to plant much more efficiently with a team of two operators and ten drones capable of planting 400,000 trees a day.
+        </p>
+    </div>
+    
+   </section>
+   <section class="b1">
+    <div class="left">
+        <center><strong><span>Spray Application</span></strong></center><br><br>
+        <p align="justify">
+            &emsp;&emsp;Drone use to apply spray treatments is already widespread in south-east Asia, with South Korea using drones for approximately 30% of their agriculture spraying. Drone sprayers are able to navigate very hard to reach areas, such as steep tea fields at high elevations. Drone sprayers save workers from having to navigate fields with backpack sprayers, which can be hazardous to their health. Drones sprayers delivery very fine spray applications that can be targeted to specific areas to maximize efficiency and save on chemical costs. Currently drone sprayer regulations vary widely between countries. In Canada, they are not currently legal as more testing needs to be done to understand the impact of spray drift. Some regulation proposals recommend that only trained professionals be tasked with flying spray drones as is the case with Yamaha, who does not sell the spray drones they manufacture, but leases spray drone services complete with licenced operators.
+        </p>
+    </div>
+        <img  src="image/droneImg3.jpg" draggable="false"/>
+   </section>
+   <section class="b2">
+        <img  src="image/droneImg4.jpg" draggable="false"/>
+    <div class="left">
+        <center><strong><span>Security</span></strong></center><br><br>
+        <p align="justify">
+            &emsp;&emsp;Drone security is a fast growing industry apart from agriculture but is also extremely useful to farm management. Using drones to monitor the far reaches of a farm without having to get there saves valuable time and allows for more frequent monitoring of hard to reach areas. Drone cameras can provide an overview of farm operations throughout the day to ensure operations are running smoothly and to locate equipment being used. Security drones can be deployed to monitor fencing and perimeters of more valuable crops like cannabis instead of employing more security personnel. Drone cameras are also being used in exciting ways to protect farm animals by locating missing or injured herd animals in far off grazing areas. Monitoring remote areas, which used to take hours of walking can now be completed in a few minutes.
+        </p>
+    </div>
+    
+   </section>
+   <section class="b1">
+    <div class="left">
+        <center><strong><span>Drone Pollination</span></strong></center><br><br>
+        <p align="justify">
+            &emsp;&emsp;Some of the newer uses for drone use in agriculture are still in testing and development. One of the most publicized (and often fictionalized) uses is pollinating drone technology. Researchers in the Netherlands and Japan are developing small drones that are capable of pollinating plants without damaging them. The next step is to create autonomous pollinating drones that will work and monitor crop health without constant instruction from operators.
+        </p>
+    </div>
+        <img  src="image/droneImg5.jpg" draggable="false"/>
+   </section>
+   <section class="b2">
+        <img  src="image/droneImg6.jpg" draggable="false"/>
+    <div class="left">
+        <center><strong><span>Drone AI</span></strong></center><br><br>
+        <p align="justify">
+            &emsp;&emsp;Another drone technology in development also involves machine learning. Improving Artificial Intelligence (AI) in drones is important to be able to make them more useful to smaller farmers in developing nations. Current drone technologies are more effective in monitoring well known crops like corn which are planted in large monocultural field patterns. Drone monitoring programs, as they stand, have a hard time recognizing areas with increased crop diversity, less well known produce, and grains which look similar throughout their growth stages and so are less effective in monitoring crop growth and health. More work is needed to be able to train AI systems to recognize less common crops and more diverse planting patterns.
+        </p>
+    </div>
+    
+   </section>
+   <section class="b1">
+    <div class="left">
+        <center><strong><span>Drone Irrigation</span></strong></center><br><br>
+        <p align="justify">
+            &emsp;&emsp;New research out of Australia is also creating exciting opportunities for drone use in agriculture. As climate change increasingly affects drought conditions, creating more efficient irrigation solutions is vital. Using microwave sensing, drones are able to capture very accurate soil health information including moisture levels without the plants getting in the way. This means water can be distributed in a field in the most efficient way in an effort to conserve resources.
+        </p>
+    </div>
+        <img  src="image/droneImg7.jpg" draggable="false"/>
+   </section>
+   <section class="b2">
+    <div class="left">
+        <center><strong><span>Conclusion</span></strong></center><br><br>
+        <p align="justify">
+            &emsp;&emsp;Drones have already vastly altered the agricultural industry and will continue to grow in the coming years. While drone use is becoming more useful to small farmers,there is still a ways to go before they become part of every farmer’s equipment roster, particularly in developing nations. Regulations around drone use need to be made and revised in many countries and more research needs to be done on their effectiveness at certain tasks, such as pesticide application and spraying. There are many ways drones can be useful to farmers but it is important to understand their limitations and functions before investing in expensive equipment. Drone Deploy, an agricultural drone supplier and programming company, suggest starting small and incorporating drone data into your organization slowly for the best results.
+        </p>
+    </div>
+   </section>
+   <div id="footerM"></div>
+<script>
+    function backHome(){
+        window.history.go(-1)
+    }
+</script>
+</body>
+</html>

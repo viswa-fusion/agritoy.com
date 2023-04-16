@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Website</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+:root{
+
+--body-font: 'Poppins', sans-serif;
+
+--big-font: 4rem;
+--h1-font: 3.6rem;
+--h2-font: 2.4rem;
+--h3-font: 2rem;
+--h4-font: 1.8rem;
+--normal-font: 1.6rem;
+--small-font: 1.4rem;
+--smaller-font: 1.3rem;
+
+--font-regular: 400;
+--font-medium: 500;
+--font-semi-bold: 600;
+
+--primary-color: #C87E4F;
+--primary-color-hover: #C2703D;
+--text-color: #333;
+--text-color-light: #888682;
+--border-color: #484848;
+--white-color: #FFF;
+--section-bg: #2C3034;
+--s-cont-text:rgb(224, 224, 224);
+
+--z-overlay: 10;
+--z-fixed: 100;
+
+--tran-0-2: 0.2s;
+--tran-0-3: 0.3s;
+--tran-0-5: 0.5s;
+}
+@media screen and (max-width: 990px) {
+:root {
+  --big-font: 3.5rem;
+  --h1-font: 2.4rem;
+  --h2-font: 2rem;
+  --h3-font: 1.8rem;
+  --h4-font: 1.6rem;
+  --normal-font: 1.5rem;
+  --small-font: 1.3rem;
+  --smaller-font: 1.2rem;
+}
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  overflow-x: hidden;
+  background-color: var(--white-color);
+}
+
+::selection{
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+::-webkit-scrollbar{
+  width: 8px;
+}
+::-webkit-scrollbar-track{
+  background-color: #f9f1ec;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 1rem;
+  background-color: var(--primary-color);
+}
+::-webkit-scrollbar-thumb:hover{
+  border-radius: 1rem;
+  background-color: var(--primary-color-hover)
+}
+
+body,
+button,
+input{
+  font-family: var(--body-font);
+  font-size: var(--normal-font);
+  font-weight: var(--font-regular);
+  color: var(--text-color);
+}
+
+input{
+  outline: none;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section{
+  padding: 7rem 2rem;
+}
+.container{
+  max-width: 1030px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+.flex{
+  display: flex;
+  align-items: center;
+  column-gap: 0.6rem;
+}
+.logo-content img {
+  width: 20rem;
+  border-radius: 20px;
+  margin-left: -17rem;
+}
+.button{
+  border: none;
+  outline: none;
+  color: var(--white-color);
+  padding: 1.4rem 4rem;
+  border-radius: 3rem;
+  background-color: var(--primary-color);
+  transition: var(--tran-0-3);
+  cursor: pointer;
+}
+.button:hover{
+  background-color: var(--primary-color-hover);
+}
+h2.content-title {
+    font-size: 1.5rem;
+}
+.section-subtitle,
+.content-subtitle{
+  color: var(--primary-color);
+  font-size: var(--normal-font);
+  letter-spacing: 1px;
+  font-weight: var(--font-medium);
+  text-align: center;
+}
+.section-title,
+.content-title{
+  text-align: center;
+  font-size: var(--h2-font);
+  font-weight: var(--font-medium);
+  margin: 1rem 0;
+}
+.section-description,
+.content-description{
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.section-description{
+  padding: 0 16rem;
+}
+/* Header */
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 7rem;
+  width: 100%;
+  z-index: var(--z-fixed);
+  transition: var(--tran-0-5);
+}
+.header-active{
+  height: 6rem;
+  background-color: var(--white-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav{
+  position: relative;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-icon,
+.logo-text,
+.nav-link,
+.phone-icon,
+.phone-number{
+  color: var(--white-color);
+}
+
+.header-active .logo-icon,
+.header-active .logo-text,
+.header-active .nav-link,
+.header-active .phone-icon,
+.header-active .phone-number{
+  color: var(--text-color);
+}
+
+.logo-icon,
+.phone-icon{
+  font-size: 2rem;
+}
+.menu-list{
+  column-gap: 2rem;
+}
+.nav-link{
+  position: relative;
+  text-transform: capitalize;
+}
+.nav-link::before{
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background-color: var(--white-color);
+  opacity: 0;
+}
+.active-navlink::before{
+  opacity: 1;
+}
+.header-active .active-navlink::before{
+  background-color: var(--text-color);
+}
+.media-icons{
+  column-gap: 1rem;
+}
+.media-icons a{
+  color: var(--text-color-light);
+}
+.navClose-btn,
+.navOpen-btn,
+.media-icons{
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-content{
+    display: none;
+  }
+  .navClose-btn,
+  .navOpen-btn,
+  .media-icons{
+  display: block;
+}
+  .nav .menu-content{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    max-width: 300px;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-fixed);
+    padding: 10rem 0 5rem;
+    background-color: var(--white-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--tran-0-5);
+  }
+  .nav .menu-content.open{
+    right: 0;
+  }
+  .menu-list{
+    flex-direction: column;
+    row-gap: 2.5rem;
+    font-size: var(--h4-font);
+  }
+  .nav-link{
+    color: var(--text-color);
+  }
+  .nav-link::before{
+    background-color: var(--text-color);
+  }
+  .navClose-btn{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+  .navOpen-btn{
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--white-color);
+  }
+  .header-active .navOpen-btn{
+    color: var(--text-color);
+  }
+}
+
+.home{
+  height: 100vh;
+  width: 100%;
+}
+.swiper-slide{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+.home .swiper-slide::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: var(--z-overlay);
+}
+.home-img{
+  height: 100%;
+  width: 100%;
+}
+
+.swiper-navBtn{
+  height: 5rem;
+  width: 5rem;
+  color: var(--white-color);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: var(--tran-0-2);
+  opacity: 0;
+  visibility: visible;
+}
+.home:hover .swiper-navBtn,
+.review:hover .swiper-navBtn{
+  opacity: 1;
+}
+.swiper-navBtn:hover{
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.swiper-navBtn::after,
+.swiper-navBtn::before{
+  font-size: 2rem;
+}
+
+.swiper-button-next{
+  right: 16rem;
+}
+.swiper-button-prev{
+  left: 16rem;
+}
+
+.swiper-pagination-bullet{
+  background-color: var(--white-color);
+  opacity: 1;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-bottom: 2rem;
+  visibility: hidden;
+}
+.swiper-pagination-bullet-active{
+  border: 3px solid var(--white-color);
+  background-color: var(--primary-color);
+}
+.home-details{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: var(--z-fixed);
+  transform: translate(-50%, -50%);
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  row-gap: 4rem;
+}
+
+.homeSubtitle{
+  text-align: center;
+  font-size: var(--normal-font);
+  color: var(--white-color);
+}
+.homeTitle{
+  text-align: center;
+  font-size: var(--big-font);
+  color: var(--white-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.about .content-subtitle,
+.about .content-title,
+.about .content-description{
+  text-align: left;
+}
+.about-content{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  column-gap: 7rem;
+  align-items: center;
+  padding: 0 5rem;
+}
+.about-imageContent{
+  position: relative;
+  max-width: 400px;
+  height: 450px;
+  border: 6px solid var(--section-bg);
+}
+.aboutImg-textBox{
+  position: absolute;
+  bottom: 2rem;
+  right: -5rem;
+  padding: 2rem;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  border: 6px solid var(--section-bg);
+  background-color: var(--white-color);
+}
+.aboutImg-textBox .content-description{
+  text-align: center;
+  margin-bottom: 0;
+}
+.heart-icon{
+  position: absolute;
+  left: -1.9rem;
+  top: 50%;
+  height: 3rem;
+  width: 3rem;
+  color: var(--white-color);
+  background-color: var(--section-bg);
+  transform: translateY(-50%);
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.about-details{
+  display: grid;
+  row-gap: 4rem;
+}
+.about-lists{
+  column-gap: 1rem;
+  align-items: baseline;
+}
+.about-list{
+  font-weight: var(--font-medium);
+  font-size: 1.8rem;
+}
+.about-list:nth-child(1){
+  color: var(--primary-color);
+}
+.about-list.dot{
+  font-size: 2.5rem;
+}
+.about-buttons{
+  column-gap: 2rem;
+}
+.about-link .link-text,
+.about-arrowIcon{
+  color: var(--text-color);
+  text-transform: uppercase;
+}
+.about-arrowIcon{
+  transition: var(--tran-0-3);
+}
+.about-link:hover .about-arrowIcon{
+  margin-left: 4px;
+}
+
+.menu{
+  background-color: var(--section-bg);
+}
+.section-title,
+.section-description{
+  color: var(--white-color);
+}
+
+.menu-img{
+  height: 80px;
+  width: 80px;
+  margin-right: 1.5rem;
+}
+.menu-items{
+  display: grid;
+  row-gap: 1.5rem;
+}
+
+.menu-item{
+  position: relative;
+  padding: 2rem 2.5rem;
+  background-color: var(--white-color);
+}
+.menuItem-details{
+  margin-right: 1.5rem;
+}
+.menuItem-topic{
+  font-weight: var(--font-semi-bold);
+}
+.menuItem-des{
+  font-size: var(--small-font);
+}
+.menuItem-price{
+  flex-direction: column;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(0, 0, 0, 0.3);
+}
+.discount-price{
+  font-size: 1.8rem;
+}
+.real-price{
+  text-decoration: line-through;
+}
+.time-topic{
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: var(--font-regular);
+  padding: 1.5rem 0;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+}
+.time-list{
+  padding: 1.5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  justify-content: space-between;
+  background-color: var(--white-color);
+}
+.time-list:nth-child(7){
+  border-bottom: none;
+}
+
+.brand-images{
+  display: grid;
+  align-items: center;
+  column-gap: 2rem;
+  justify-content: space-between;
+  justify-items: center;
+  margin-top: 3rem;
+  grid-template-columns: repeat(5,1fr);
+}
+.brand-img{
+  width: 150px;
+  object-fit: contain;
+  opacity: 0.4;
+  transition: var(--tran-0-5);
+}
+.brand-img:hover{
+  opacity: 1;
+}
+.review{
+  background-color: #f2f2f2;
+}
+.review .section-title,
+.review .section-description{
+  color: var(--text-color);
+}
+.testi-content{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  row-gap: 2rem;
+  flex-direction: column;
+}
+.review-img{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+}
+.review-quote{
+  padding: 0 15rem;
+  text-align: center;
+}
+.quote-icon{
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+.testi-personDetails{
+  flex-direction: column;
+}
+.testi-personDetails .name{
+  font-size: 1.8rem;
+  font-weight: var(--font-medium);
+}
+
+.review .swiper-navBtn{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.review .swiper-button-next{
+  right: 2rem;
+  transform: translateY(2rem);
+}
+.review .swiper-button-prev{
+  left: 2rem;
+  transform: translateY(2rem);
+}
+.review .swiper-navBtn:hover{
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.newsletter .logo-icon,
+.newsletter .logo-text,
+.newsletter .section-description{
+  color: var(--text-color);
+}
+.newletter-container{
+  display: grid;
+  justify-items: center;
+  row-gap: 4rem;
+}
+.newsletter .logo-icon{
+  font-size: 3rem;
+  color: var(--text-color-light);
+}
+.newsletter .logo-text{
+  color: var(--text-color-light);
+  font-size: 2rem;
+  font-weight: var(--font-medium);
+}
+.newsletter-inputBox{
+  position: relative;
+  height: 5rem;
+  max-width: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+.newletter-input{
+  height: 100%;
+  width: 100%;
+  border-radius: 3rem;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  padding: 0 16rem 0 2rem;
+}
+.newsletter-button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 3rem 3rem 0;
+}
+.newsletter .media-icons{
+  display: flex;
+}
+.scrollUp-btn{
+  position: fixed;
+  bottom: -30%;
+  right: 3rem;
+  height: 3rem;
+  width: 3rem;
+  font-size: 2rem;
+  border-radius: 4px;
+  color: var(--primary-color-hover);
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  background-color: var(--white-color);
+  z-index: var(--z-overlay);
+  justify-content: center;
+  transition: var(--tran-0-3);
+}
+.scrollUpBtn-active{
+  bottom: 3rem;
+}
+.scrollUp-icon{
+  opacity: 0.9;
+  transition: var(--tran-0-3);
+}
+.scrollUp-btn:hover .scrollUp-icon{
+  opacity: 1;
+}
+@media screen and (max-width: 1150px) {
+  .swiper-button-prev {
+    left: 10rem;
+}
+  .swiper-button-next {
+    right: 10rem;
+}
+}
+
+@media screen and (max-width: 1000px) {
+  .swiper-button-prev {
+    left: 3rem;
+}
+  .swiper-button-next {
+    right: 3rem;
+}
+  .section-description {
+    padding: 0 8rem;
+  }
+  .about-imageContent {
+    height: 400px;
+  }
+  .aboutImg-textBox {
+    padding: 1.5rem 2rem;
+  }
+  .menu .menu-content {
+    grid-template-columns: 1.5fr 1fr;
+    column-gap: 3rem;
+  }
+  .brand-images{
+    grid-template-columns: repeat(3,1fr);
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .section.review{
+    padding: 7rem 1rem 3rem;
+  }
+  .review .swiper{
+    padding-bottom: 6.5rem;
+  }
+  .swiper-navBtn{
+    visibility: hidden;
+  }
+  .swiper-pagination-bullet{
+    visibility: visible;
+  }
+
+  .section {
+    padding: 7rem 1rem;
+}
+.section-description,
+.review-quote{
+  padding: 0 6rem;
+}
+.about-content{
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+  justify-items: center;
+}
+.about .content-subtitle,
+.about .content-title,
+.about .content-description{
+  text-align: center;
+}
+.about-details {
+  justify-items: center;
+}
+.about-lists{
+  justify-content: center;
+}
+.menu .menu-content {
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+}
+
+}
+
+@media screen and (max-width: 600px){
+  .container{
+    padding: 0.5rem;
+  }
+  .section-description, .review-quote{
+    padding: 0;
+  }
+  .aboutImg-textBox{
+    right: -2rem
+  }
+  .menuItem-price{
+    border: none;
+  }
+  .menu-img{
+    height: 70px;
+    width: 70px;
+    margin-right: 0;
+}
+  .brand-images{
+    grid-template-columns: repeat(2,1fr);
+  }
+  .brand-img{
+    width: 130px;
+  }
+  
+}
+@media screen and (max-width: 400px) {
+  .homeTitle{
+    font-size:3rem;
+  }
+  .menu-item{
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    row-gap: 2rem;
+  }
+  .menuItem-details{
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .menuItem-price{
+    padding-left: 0;
+    flex-direction: row;
+  }
+  .menuItem-des{
+    text-align: center;
+}
+  .newsletter-input {
+    padding: 0 11rem 0 2rem;
+
+}
+  .newsletter-button {
+    padding: 1.4rem 2rem;
+
+}
+}
+.firstT{
+  color:white;
+  align-items: center;
+  justify-self: center;
+}
+.firstT tbody td{
+  padding: 2rem;
+  border: 2px solid var(--white-color);
+}
+.firstT tbody td:first-child{
+  background:black;
+}
+.odd{
+  background-color: var(--section-bg);
+}
+.odd span{
+  color:var(--primary-color);
+  font-size:var(--h2-font);
+}
+.odd .s-cont{
+  font-size: 2rem;
+  line-height: 1.5;
+  color:var(--s-cont-text);
+}
+
+.even span{
+  color:var(--primary-color);
+  font-size:var(--h2-font);
+}
+.even .s-cont{
+  font-size: 2.5rem;
+  line-height: 1.5;
+  color:var(--text-color);
+}
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+    </script>
+<script type=text/javascript>
+  $(function(){
+    $("#footerM").load("http://localhost/new/footer.html");
+  });
+</script>
+</head>
+<body>
+<!-- Header -->
+    <header class="header">
+            <nav class="nav container flex">
+                    <a class="logo-content flex">
+                        <img onclick="backHome()" src="http://localhost/new/image/download1.png">
+                    </a>
+
+                    <div class="menu-content">
+                            <ul class="menu-list flex">
+                                    <li><a href="#home" class="nav-link active-navlink">home</a></li>
+                                    <li><a href="#about" class="nav-link">intro</a></li>
+                                    <li><a href="#menu" class="nav-link">fertilizer</a></li>
+                                    <li><a href="#review" class="nav-link">footer</a></li>
+                            </ul>
+                    </div>
+                </nav>
+        
+    </header>
+
+<!-- Home Section -->
+    <main>
+        <section class="home" id="home">
+                <div class="home-content">
+                        <div class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg1.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Coffee is a hug in a mug.</h4>
+                                                                <h2 class="homeTitle">Coffee is the best thing to have <br> when you're trying to get something done</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg2.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Coffee is a great power in my life.</h4>
+                                                                <h2 class="homeTitle">The culture of the coffee bean is a thing <br> that grows in the soul.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg3.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Coffee is a way of connecting with people.</h4>
+                                                                <h2 class="homeTitle">Coffee is a fascinating crop that has a long history and <br> an important role in the global economy.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg4.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Coffee and love are best when they are hot.</h4>
+                                                                <h2 class="homeTitle">The coffee industry is one of the largest agricultural industries in the world, <br> and it provides a livelihood for millions of people.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                                <img src="images/homeImg5.jpg" alt="" class="home-img">
+
+                                                <div class="home-details">
+                                                        <div class="home-text">
+                                                                <h4 class="homeSubtitle">Making Our coffee with lover.</h4>
+                                                                <h2 class="homeTitle">Coffee farming is a beautiful process. <br>  It requires patience, attention to detail, and a lot of love.</h2>
+                                                        </div>
+
+                                                        <button class="button" onclick="move_Cont()">Explore</button>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="swiper-button-next swiper-navBtn"></div>
+                                <div class="swiper-button-prev swiper-navBtn"></div>
+                                <div class="swiper-pagination"></div>
+                        </div>
+                </div>
+        </section>
+
+    
+<!-- About Section -->
+        <section class="section about" id="about">
+                <div class="about-content container">
+                        <div class="about-imageContent">
+                                <img src="images/aboutImg.jpg" alt="" class="about-img">
+
+                                <div class="aboutImg-textBox">
+                                        <i class='bx bx-heart heart-icon flex'></i>
+                                        <p class="content-description">Coffee and love - two things that warm the soul.</p>
+                                </div>
+                        </div>
+
+                        <div class="about-details">
+                                <div class="about-text">
+                                        <h4 class="content-subtitle"><i>Introduction to Coffee Growing:-</i></h4>
+                                        <h2 class="content-title"><p align="justify"> Coffee is a flowering plant which is being cultivated for its grains/seeds called ‘coffee beans’. Many coffee products including beverages are made from these freshly grown coffee beans. When it comes to planting size, these trees are small. Coffee plants are native to tropical areas of  Asia and South African continent. Coffee was introduced in India in 1936 near Chikmagalur in the state of Karnataka. Coffee is one of the popular commodity crops plays a major role in the world economy. Brazil occupies the number one position in coffee production in the world. In the commercial aspect, the coffee is a major export crop for many countries across the globe. There are many species of coffee cultivated across the globe. However, “coffee Arabica” accounts for 80% of coffee production in the world. </p></h2>
+                                        <p class="content-description">Other species of coffee is Coffee Robusta ( made from Coffea canephora plants) accounts for about 20% of world coffee production.</p>
+
+                                        <ul class="about-lists flex">
+                                                <li class="about-list">Coffee bean</li>
+                                                <li class="about-list dot">.</li>
+                                                <li class="about-list">form</li>
+                                                <li class="about-list dot">.</li>
+                                                <li class="about-list">data</li>
+                                        </ul>
+                                </div>
+                        </div>
+
+                </div>
+        </section>
+
+  <section class="section odd">
+          <div class="s-cont">
+            <p align="justify">
+              <span>
+                <strong>Climate Requirement for Coffee Growing:- </strong>
+              </span><br>
+              &emsp;&emsp;Climatic conditions play a major role in coffee growing. 
+              The Coffee Arabica can be cultivated at high altitude from 900 meters to 1600 meters. 
+              However, it can be grown well to lower elevations as well. 
+              The main disadvantage of cultivating coffee beans at high altitudes can result in late 
+              maturity and the crop may be damaged due to frost conditions and high winds. When it comes 
+              to rainfall requirement, the coffee crop grows well with an evenly distributed annual rainfall 
+              of &nbsp;2,200 to 2300 mm. This crop is very sensitive to high rainfall conditions and 
+              this may cause rotting of leaves and fungal disease. The Ideal temperature of &nbsp;10°C – 
+              28°C is required for good growth and yield. Coffee plantation requires shade in regions where 
+              high temperatures are possible.
+            </p>
+                  
+
+          </div>
+  </section>
+  <section class="section even" >
+    <div class="s-cont">
+      <p align="justify">
+        <span>
+        <strong>Soil Requirement for Coffee Growing:- </strong>
+      </span><br>
+      &emsp;&emsp;Coffee crop may be grown on a wide range of soils. 
+      However, the shallow soils (sandy loam) with good organic matter to virgin soils 
+      on steep mountain slopes or almost flatlands are ideal its cultivation. You must 
+      consider the water balance of soil as this can play a vital role in coffee growing.
+       Commercial coffee growers should go for soil testing. Any soil nutrient deficiencies 
+       should be supplemented before starting a coffee garden. 
+        For high yields and quality produces, the pH of the soil should be between 5.0 – 6.0.</p>
+
+    </div>
+</section>
+
+<section class="section odd">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+      <strong>Climate Requirement for Coffee Growing:- </strong>
+    </span><br>
+    &emsp;&emsp;Climatic conditions play a major role in coffee growing. The Coffee Arabica can be cultivated at high altitude from 900 meters to 1600 meters. However, it can be grown well to lower elevations as well. The main disadvantage of cultivating coffee beans at high altitudes can result in late maturity and the crop may be damaged due to frost conditions and high winds. When it comes to rainfall requirement, the coffee crop grows well with an evenly distributed annual rainfall of &nbsp;2,200 to 2300 mm. This crop is very sensitive to high rainfall conditions and this may cause rotting of leaves and fungal disease. The Ideal temperature of &nbsp;10°C – 28°C is required for good growth and yield.
+       Coffee plantation requires shade in regions where high temperatures are possible.</p><br>
+  
+  <ol style="margin:0 3rem;" align="justify">
+    <li>
+      <strong>Seed Propagation in Coffee Growing –</strong><br> &emsp;&emsp;Coffee Arabica trees are self-pollinating and usually, Arabica varieties (cultivars) will produce true type plants from seed propagation. When it comes to seed treatment before sowing, Azospirillum and Phosphobacterium can be applied for this purpose.</li>
+    <li><strong>Vegetative Propagation in Coffee Growing –</strong><br> &emsp;&emsp;In this propagation, you should select high yield and diseases free quality cuttings. It is important to remember to select vegetative cuttings that are resistant to leaf rust disease. If you are planning to buy from nurseries, make sure to choose certified and high-quality nurseries for coffee planting material.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="section even" >
+  <div class="s-cont">
+    <p><span>
+      <strong>
+        Preparation of Land, Transplanting and Spacing in Coffee Growing:-
+      </strong>
+    </span> <br>
+    &emsp;&emsp;For better coffee orchard establishment, the land should be prepared very well by giving 4 or 5 ploughings and harrowing to bring the soil to fine tilth stage. As part of this preparation, remove any stones/debris/ and weeds from previous crops. Commercial coffee growers should consider soil testing to measure soil fertility and suitability. Based on soil test reports, any nutrients and micronutrients should be supplemented in the soil before planting the seedlings. In the case of fertilizers applications such as phosphorus and lime, &nbsp;these should be thoroughly incorporated by plowing and disking the soil several months before transplanting the coffee seedlings in the field.</p>
+    <br><p>&emsp;&emsp;Well, planting distance or space vary from variety to variety and mainly depends on topography and soil fertility. The general spacing of different species of coffee as follows.</p>
+    <br><ol style="margin:0 5rem;" align="justify">
+      <li><strong>Coffee Arabica:</strong> 2 m x 3 m</li>
+      <li><strong>Coffee Robusta:</strong> 3 m x 3 m.</li>
+      </ol>
+      <br><p>&emsp;&emsp;When it comes to the plantation, straight row planting with an east-west orientation is preferred layout in coffee growing.</p>
+      <br><p>&emsp;&emsp;The coffee crop is planted during the spring season or just before the rainy season as this crop requires moist soil conditions and cool climate for better establishment and growth. For better coffee seedling emergence, the space between the rows should be 15 cm to 20 cm. Within the rows, coffee seeds should be placed at &nbsp;3 cm to 5 cm distance with 0.5 cm to1 cm depth flat side down.</p>
+      <br><p>&emsp;&emsp;After growing the coffee seedlings in nursery bags, 6 to 7 months old seedlings having about 20 to 25 cm height should be transported and transplanted in the main field. Prepare the pits in advance to loosen up the soil before transplanting the coffee seedlings in the field. These pits should be dug 3 months before transplanting the seedlings in the field. The pits should be dug with 50 cm x 50 cm x 50 cm size.</p>
+      <br><p>&emsp;&emsp;In regions where sunlight is intense, this crop requires partial shade, for this purpose, it advised growing shade trees in the field. You can plant species of Ficus, Terminal sp., Silver oak, Albizy, Lebback, Arfocarpus heteophytius, Erythina tillthesperna, and Gliricidia maculate for the purpose of providing shade in coffee growing.</p>
+
+  </div>
+</section>
+
+<section class="section odd">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Irrigation in Coffee Growing:-</strong>
+      </span><br>
+      &emsp;&emsp;The frequency of irrigation in coffee growing depends on the type of soil, moisture level in the soil, plant age and climate<strong>. </strong>There are many irrigation methods are available like drip irrigation, sprinkler irrigation, microjet, and basin irrigation can be adopted in coffee Growing. However, drip irrigation is the best method for best utilization of water and fertilizers. This can also control weed growth at plant basins. Under irrigated conditions,&nbsp; each coffee plant requires 50 to 55 mm water and this should be applied before transplanting. Subsequent irrigations of 25 mm should be provided at 8 to 10 days interval. &nbsp;Make sure to keep the soil moist and avoid too much wetness. Overwatering can result in plantrot and fungal diseases in coffee growing. The thumb rule is to provide 2 irrigations in a week in dry climatic conditions (like in summer) and 1 irrigation per week in the cool winter season.</p>
+  </div>
+</section>
+
+<section class="section even" >
+  <div class="s-cont">
+    <p align="justify">
+      <strong>
+      <span>Intercultural Tasks in Coffee Growing:-</span> 
+    </strong><br>
+    &emsp;&emsp;There are certain and essential tasks need to be performed as part of the intercultural operations.</p>
+    <br><ul style="margin:0 5rem;">
+      <li><strong>Weed control in Coffee Growing: </strong><br> &emsp;&emsp;Digging and forking open should be done during the months of September, November and again in February and March. Weed control can be done during the initial years. Chemical weedicides like Dalapon can be used for controlling grasses. Amino salt of 2, 4 – D can be used or controlling broad-leaved weeds.</li>
+      <li><strong>Mulching in Coffee Growing: </strong><br> &emsp;&emsp;Mulching is another task that can provide weed control and prevent moisture loss and soil erosion. Another benefit of mulching is, it can enrich the soil, moderates of excessive soil temperature and improves soil texture. In most of the cases, mulching material can convert into excellent organic matter.</li>
+      <li><strong>Pruning in Coffee Growing: </strong><br> &emsp;&emsp;Pruning includes removal of dried, dead branches, and any unhealthy branches. This operation includes part of pole pruning and this may be done once in 4 years to bring back to good shape and control unwanted shoots. Make sure this task is done immediately after harvesting.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section odd">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Pests and Diseases in Coffee Growing:- </strong>
+      </span>
+      <br> &emsp;&emsp;Pest and disease control is essential in crop cultivation. 
+      The following are the pests and diseases found in the coffee plantation.</p><br>
+      <ul style="margin:0 5rem;">
+        <li><strong>Insect Pests in Coffee Gardens: </strong>
+        <ul style="margin:0 5rem;">
+        <li>&#10033; Grey coffee snout beetle</li>
+        <li>&#10033; Coffeeberry moth</li>
+        <li>&#10033; White stem borer</li>
+        <li>&#10033; Antestia stink bug</li>
+        <li>&#10033; Leafminer, Mealybug</li>
+        <li>&#10033; Black coffee stem borer</li>
+        <li>&#10033; Variegated coffee bug.</li>
+        </ul>
+        </li>
+        <li><strong>Diseases in Coffee Garden:</strong>
+        <ul style="margin:0 5rem;">
+        <li>&#10033; Rosellinia bunodes</li>
+        <li>&#10033; Armillaria mellea</li>
+        <li>&#10033; Coffee leaf rust</li>
+        <li>&#10033; Coffee berry disease</li>
+        <li>&#10033; Tracheomycosis wilt</li>
+        <li>&#10033; American leaf spot</li>
+        <li>&#10033; Root rot diseases</li>
+        <li>&#10033; Cercospora spot.</li>
+        </ul>
+        </li>
+        </ul>
+  </div>
+</section>
+
+<section class="section even" >
+  <div class="s-cont">
+    <p align="justify">
+      <strong>
+        <span>Harvesting Tasks in Coffee Growing:-</span> 
+      </strong>
+      <br> &emsp;&emsp;Coffee beans/cherries start bearing from the third year onwards after transplanting in the field. &nbsp;Healthy and best yield can be obtained from the fifth year. The best part is, the coffee plantation continues to yield up to 50 to 55 years.</p>
+    <ul style="margin-left: 5rem;">
+      <li><strong>Fly picking:</strong><br> &emsp;&emsp;You can pick ripe berries of the coffee plant during the month of October to February. Generally, this is a small scale picking</li>
+      <li><strong>Main picking:</strong><br> &emsp;&emsp;It is recommended to pick well-ripened and formed coffee berries/beans during the month of December. This is the main harvesting method of coffee berries (used for bulk yields).</li>
+      <li><strong>Stripping:</strong><br> &emsp;&emsp;This method is used for picking all the berries left on the plant irrespective of the ripening stage.</li>
+      <li><strong>Cleanings: </strong><br> &emsp;&emsp;This method involves collecting the fruits that have been dropped during harvesting.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section odd">
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Post-Harvesting Tasks in Coffee Growing:-</strong>
+      </span> 
+      <br> &emsp;&emsp;Post-harvesting tasks of coffee includes the activities of Drying, Grading, Packing, Storage and Transpiration.</p>
+    <ul style="margin-left: 5rem;">
+      <li><strong>Drying the fruits:</strong><br> &emsp;&emsp;You can dry the freshly picked coffee beans under the sun or using mechanical hot air drying, and preferably on shade netting.</li>
+      <li><strong>Grading the fruits: </strong><br> &emsp;&emsp;Grading of fruits should be done based on size and shape by help of a rotating sieve.</li>
+      <li><strong>Packing the beans:</strong><br> &emsp;&emsp;Make sure to pack the beans in the airtight basket very firmly.</li>
+      <li><strong>Storage of beans:</strong><br> &emsp;&emsp;Don’t expose the beans for moisture and the keep the &nbsp;storage room dry, clean &nbsp;and well-ventilated</li>
+      <li><strong>Transportation of final produce: </strong><br> &emsp;&emsp;All packed graded coffee beans should be transported with original bags by transport trucks to the coffee roasting mills or facilities.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section even" >
+  <div class="s-cont">
+    <p align="justify">
+      <span>
+        <strong>Yield in Coffee Growing:- </strong>
+      </span>
+      <br> &emsp;&emsp;Yield of any crop in the horticulture world depends on many factors such as soil type, climate, varieties, irrigation/rainfall, and other garden management practices. Under ideal conditions, one can expect the following yields.</p>
+      <br><ol style="margin-left: 5rem;">
+      <li><strong>Coffee Arabica – </strong>&emsp;400 – 700 kg/ha</li>
+      <li><strong>Coffee Robusta – </strong>&emsp;350 – 750 kg/ha.</li>
+    </ol>
+  </div>
+</section>
+
+
+        <section class="section menu" id="menu">
+            <center><div class="menu-container container">
+                    <div class="meu-text">
+                            <h4 class="section-subtitle"><i>Fertilizers and Manures</i></h4>
+                            <h2 class="section-title">Fertilizers and Manures in Coffee Growing:-</h2>
+                            <p class="section-description">
+                              Timely application of fertilizers and manures ensure the high yields of coffee beans. Here is the manures and fertilizer requirement in coffee growing.
+                            </p>
+                    </div>
+
+                    <center>
+                            <div class="menu-items">
+                            <table class="firstT">
+                                <tbody>
+                                <tr>
+                                <td width="256"><span style="color:var(--primary-color);"> <strong>Coffee Species</strong></span></td>
+                                <td width="131"><span style="color:var(--primary-color);"><strong>Pre- Blossom March month</strong></span><br>
+                                <span style="color: var(--primary-color);"> <strong>N:P2O5:K2O</strong></span></td>
+                                <td width="133"><span style="color:var(--primary-color);"><strong>Post – blossom May month</strong></span><br>
+                                <span style="color: var(--primary-color)"> <strong>N:P2O5:K2O</strong></span></td>
+                                <td width="138"><span style="color: var(--primary-color);"><strong>Mid monsoon</strong></span><br>
+                                <span style="color: var(--primary-color);"> <strong>August month</strong></span><br>
+                                <span style="color: var(--primary-color);"> <strong>N:P2O5:K2O</strong></span></td>
+                                <td width="149"><span style="color: var(--primary-color);"><strong>Post- monsoon</strong></span><br>
+                                <span style="color: var(--primary-color);"> <strong>October month</strong></span><br>
+                                <span style="color: var(--primary-color);"> <strong>N:P2O5:K2O</strong></span></td>
+                                <td width="108"><span style="color: var(--primary-color);"><strong>Total quantity</strong></span></td>
+                                </tr>
+                                <tr>
+                                <td colspan="6"><span style="color: #ffffff;"><strong>Coffee Arabica:</strong></span></td>
+                                </tr>
+                                <tr>
+                                <td width="256">Young coffee 1st year after planting</td>
+                                <td width="131">15:10:15</td>
+                                <td width="133">15:10:15</td>
+                                <td width="138">—</td>
+                                <td width="149">15:10:15</td>
+                                <td width="108">45:30:45</td>
+                                </tr>
+                                <tr>
+                                <td width="256">Second and Third year</td>
+                                <td width="131">20:10:20</td>
+                                <td width="133">20:10:20</td>
+                                <td width="138">—</td>
+                                <td width="149">20:15:20</td>
+                                <td width="108">60:45:60</td>
+                                </tr>
+                                <tr>
+                                <td width="256">Fourth year</td>
+                                <td width="131">30:20:30</td>
+                                <td width="133">20:20:20</td>
+                                <td width="138">—</td>
+                                <td width="149">30:20:30</td>
+                                <td width="108">80:60:80</td>
+                                </tr>
+                                <tr>
+                                <td width="256">Bearing coffee 5 years and above for less<br>
+                                than 1 tonne per ha crop</td>
+                                <td width="131">40:30:40</td>
+                                <td width="133">40:30:40</td>
+                                <td width="138">—</td>
+                                <td width="149">40:30:40</td>
+                                <td width="108">140:90:120</td>
+                                </tr>
+                                <tr>
+                                <td width="256">For 1 tonne &nbsp;per ha and above</td>
+                                <td width="131">40:30:40</td>
+                                <td width="133">40:30:40</td>
+                                <td width="138">40:30:40</td>
+                                <td width="149">40:30:40</td>
+                                <td width="108">160:120:160</td>
+                                </tr>
+                                <tr>
+                                <td colspan="6"><span style="color: #ffffff;"><strong>Coffee Robusta:</strong></span></td>
+                                </tr>
+                                <tr>
+                                <td width="256">For less than 1 tonne per ha crop</td>
+                                <td width="131">40:30:40</td>
+                                <td width="133">—</td>
+                                <td width="138">—</td>
+                                <td width="149">40:30:40</td>
+                                <td width="108">80:60:80</td>
+                                </tr>
+                                <tr>
+                                <td width="256">For 1 tonne per ha and above</td>
+                                <td width="131">40:30:40</td>
+                                <td width="133">40:30:40</td>
+                                <td width="138">—</td>
+                                <td width="149">40:30:40</td>
+                                <td width="108">120:90:120</td>
+                                </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                    </center>
+            </div></center>
+        </section>
+
+    
+
+        <section class="section brand" id="review">
+            <div class="brand-container container">
+                    <h4 class="section-subtitle"><i>COFFEE PRODUCTION</i></h4>
+
+                    <div class="brand-images">
+                            <div class="brand-image">
+                                    <img src="images/brandImg1.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg2.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg3.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg4.png" alt="" class="brand-img">
+                            </div>
+                            <div class="brand-image">
+                                    <img src="images/brandImg5.png" alt="" class="brand-img">
+                            </div>
+                    </div>
+            </div>
+        </section>
+
+      <div id="footerM"></div>
+        <a href="#home" class="scrollUp-btn flex">
+                <i class='bx bx-up-arrow-alt scrollUp-icon'></i>
+        </a>
+
+</main>
+ <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+ <script src="https://unpkg.com/scrollreveal"></script>
+
+<script type="text/javascript">
+        var swiper = new Swiper(".mySwiper", {
+          slidesPerView: 1,
+          loop: true,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+
+
+        const body = document.querySelector('body'),
+              navMenu = body.querySelector('.menu-content'),
+              navOpenBtn = body.querySelector('.navOpen-btn'),
+              navCloseBtn = navMenu.querySelector('.navClose-btn');
+
+        if(navMenu && navOpenBtn){
+          navOpenBtn.addEventListener("click", () =>{
+            navMenu.classList.add("open");
+            body.style.overflowY = "hidden";
+          })
+        }
+
+        if(navMenu && navCloseBtn){
+          navCloseBtn.addEventListener("click", () =>{
+            navMenu.classList.remove("open");
+            body.style.overflowY = "scroll";
+          })
+        }
+
+
+        window.addEventListener("scroll", () => {
+          const scrollY = window.pageYOffset;
+
+          if(scrollY > 5){
+            document.querySelector("header").classList.add("header-active");
+          }else{
+            document.querySelector("header").classList.remove("header-active");
+          }
+
+
+          const scrollUpBtn = document.querySelector('.scrollUp-btn');
+
+          if(scrollY > 250){
+            scrollUpBtn.classList.add("scrollUpBtn-active");
+          }else{
+            scrollUpBtn.classList.remove("scrollUpBtn-active");
+          }
+          
+          const sections = document.querySelectorAll('section[id]');
+          sections.forEach(section =>{
+            const sectionHeight = section.offsetHeight,
+                  sectionTop = section.offsetTop - 100;
+
+                  let navId = document.querySelector(`.menu-content a[href='#${section.id}']`);
+                  if(scrollY > sectionTop && scrollY <=  sectionTop + sectionHeight){
+                    navId.classList.add("active-navlink");           
+                  }else{
+                    navId.classList.remove("active-navlink");     
+                  }
+                  
+                  navId.addEventListener("click", () => {
+                    navMenu.classList.remove("open");
+                    body.style.overflowY = "scroll";
+                  })
+          })
+        });  
+
+          ScrollReveal({
+            origin: 'top',
+            distance: '60px',
+            duration: 2000,
+            delay: 400,
+          });
+          
+          ScrollReveal().reveal(`.section-title, .section-subtitle, .section-description, .brand-image, .tesitmonial, .newsletter 
+          .logo-content, .newsletter-inputBox, .newsletter-mediaIcon`, {interval:100,})
+          
+          ScrollReveal().reveal(`.about-imageContent, .menu-items,.s-cont span,.s-cont li`, {origin: 'left'})
+          ScrollReveal().reveal(`.about-details, .time-table,.brand-image`, {origin: 'right'})
+          ScrollReveal().reveal(`.s-cont p`,{origin:'top'})
+
+              function backHome(){
+              window.history.go(-1)
+            }
+            function move_Cont(){
+        window.scrollTo({top:1270,behavior:"smooth"});
+    }
+</script>
+</body>
+</html>
